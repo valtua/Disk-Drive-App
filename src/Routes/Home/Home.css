@@ -1,0 +1,22 @@
+div.Home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88vh;
+}
+
+div.formSelector {
+    height: 500px;
+    width: 400px;
+    background-color: aquamarine;
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    text-align: left;
+}

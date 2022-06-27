@@ -1,0 +1,15 @@
+footer {
+    background-color: #5be7b4;
+    height: 5vh;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h5 {
+    color: white;
+    text-shadow: 3px 0px 0px #00a307;
+}
