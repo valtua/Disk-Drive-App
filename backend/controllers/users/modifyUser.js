@@ -1,7 +1,6 @@
 const { generateError, createPathIfNotExists } = require('../../helpers');
 const path = require('path');
 const sharp = require('sharp');
-const { nanoid } = require('nanoid');
 const modifyUserQuery = require('../../db/userQueries/modifyUserQuery');
 
 // Función para modificar el usuario en la base de datos

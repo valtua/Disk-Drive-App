@@ -13,7 +13,7 @@ const morgan = require('morgan');
 const authUser = require('./middleware/authUser');
 
 // Almacenamos en esta variable los datos que contiene el archivo .env (base de datos)
-const { PORT } = process.env;
+const { BACKEND_PORT } = process.env;
 
 // ---------------------- CONTROLLERS ----------------------
 
@@ -101,6 +101,6 @@ app.use((req, res) => {
 });
 
 // Iniciamos el servidor
-app.listen(PORT, () => {
-    console.log(`Server listening at http://localhost:${PORT}`);
+app.listen(BACKEND_PORT, () => {
+    console.log(`Server listening at http://localhost:${BACKEND_PORT}`);
 });

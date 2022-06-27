@@ -1,13 +1,15 @@
-const { generateError, createUploadsIfNotExists, createPathIfNotExists } = require('../../helpers');
+const {
+    generateError,
+    createUploadsIfNotExists,
+    createPathIfNotExists,
+} = require('../../helpers');
 const path = require('path');
 const sharp = require('sharp');
-const { nanoid } = require('nanoid');
 const insertUserQuery = require('../../db/userQueries/insertUserQuery');
 
 // Función para crear un nuevo usuario
 const newUser = async (req, res, next) => {
     try {
-
         // Obtenemos los campos del body.
         const { name, email, password, biography } = req.body;
 
@@ -24,9 +26,14 @@ const newUser = async (req, res, next) => {
 
         // Si la imagen existe la guardamos.
         if (req.files && req.files.photo) {
-
             // Creamos una ruta absoluta al directorio de descargas.
-            const uploadsDir = path.join(__dirname, '..', '..', 'uploads', 'photos');
+            const uploadsDir = path.join(
+                __dirname,
+                '..',
+                '..',
+                'uploads',
+                'photos'
+            );
 
             // Creamos el directorio si no existe.
             await createPathIfNotExists(uploadsDir);
@@ -48,7 +55,13 @@ const newUser = async (req, res, next) => {
         }
 
         // Creamos un usuario en la base de datos y obtenemos el id.
-        const idUser = await insertUserQuery(name, email, password, biography, photoName);
+        const idUser = await insertUserQuery(
+            name,
+            email,
+            password,
+            biography,
+            photoName
+        );
 
         // Variable que contiene la ruta de la carpeta del usuario
         const newUserSpace = path.join(
