@@ -26,6 +26,7 @@ function Home() {
                         <input type="email" name="email" />
                         <label htmlFor="password">Password:</label>
                         <input type="password" name="password" />
+                        <button>Enviar</button>
                     </form>
                 ) : (
                     <form className="signup">
@@ -43,6 +44,7 @@ function Home() {
 
                         <label htmlFor="image">Profile Image:</label>
                         <input type="file" name="image" />
+                        <button>Enviar</button>
                     </form>
                 )}
             </div>
