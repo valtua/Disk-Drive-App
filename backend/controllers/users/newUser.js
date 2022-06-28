@@ -2,6 +2,7 @@ const {
     generateError,
     createUploadsIfNotExists,
     createPathIfNotExists,
+    randomString,
 } = require('../../helpers');
 const path = require('path');
 const sharp = require('sharp');
@@ -12,6 +13,8 @@ const newUser = async (req, res, next) => {
     try {
         // Obtenemos los campos del body.
         const { name, email, password, biography } = req.body;
+
+        console.log(req.body);
 
         // Si faltan campos lanzamos un error.
         if (!name || !email || !password) {
@@ -45,7 +48,7 @@ const newUser = async (req, res, next) => {
             sharpPhoto.resize(500);
 
             // Generamos un nombre único para la imagen.
-            photoName = `${nanoid(24)}.jpg`;
+            photoName = `${randomString(24)}.jpg`;
 
             // Generamos la ruta absoluta a la imagen.
             const photoPath = path.join(uploadsDir, photoName);

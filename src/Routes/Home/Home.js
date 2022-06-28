@@ -1,12 +1,96 @@
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useState } from 'react';
+import { useToken } from '../../TokenContext';
 import './Home.css';
 
 function Home() {
-    const [alignment, setAlignment] = useState('web');
+    const [alignment, setAlignment] = useState('login');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [biography, setBiography] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState(null);
+    const [error, setError] = useState(null);
+    //const [token, setToken] = useToken();
+    const [, setToken] = useToken();
+
+    //if (token) return <Navigate to="/disk" />;
 
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
+    };
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
+        setError(null);
+        setLoading(true);
+
+        try {
+            const res = await fetch('http://localhost:4000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                }),
+            });
+
+            const body = await res.json();
+            console.log(body);
+
+            if (body.status === 'error') {
+                setError(body.message);
+            } else {
+                setToken(body.data.token);
+            }
+        } catch (err) {
+            console.error(err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+    const handleSignup = async (e) => {
+        e.preventDefault();
+
+        setError(null);
+        setLoading(true);
+
+        try {
+            const photo = document.querySelector('#photo');
+            const data = new FormData();
+            data.append('name', name);
+            data.append('email', email);
+            data.append('password', password);
+            data.append('biography', biography);
+            data.append('photo', photo.files[0]);
+
+            const res = await fetch('http://localhost:4000/register', {
+                method: 'POST',
+                body: data,
+            });
+
+            const body = await res.json();
+
+            if (body.status === 'error') {
+                setError(body.message);
+            } else {
+                setMessage(body.message);
+            }
+        } catch (err) {
+            console.error(err);
+            setError(err.message);
+        } finally {
+            setName('');
+            setEmail('');
+            setPassword('');
+            setBiography('');
+            setLoading(false);
+        }
     };
     return (
         <div className="Home">
@@ -21,32 +105,69 @@ function Home() {
                     <ToggleButton value="signup">SIGN UP</ToggleButton>
                 </ToggleButtonGroup>
                 {alignment === 'login' ? (
-                    <form className="login">
+                    <form className="login" onSubmit={handleLogin}>
                         <label htmlFor="email">Email:</label>
-                        <input type="email" name="email" />
+                        <input
+                            type="email"
+                            name="email"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                         <label htmlFor="password">Password:</label>
-                        <input type="password" name="password" />
+                        <input
+                            type="password"
+                            name="password"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                         <button>Enviar</button>
                     </form>
                 ) : (
-                    <form className="signup">
+                    <form className="signup" onSubmit={handleSignup}>
                         <label htmlFor="name">Name:</label>
-                        <input type="text" name="name" />
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
 
                         <label htmlFor="email">Email:</label>
-                        <input type="email" name="email" />
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
 
                         <label htmlFor="password">Password:</label>
-                        <input type="password" name="password" />
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
 
                         <label htmlFor="biography">Biography:</label>
-                        <textarea name="biography" />
+                        <textarea
+                            name="biography"
+                            id="biography"
+                            value={biography}
+                            onChange={(e) => {
+                                setBiography(e.target.value);
+                            }}
+                        />
 
-                        <label htmlFor="image">Profile Image:</label>
-                        <input type="file" name="image" />
-                        <button>Enviar</button>
+                        <label htmlFor="photo">Profile Image:</label>
+                        <input type="file" id="photo" name="photo" />
+                        <button disabled={loading}>
+                            {loading ? 'Enviando...' : 'Enviar'}
+                        </button>
                     </form>
                 )}
+                {error && <p className="Error">{error}</p>}
+                {message && <p className="Success">{message}</p>}
             </div>
         </div>
     );

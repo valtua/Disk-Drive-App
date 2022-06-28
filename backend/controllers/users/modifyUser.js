@@ -1,4 +1,8 @@
-const { generateError, createPathIfNotExists } = require('../../helpers');
+const {
+    generateError,
+    createPathIfNotExists,
+    randomString,
+} = require('../../helpers');
 const path = require('path');
 const sharp = require('sharp');
 const modifyUserQuery = require('../../db/userQueries/modifyUserQuery');
@@ -39,7 +43,7 @@ const modifyUser = async (req, res, next) => {
             sharpPhoto.resize(500);
 
             // Generamos un nombre único para la imagen.
-            photoName = `${nanoid(24)}.jpg`;
+            photoName = `${randomString(24)}.jpg`;
 
             // Generamos la ruta absoluta a la imagen.
             const photoPath = path.join(uploadsDir, photoName);
