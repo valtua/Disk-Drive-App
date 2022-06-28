@@ -18,7 +18,11 @@ function Home() {
     //if (token) return <Navigate to="/disk" />;
 
     const handleChange = (event, newAlignment) => {
-        setAlignment(newAlignment);
+        if (alignment === 'login') {
+            setAlignment(newAlignment || 'login');
+        } else if (alignment === 'signup') {
+            setAlignment(newAlignment || 'signup');
+        }
     };
 
     const handleLogin = async (e) => {
@@ -96,7 +100,6 @@ function Home() {
         <div className="Home">
             <div className="formSelector">
                 <ToggleButtonGroup
-                    color="primary"
                     value={alignment}
                     exclusive
                     onChange={handleChange}

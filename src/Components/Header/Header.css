@@ -1,9 +1,16 @@
 header {
     background-color: rgba(91, 231, 180, 1);
-    height: 7vh;
+    height: 9vh;
+    width: 100%;
     color: white;
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
     text-shadow: 0.5vh 0 0 #00a307;
+    font-size: 6vh;
 }

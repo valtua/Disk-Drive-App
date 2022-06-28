@@ -1,28 +1,35 @@
+* {
+    font-size: 2.5vh;
+}
+
 div.Home {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 90vh;
+    height: 88vh;
+    padding-top: 15vh;
 }
 
-div.formSelector {   
-    background-color: #DAFFD5;
+div.formSelector {
+    background-color: #deffda;
     border-radius: 2vh;
     width: 50vh;
-    height: 80vh;
+    height: 82vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    contain: content;
 }
 
 form {
-    
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 7vh;
+    margin-top: 3vh;
 }
 
 label {
     align-self: start;
     margin-left: 8vh;
+    margin-bottom: 0.7vh;
 }
 
 p {
@@ -35,17 +42,17 @@ input {
     width: 35vh;
 }
 
-input:not([name="photo"]) {
+input:not([name='photo']) {
     border-radius: 1vh;
     border: none;
-    box-shadow:inset 0 0.4vh 0.4vh rgba(0,0,0,0.25);
+    box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
     height: 5vh;
 }
 
 textarea {
     border-radius: 1vh;
     border: none;
-    box-shadow:inset 0 0.4vh 0.4vh rgba(0,0,0,0.25);
+    box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
     margin-bottom: 2vh;
     padding: 2vh 2vh 0 2vh;
     resize: none;
@@ -53,20 +60,30 @@ textarea {
     width: 70%;
 }
 
-button:not([name="enviar"]) {
-    background-color: grey;
+button:not([name='enviar']) {
     border-radius: 1vh;
     margin-top: 4vh;
     height: 6vh;
     width: 20vh;
 }
 
-button[name="enviar"] {
+button[aria-pressed='true'] {
+    background-color: rgb(35, 218, 35) !important;
+}
+
+button[aria-pressed='false'] {
+    background-color: rgb(150, 255, 150) !important;
+}
+
+button[name='enviar'] {
     border-radius: 1vh;
     border: none;
     background-color: rgb(35, 218, 35);
-    margin: 3vh 0 5vh 14vh;
-    height: 6vh;
-    width: 20vh;
-}
 
+    margin: 4vh;
+    height: 6vh;
+    width: 35vh;
+    position: relative;
+    right: 2px;
+    bottom: 15px;
+}
