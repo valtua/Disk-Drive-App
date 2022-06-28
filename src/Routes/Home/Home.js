@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './Home.css';
 
 function Home() {
-    const [alignment, setAlignment] = useState('web');
+    const [alignment, setAlignment] = useState('login');
 
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
@@ -22,29 +22,30 @@ function Home() {
                 </ToggleButtonGroup>
                 {alignment === 'login' ? (
                     <form className="login">
-                        <label htmlFor="email">Email:</label>
+                        <label htmlFor="email">Email</label>
                         <input type="email" name="email" />
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor="password">Password</label>
                         <input type="password" name="password" />
-                        <button>Enviar</button>
+                        <p>Forgot your password?</p>
+                        <button name="enviar">Enviar</button>
                     </form>
                 ) : (
                     <form className="signup">
-                        <label htmlFor="name">Name:</label>
+                        <label htmlFor="name">Name</label>
                         <input type="text" name="name" />
 
-                        <label htmlFor="email">Email:</label>
+                        <label htmlFor="email">Email</label>
                         <input type="email" name="email" />
 
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor="password">Password</label>
                         <input type="password" name="password" />
 
-                        <label htmlFor="biography">Biography:</label>
+                        <label htmlFor="biography">Biography</label>
                         <textarea name="biography" />
 
-                        <label htmlFor="image">Profile Image:</label>
+                        <label htmlFor="image">Profile Image</label>
                         <input type="file" name="image" />
-                        <button>Enviar</button>
+                        <button name="enviar">Enviar</button>
                     </form>
                 )}
             </div>
