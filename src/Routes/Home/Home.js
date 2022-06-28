@@ -118,7 +118,9 @@ function Home() {
                             name="password"
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <button>Enviar</button>
+                        <button disabled={loading} name="enviar">
+                            {loading ? 'Enviando...' : 'Enviar'}
+                        </button>
                     </form>
                 ) : (
                     <form className="signup" onSubmit={handleSignup}>
@@ -161,7 +163,7 @@ function Home() {
 
                         <label htmlFor="photo">Profile Image:</label>
                         <input type="file" id="photo" name="photo" />
-                        <button disabled={loading}>
+                        <button disabled={loading} name="enviar">
                             {loading ? 'Enviando...' : 'Enviar'}
                         </button>
                     </form>
