@@ -69,7 +69,7 @@ app.post('/upload/:folderId', authUser, newFileInFolder);
 app.get('/download/file/:fileId', authUser, downloadFile);
 
 // Borrar un archivo
-app.delete('/delete/file/:fileId', authUser, deleteFile);
+app.delete('/file/:fileId', authUser, deleteFile);
 
 // Crear una nueva carpeta
 app.post('/folder', authUser, newFolder);
@@ -78,7 +78,7 @@ app.post('/folder', authUser, newFolder);
 app.get('/download/folder/:folderId', authUser, downloadFolder);
 
 // Borrar una carpeta
-app.delete('/delete/folder/:folderId', authUser, deleteFolder);
+app.delete('/folder/:folderId', authUser, deleteFolder);
 
 // --------------------------------------------------------
 

@@ -129,7 +129,6 @@ function Home() {
                             type="text"
                             id="name"
                             name="name"
-                            value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
 
@@ -138,7 +137,6 @@ function Home() {
                             type="email"
                             id="email"
                             name="email"
-                            value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
 
@@ -147,7 +145,6 @@ function Home() {
                             type="password"
                             id="password"
                             name="password"
-                            value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
 
@@ -155,7 +152,6 @@ function Home() {
                         <textarea
                             name="biography"
                             id="biography"
-                            value={biography}
                             onChange={(e) => {
                                 setBiography(e.target.value);
                             }}
