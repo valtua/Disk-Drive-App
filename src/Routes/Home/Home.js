@@ -55,6 +55,8 @@ function Home() {
             console.error(err);
             setError(err.message);
         } finally {
+            setEmail('');
+            setPassword('');
             setLoading(false);
         }
     };
@@ -107,31 +109,35 @@ function Home() {
                     <ToggleButton value="login">LOGIN</ToggleButton>
                     <ToggleButton value="signup">SIGN UP</ToggleButton>
                 </ToggleButtonGroup>
-                {alignment === 'login' ? (
+                {alignment === 'login' && (
                     <form className="login" onSubmit={handleLogin}>
                         <label htmlFor="email">Email:</label>
                         <input
                             type="email"
                             name="email"
+                            required
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         <label htmlFor="password">Password:</label>
                         <input
                             type="password"
                             name="password"
+                            required
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <button disabled={loading} name="enviar">
                             {loading ? 'Enviando...' : 'Enviar'}
                         </button>
                     </form>
-                ) : (
+                )}
+                {alignment === 'signup' && (
                     <form className="signup" onSubmit={handleSignup}>
                         <label htmlFor="name">Name:</label>
                         <input
                             type="text"
                             id="name"
                             name="name"
+                            required
                             onChange={(e) => setName(e.target.value)}
                         />
 
@@ -140,6 +146,7 @@ function Home() {
                             type="email"
                             id="email"
                             name="email"
+                            required
                             onChange={(e) => setEmail(e.target.value)}
                         />
 
@@ -148,6 +155,7 @@ function Home() {
                             type="password"
                             id="password"
                             name="password"
+                            required
                             onChange={(e) => setPassword(e.target.value)}
                         />
 
