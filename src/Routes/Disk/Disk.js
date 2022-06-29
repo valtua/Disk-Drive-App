@@ -33,6 +33,8 @@ function Disk() {
                 <a href="#partners">Partners</a>
                 <a href="#people">People</a>
                 <a href="#work">Work</a>
+                <a href="#arre">Arre</a>
+                <a href="#porr">Porr</a>
             </div>
             <div className="directory">
                 <Breadcrumbs aria-label="breadcrumb">
@@ -47,19 +49,18 @@ function Disk() {
                     >
                         Core
                     </Link>
-                    <Typography color="black">Breadcrumbs</Typography>
                 </Breadcrumbs>
+                <button className="btnDownloadFolder">Download Folder</button>
+                <IconButton aria-label="delete" size="large" className="btnDeleteFolder">
+                    <DeleteIcon fontSize="inherit" />
+                </IconButton>
             </div>
-            <Button variant="contained">Download Folder</Button>
-            <IconButton aria-label="delete" size="large">
-                <DeleteIcon fontSize="inherit" />
-            </IconButton>
             <div className="fileShow">
                 {/* Aquí se mostrarán todos los archivos de la carpeta seleccionada */}
+                <Fab color="primary" aria-label="add" className="btnFileAdd">
+                    <AddIcon />
+                </Fab>
             </div>
-            <Fab color="primary" aria-label="add" className="btnFileAdd">
-                <AddIcon />
-            </Fab>
         </div>
     );
 }
