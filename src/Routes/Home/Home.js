@@ -5,6 +5,7 @@ import {
     ToggleButtonGroup,
 } from '@mui/material';
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useToken } from '../../TokenContext';
 import './Home.css';
 
@@ -20,10 +21,9 @@ function Home() {
 
     const [message, setMessage] = useState(null);
     const [error, setError] = useState(null);
-    //const [token, setToken] = useToken();
-    const [, setToken] = useToken();
+    const [token, setToken] = useToken();
 
-    //if (token) return <Navigate to="/disk" />;
+    if (token) return <Navigate to="/disk" />;
 
     const handleChange = (event, newAlignment) => {
         if (alignment === 'login') {
