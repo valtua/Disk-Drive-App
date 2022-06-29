@@ -32,17 +32,17 @@ function Disk() {
             <div className="directory">
                 <Breadcrumbs aria-label="breadcrumb">
                     {/* El contenido será según la carpeta que se seleccione*/}
-                    <Link underline="hover" color="white" href="/Disk">
+                    <Link underline="hover" color="black" href="/Disk">
                         Disk
                     </Link>
                     <Link
                         underline="hover"
-                        color="white"
+                        color="black"
                         href=""
                     >
                         Core
                     </Link>
-                    <Typography color="white">Breadcrumbs</Typography>
+                    <Typography color="black">Breadcrumbs</Typography>
                 </Breadcrumbs>
             </div>
             <Button variant="contained">Download Folder</Button>
