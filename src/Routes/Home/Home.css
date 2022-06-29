@@ -12,7 +12,7 @@ div.Home {
 
 div.formSelector {
     background-color: #deffda;
-    border-radius: 2vh;
+    border-radius: 1vh;
     width: 50vh;
     height: 82vh;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -86,4 +86,14 @@ button[name='enviar'] {
     position: relative;
     right: 2px;
     bottom: 15px;
+}
+
+p.Success {
+    background-color: green;
+    color: rgb(207, 255, 201);
+    padding: 1rem;
+    width: fit-content;
+    margin: auto;
+    border-radius: 1vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
