@@ -34,6 +34,7 @@ const {
     loginUser,
     modifyUser,
     getUserSpace,
+    getOwnUser,
 } = require('./controllers/users/usersExports');
 
 // Declaramos una variable que contiene la tecnología express, para el manejo de endpoints
@@ -44,6 +45,7 @@ app.use(morgan(`dev`));
 app.use(express.json());
 app.use(fileUpload());
 app.use(cors());
+app.use(express.static(__dirname + '/uploads/photos'));
 
 // ---------------------- ENDPOINTS ----------------------
 
@@ -58,6 +60,9 @@ app.post('/user', authUser, modifyUser);
 
 // Ver archivos y carpetas
 app.get('/disk', authUser, getUserSpace);
+
+// Ver información del usuario logueado
+app.get('/user', authUser, getOwnUser);
 
 // Subir un nuevo archivo
 app.post('/upload', authUser, newFile);

@@ -11,7 +11,7 @@ function App() {
             <Header />
             <Routes>
                 <Route path="" element={<Home />} />
-                <Route path="/Disk" element={<Disk />} />
+                <Route path="/disk" element={<Disk />} />
             </Routes>
             <Footer />
         </div>

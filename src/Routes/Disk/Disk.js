@@ -1,12 +1,18 @@
-import { Button, IconButton, Fab, Breadcrumbs, Link, Typography } from '@mui/material';
+import {
+    Button,
+    IconButton,
+    Fab,
+    Breadcrumbs,
+    Link,
+    Typography,
+} from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import { useState } from 'react';
-import { useToken } from '../../TokenContext';
+// import { useState } from 'react';
+// import { useToken } from '../../TokenContext';
 import './Disk.css';
 
 function Disk() {
-
     return (
         <div className="Disk">
             
@@ -19,7 +25,7 @@ function Disk() {
                 <a href="#about">About</a>
                 <a href="#support">Support</a>
                 <a href="#blog">Blog</a>
-                <a href="#tools">Tools</a>  
+                <a href="#tools">Tools</a>
                 <a href="#base">Base</a>
                 <a href="#custom">Custom</a>
                 <a href="#more">More</a>
@@ -29,6 +35,7 @@ function Disk() {
                 <a href="#people">People</a>
                 <a href="#work">Work</a>
             </div>
+<<<<<<< HEAD
             <div className="directory">
                 <Breadcrumbs aria-label="breadcrumb">
                     {/* El contenido será según la carpeta que se seleccione*/}
@@ -45,6 +52,18 @@ function Disk() {
                     <Typography color="black">Breadcrumbs</Typography>
                 </Breadcrumbs>
             </div>
+=======
+            <button className="folderAdd" />
+            <Breadcrumbs aria-label="breadcrumb">
+                <Link underline="hover" color="inherit" href="/Disk">
+                    Disk
+                </Link>
+                <Link underline="hover" color="inherit" href="">
+                    Core
+                </Link>
+                <Typography color="text.primary">Breadcrumbs</Typography>
+            </Breadcrumbs>
+>>>>>>> 9163d439469bb2a4640dacf606e696e7b4d912c0
             <Button variant="contained">Download Folder</Button>
             <IconButton aria-label="delete" size="large">
                 <DeleteIcon fontSize="inherit" />
