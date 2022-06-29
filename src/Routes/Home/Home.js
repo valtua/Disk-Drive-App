@@ -1,15 +1,23 @@
-import { ToggleButton, ToggleButtonGroup } from '@mui/material';
+import {
+    Alert,
+    Snackbar,
+    ToggleButton,
+    ToggleButtonGroup,
+} from '@mui/material';
 import { useState } from 'react';
 import { useToken } from '../../TokenContext';
 import './Home.css';
 
 function Home() {
     const [alignment, setAlignment] = useState('login');
+    const [open, setOpen] = useState('login');
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [biography, setBiography] = useState('');
     const [loading, setLoading] = useState(false);
+
     const [message, setMessage] = useState(null);
     const [error, setError] = useState(null);
     //const [token, setToken] = useToken();
@@ -23,6 +31,14 @@ function Home() {
         } else if (alignment === 'signup') {
             setAlignment(newAlignment || 'signup');
         }
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
     };
 
     const handleLogin = async (e) => {
@@ -86,6 +102,7 @@ function Home() {
                 setError(body.message);
             } else {
                 setMessage(body.message);
+                setAlignment('login');
             }
         } catch (err) {
             console.error(err);
@@ -175,9 +192,29 @@ function Home() {
                         </button>
                     </form>
                 )}
-                {error && <p className="Error">{error}</p>}
-                {message && <p className="Success">{message}</p>}
             </div>
+            {error && (
+                <Snackbar
+                    open={open}
+                    onClose={handleClose}
+                    autoHideDuration={6000}
+                >
+                    <Alert severity="error" sx={{ width: '100%' }}>
+                        {error}
+                    </Alert>
+                </Snackbar>
+            )}
+            {message && (
+                <Snackbar
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                >
+                    <Alert severity="info" sx={{ width: '100%' }}>
+                        {message}
+                    </Alert>
+                </Snackbar>
+            )}
         </div>
     );
 }
