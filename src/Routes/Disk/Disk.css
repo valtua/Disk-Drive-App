@@ -1,0 +1,33 @@
+* {
+    font-size: 2.5vh;
+}
+
+div.Disk {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15vh;
+}
+
+div.folderScroll {
+    background-color: rgb(102, 167, 18);
+    box-sizing: border-box;
+    border: 0.5vh solid #000000;
+    overflow: auto;
+    white-space: nowrap;
+    width: 90%;
+}
+
+
+div.folderScroll a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+  
+div.folderScroll a:hover {
+    background-color: #777;
+}
