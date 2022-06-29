@@ -15,9 +15,8 @@ import './Disk.css';
 function Disk() {
     return (
         <div className="Disk">
-            
             <div className="folderScroll">
-            <button className="btnFolderAdd">+</button>
+                <button className="btnFolderAdd">+</button>
                 {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
                 <a href="#home">Home</a>
                 <a href="#news">News</a>
@@ -35,24 +34,6 @@ function Disk() {
                 <a href="#people">People</a>
                 <a href="#work">Work</a>
             </div>
-<<<<<<< HEAD
-            <div className="directory">
-                <Breadcrumbs aria-label="breadcrumb">
-                    {/* El contenido será según la carpeta que se seleccione*/}
-                    <Link underline="hover" color="black" href="/Disk">
-                        Disk
-                    </Link>
-                    <Link
-                        underline="hover"
-                        color="black"
-                        href=""
-                    >
-                        Core
-                    </Link>
-                    <Typography color="black">Breadcrumbs</Typography>
-                </Breadcrumbs>
-            </div>
-=======
             <button className="folderAdd" />
             <Breadcrumbs aria-label="breadcrumb">
                 <Link underline="hover" color="inherit" href="/Disk">
@@ -63,7 +44,6 @@ function Disk() {
                 </Link>
                 <Typography color="text.primary">Breadcrumbs</Typography>
             </Breadcrumbs>
->>>>>>> 9163d439469bb2a4640dacf606e696e7b4d912c0
             <Button variant="contained">Download Folder</Button>
             <IconButton aria-label="delete" size="large">
                 <DeleteIcon fontSize="inherit" />
