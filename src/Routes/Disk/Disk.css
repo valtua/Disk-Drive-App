@@ -10,25 +10,26 @@ div.divFolderAdd{
     margin: auto;
 }
 
-div.Disk button.btnFolderAdd{
-    background-color: rgb(0, 174, 255);
-    border: 0.3vh solid rgb(0, 0, 0);
-    color: white;
-    font-size: 4vh;
-    height: 5vh;
-    width: 5vh;
-    position: absolute;
-    left: 7.5vh;
-    top: 13.2vh; 
-}
-
 div.folderScroll {
+    display: flex;
+    align-items: center;
     background-color: rgb(102, 167, 18);
     border: 0.5vh solid #000000;
     margin: auto;
     overflow: auto;
     padding: 2vh;
     width: 90%;
+}
+
+div.folderScroll button.btnFolderAdd{
+    background-color: rgb(0, 174, 255);
+    border: 0.3vh solid rgb(0, 0, 0);
+    color: white;
+    font-size: 4vh;
+    height: 5vh;
+    width: 5vh;
+    left: 7.5vh;
+    top: 13.2vh; 
 }
 
 div.folderScroll a {
@@ -56,12 +57,13 @@ div.directory{
 }
 
 div.Disk button.btnDownloadFolder{
+    border-radius: 1vh 1vh 1vh 1vh ; 
     border: none;
     color: white;
-    font-size: 2vh;
+    font-size: 4vh;
     background-color: rgb(0, 174, 255);
-    height: 6vh;
-    width: 20vh;
+    height: 4vh;
+    width: 6vh;
 }
 
 .MuiIconButton-root {

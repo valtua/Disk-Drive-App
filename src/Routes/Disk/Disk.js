@@ -9,13 +9,14 @@ import AddIcon from '@mui/icons-material/Add';
 // import { useState } from 'react';
 // import { useToken } from '../../TokenContext';
 import './Disk.css';
+import { Download } from '@mui/icons-material';
 
 function Disk() {
     return (
         
         <div className="Disk">
-            <button className="btnFolderAdd">+</button>
             <div className="folderScroll">
+                <div><button className="btnFolderAdd">+</button></div>
                 {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
                 <a href="#home">Home</a>
                 <a href="#news">News</a>
@@ -49,7 +50,9 @@ function Disk() {
                         Core
                     </Link>
                 </Breadcrumbs>
-                <button className="btnDownloadFolder">Download Folder</button>
+                <IconButton aria-label="delete" size="large" className="btnDownloadFolder">
+                    <Download fontSize="inherit" />
+                </IconButton>
                 <IconButton aria-label="delete" size="large" className="btnDeleteFolder">
                     <DeleteIcon fontSize="inherit" />
                 </IconButton>
