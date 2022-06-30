@@ -11,7 +11,7 @@ header {
 
 header.tokenHeader {
     justify-content: space-between;
-    padding: 1vh;
+    padding: 4vh;
 }
 
 a {
@@ -22,4 +22,9 @@ h1 {
     text-shadow: 0.5vh 0 0 #00a307;
     font-size: 5vh;
     color: white;
+}
+
+.MuiAvatar-root{
+   width: 50vh;
+   height: 60vh;
 }

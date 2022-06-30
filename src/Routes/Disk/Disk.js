@@ -49,7 +49,7 @@ function Disk() {
         return (
             <div className="Disk">
                 <div className="folderScroll">
-                    <div>
+                    <div className="divFolderAdd">
                         <button className="btnFolderAdd">+</button>
                     </div>
                     {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
@@ -69,9 +69,11 @@ function Disk() {
                         <Link underline="hover" color="black" href="/Disk">
                             Disk
                         </Link>
-                        <Link underline="hover" color="black" href="">
-                            Core
-                        </Link>
+                        {selectedFolder && (
+                            <Link underline="hover" color="black" href="">
+                                {selectedFolder}
+                            </Link>
+                        )}
                     </Breadcrumbs>
                     <IconButton
                         aria-label="delete"
@@ -94,24 +96,21 @@ function Disk() {
                 </Fab>
                 <div className="fileShow">
                     {/* Aquí se mostrarán todos los archivos de la carpeta seleccionada */}
-                    {selectedFolder && (
-                        <ul>
-                            {disk.folders
-                                .filter((folder) => {
-                                    return folder.name === selectedFolder;
-                                })[0]
-                                .files.map((file) => {
-                                    return <li key={file.id}>{file.name}</li>;
-                                })}
-                        </ul>
-                    )}
-                    {disk && (
-                        <ul>
-                            {disk.files.map((file) => {
-                                return <li key={file.id}>{file.name}</li>;
-                            })}
-                        </ul>
-                    )}
+                    <ul>
+                        {selectedFolder
+                            ? disk &&
+                              disk.folders
+                                  .filter((folder) => {
+                                      return folder.name === selectedFolder;
+                                  })[0]
+                                  .files.map((file) => {
+                                      return <li key={file.id}>{file.name}</li>;
+                                  })
+                            : disk &&
+                              disk.files.map((file) => {
+                                  return <li key={file.id}>{file.name}</li>;
+                              })}
+                    </ul>
 
                     <Fab
                         color="primary"

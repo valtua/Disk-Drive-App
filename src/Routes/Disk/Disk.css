@@ -6,10 +6,6 @@ div.Disk {
     padding-top: 15vh;
 }
 
-div.divFolderAdd {
-    margin: auto;
-}
-
 div.folderScroll {
     display: flex;
     align-items: center;
@@ -85,6 +81,6 @@ div.Disk button.btnFileAdd {
     position: fixed;
     height: 10vh;
     width: 10vh;
-    right: 4vh;
+    right: 6vh;
     bottom: 9vh;
 }
