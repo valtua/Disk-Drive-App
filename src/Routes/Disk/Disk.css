@@ -47,9 +47,10 @@ div.directory{
     margin-top: 3vh;
     display: flex;
     align-items: center;
-    gap: 5vh;
+    gap: 2vh;
 }
 
+/* Ruta de carpetas */
 .MuiBreadcrumbs-root{
     border-radius: 0 1vh 1vh 0 ; 
     border: none;
@@ -67,6 +68,7 @@ div.Disk button.btnDownloadFolder{
     width: 6vh;
 }
 
+/* Botón eliminar carpeta */
 .MuiIconButton-root {
     background-color: red;
     border: none;
