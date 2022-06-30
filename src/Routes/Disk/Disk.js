@@ -40,11 +40,7 @@ function Disk() {
                     <Link underline="hover" color="black" href="/Disk">
                         Disk
                     </Link>
-                    <Link
-                        underline="hover"
-                        color="black"
-                        href=""
-                    >
+                    <Link underline="hover" color="black" href="">
                         Core
                     </Link>
                     <Typography color="black">Breadcrumbs</Typography>
