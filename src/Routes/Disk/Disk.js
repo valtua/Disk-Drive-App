@@ -56,10 +56,11 @@ function Disk() {
                     </div>
                     <div className="fileShow">
                         {/* Aquí se mostrarán todos los archivos de la carpeta seleccionada */}
-                        <Fab color="primary" aria-label="add" className="btnFileAdd">
-                            <Add />
-                        </Fab>
+                        aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA  aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA
                     </div>
+                    <Fab color="primary" aria-label="add" className="btnFileAdd">
+                        <Add />
+                    </Fab>
                 </div>
                 );
             }

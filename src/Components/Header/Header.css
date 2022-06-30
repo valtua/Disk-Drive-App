@@ -4,18 +4,16 @@ header {
     width: 100%;
     color: white;
     position: fixed;
-    z-index: 100;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
 header.tokenHeader {
     justify-content: space-between;
-    padding: 1rem;
+    padding: 1vh;
 }
 
 h1 {
     text-shadow: 0.5vh 0 0 #00a307;
-    font-size: 6vh;
+    font-size: 5vh;
 }

@@ -37,7 +37,6 @@ input {
     width: 35vh;
 }
 
-
 /* Omitimos el input de la imagen de perfil */
 div.formSelector input:not([name='photo']) {
     border-radius: 1vh;
@@ -57,7 +56,6 @@ div.formSelector textarea {
     width: 70%;
 }
 
-
 /* Botones de selección Login y SignUp */ 
 div.formSelector button:not([name='enviar']) {
     border-radius: 1vh;
@@ -73,7 +71,6 @@ div.formSelector button[aria-pressed='true'] {
 div.formSelector button[aria-pressed='false'] {
     background-color: rgb(150, 255, 150) !important;
 }
-
 
 /* Botones de Enviar en ambos formularios */
 div.formSelector button[name='enviar'] {

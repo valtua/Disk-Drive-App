@@ -3,10 +3,7 @@ footer {
     height: 5vh;
     width: 100%;
     bottom: 0;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
 }
 
 h5 {
