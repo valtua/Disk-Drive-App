@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+body {
+    background: linear-gradient(
+      180deg,
+      #a9ffc6 0%,
+      rgba(191, 238, 164, 0.507) 50%,
+      #a9ffc6 100%
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 .App {
     text-align: center;
 }
