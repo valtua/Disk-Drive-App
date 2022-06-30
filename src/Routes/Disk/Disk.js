@@ -1,5 +1,5 @@
 import { IconButton, Fab, Breadcrumbs, Link } from '@mui/material';
-import { AddIcon, DeleteIcon, Download } from '@mui/icons-material';
+import { Add, Delete, Download } from '@mui/icons-material';
 import { useToken } from '../../TokenContext';
 import { Navigate } from 'react-router-dom';
 import './Disk.css';
@@ -51,13 +51,13 @@ function Disk() {
                             <Download fontSize="inherit" />
                         </IconButton>
                         <IconButton aria-label="delete" size="large" className="btnDeleteFolder">
-                            <DeleteIcon fontSize="inherit" />
+                            <Delete fontSize="inherit" />
                         </IconButton>
                     </div>
                     <div className="fileShow">
                         {/* Aquí se mostrarán todos los archivos de la carpeta seleccionada */}
                         <Fab color="primary" aria-label="add" className="btnFileAdd">
-                            <AddIcon />
+                            <Add />
                         </Fab>
                     </div>
                 </div>
