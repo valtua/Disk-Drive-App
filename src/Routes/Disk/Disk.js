@@ -44,7 +44,7 @@ function Disk() {
         return (
                 <div className="Disk">
                     <div className="folderScroll">
-                        <div><button className="btnFolderAdd">+</button></div>
+                        <div className="divFolderAdd"><button className="btnFolderAdd">+</button></div>
                         {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
                         <a href="#home">Home</a>
                         {disk &&
@@ -66,7 +66,7 @@ function Disk() {
                                 Core
                             </Link>
                         </Breadcrumbs>
-                        <IconButton aria-label="delete" size="large" className="btnDownloadFolder">
+                        <IconButton aria-label="download" size="large" className="btnDownloadFolder">
                             <Download fontSize="inherit" />
                         </IconButton>
                         <IconButton aria-label="delete" size="large" className="btnDeleteFolder">
@@ -74,22 +74,12 @@ function Disk() {
                         </IconButton>
                     </div>
                     <div className="fileShow">
-                        {/* Aquí se mostrarán todos los archivos de la carpeta seleccionada */}
-                        aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA  aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAA
+                        {/* Aquí se mostrarán todos los archivos de la carpeta seleccionada */}  
+                       
                     </div>
                     <Fab color="primary" aria-label="add" className="btnFileAdd">
                         <Add />
                     </Fab>
-                    <div className="fileShow">
-                        {/* Aquí se mostrarán todos los archivos de la carpeta seleccionada */}
-                        <Fab
-                            color="primary"
-                            aria-label="add"
-                            className="btnFileAdd"
-                        >
-                            <Add />
-                        </Fab>
-                    </div>
                 </div>
                 );
     }
