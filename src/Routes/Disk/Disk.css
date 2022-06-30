@@ -23,6 +23,7 @@ div.folderScroll {
 
 div.folderScroll button.btnFolderAdd{
     background-color: rgb(0, 174, 255);
+    border-radius: 2vh; 
     border: 0.3vh solid rgb(0, 0, 0);
     color: white;
     font-size: 4vh;
