@@ -3,9 +3,40 @@ import { Add, Delete, Download } from '@mui/icons-material';
 import { useToken } from '../../TokenContext';
 import { Navigate } from 'react-router-dom';
 import './Disk.css';
+import { useEffect, useState } from 'react';
 
 function Disk() {
     const [token] = useToken();
+    const [disk, setDisk] = useState(null);
+    const [error, setError] = useState(null);
+
+    const getUserDiskInfo = async () => {
+        try {
+            const res = await fetch('http://localhost:4000/disk', {
+                method: 'GET',
+                headers: {
+                    Authorization: token,
+                },
+            });
+
+            const body = await res.json();
+
+            const disk = body.data.space;
+
+            if (body.status === 'error') {
+                setError(body.message);
+            }
+
+            setDisk(disk);
+        } catch (err) {
+            console.error(err);
+            setError(err.message);
+        }
+    };
+
+    useEffect(() => {
+        getUserDiskInfo();
+    });
 
     if (!token) {
         return <Navigate to="/" />;
@@ -17,23 +48,12 @@ function Disk() {
                         <button className="btnFolderAdd">+</button>
                     </div>
                     {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
+                    {/* Modelo de a para los elementos de la lista */}
                     <a href="#home">Home</a>
-                    <a href="#news">News</a>
-                    <a href="#contact">Contact</a>
-                    <a href="#about">About</a>
-                    <a href="#support">Support</a>
-                    <a href="#blog">Blog</a>
-                    <a href="#tools">Tools</a>
-                    <a href="#base">Base</a>
-                    <a href="#custom">Custom</a>
-                    <a href="#more">More</a>
-                    <a href="#logo">Logo</a>
-                    <a href="#friends">Friends</a>
-                    <a href="#partners">Partners</a>
-                    <a href="#people">People</a>
-                    <a href="#work">Work</a>
-                    <a href="#arre">Arre</a>
-                    <a href="#porr">Porr</a>
+                    {disk &&
+                        disk.folders.map((folder) => {
+                            return <a key={folder.id}>{folder.name}</a>;
+                        })}
                 </div>
                 <div className="directory">
                     <Breadcrumbs aria-label="breadcrumb">
