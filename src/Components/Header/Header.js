@@ -5,7 +5,7 @@ import './Header.css';
 
 function Header() {
     const [token] = useToken();
-    const [, setError] = useState(null);
+    const [error, setError] = useState(null);
     const [photo, setPhoto] = useState(null);
 
     const getUserInfo = async () => {
