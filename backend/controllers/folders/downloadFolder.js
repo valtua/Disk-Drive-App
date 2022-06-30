@@ -43,14 +43,15 @@ const downloadFolder = async (req, res, next) => {
         res.download(zipPath);
     } catch (err) {
         next(err);
-    } finally {
-        
+    }
+
+    try {
         // Eliminamos el archivo zip
         if (req.params) {
             const { folderId } = req.params;
 
             if (isNaN(folderId)) {
-                throw generateError('No se encuentra un archivo', 400);
+                throw generateError('No se encuentra un archivo', 404);
             }
 
             const [folder] = await selectUserOneFolderQuery(
@@ -67,6 +68,8 @@ const downloadFolder = async (req, res, next) => {
             );
             await fs.unlink(zipPath);
         }
+    } catch (err) {
+        next(err);
     }
 };
 

@@ -11,7 +11,11 @@ const modifyUserQuery = async (name, email, biography, photo, id) => {
 
         // Realizamos la query, modificar usuario
         const user = await connection.query(
-            `UPDATE users SET name = ?, email = ?, biography = ?, photo = ? WHERE id = ?; `,
+            `UPDATE users SET 
+            name = COALESCE(?, name), 
+            email = COALESCE(?, email), 
+            biography = COALESCE(?, biography), 
+            photo = COALESCE(?, photo) WHERE id = ?; `,
             [name, email, biography, photo, id]
         );
 
