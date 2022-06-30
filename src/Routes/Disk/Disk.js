@@ -1,10 +1,8 @@
 import {
-    Button,
     IconButton,
     Fab,
     Breadcrumbs,
     Link,
-    Typography,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -14,9 +12,10 @@ import './Disk.css';
 
 function Disk() {
     return (
+        
         <div className="Disk">
+            <button className="btnFolderAdd">+</button>
             <div className="folderScroll">
-                <button className="btnFolderAdd">+</button>
                 {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
                 <a href="#home">Home</a>
                 <a href="#news">News</a>
@@ -42,7 +41,11 @@ function Disk() {
                     <Link underline="hover" color="black" href="/Disk">
                         Disk
                     </Link>
-                    <Link underline="hover" color="black" href="">
+                    <Link
+                        underline="hover"
+                        color="black"
+                        href=""
+                    >
                         Core
                     </Link>
                 </Breadcrumbs>

@@ -3,28 +3,32 @@
 }
 
 div.Disk {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding-top: 15vh;
+}
+
+div.divFolderAdd{
+    margin: auto;
+}
+
+div.Disk button.btnFolderAdd{
+    background-color: rgb(0, 174, 255);
+    border: 0.3vh solid rgb(0, 0, 0);
+    color: white;
+    font-size: 4vh;
+    height: 5vh;
+    width: 5vh;
+    position: absolute;
+    left: 7.5vh;
+    top: 13.2vh; 
 }
 
 div.folderScroll {
     background-color: rgb(102, 167, 18);
     border: 0.5vh solid #000000;
+    margin: auto;
     overflow: auto;
     padding: 2vh;
     width: 90%;
-}
-
-div.folderScroll button.btnFolderAdd{
-    color: white;
-    font-size: 6vh;
-    background-color: rgb(0, 174, 255);
-    border: 0.3vh solid rgb(0, 0, 0);
-    margin: auto;
-    height: 7vh;
-    width: 7vh;
 }
 
 div.folderScroll a {
@@ -37,24 +41,25 @@ div.folderScroll a:hover {
     background-color: #777;
 }
 
-
 div.directory{
-
-
+    margin-top: 3vh;
+    display: flex;
+    align-items: center;
+    gap: 5vh;
 }
 
 .MuiBreadcrumbs-root{
     border-radius: 0 1vh 1vh 0 ; 
-    border: 0.3vh solid rgb(0, 0, 0);
-    box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);   
+    border: none;
+    box-shadow: inset 0vh 0.4vh 0vh 0vh rgba(0, 0, 0, 0.25);
+    padding: 0 2vh 0 2vh;
 }
 
-div.directory button.btnDownloadFolder{
+div.Disk button.btnDownloadFolder{
     border: none;
     color: white;
     font-size: 2vh;
     background-color: rgb(0, 174, 255);
-    margin: auto;
     height: 6vh;
     width: 20vh;
 }
