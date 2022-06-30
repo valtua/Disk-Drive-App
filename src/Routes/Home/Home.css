@@ -39,14 +39,14 @@ input {
 
 
 /* Omitimos el input de la imagen de perfil */
-input:not([name='photo']) {
+div.formSelector input:not([name='photo']) {
     border-radius: 1vh;
     border: none;
     box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
     height: 5vh;
 }
 
-textarea {
+div.formSelector textarea {
     border-radius: 1vh;
     border: none;
     box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
@@ -59,24 +59,24 @@ textarea {
 
 
 /* Botones de selección Login y SignUp */ 
-button:not([name='enviar']) {
+div.formSelector button:not([name='enviar']) {
     border-radius: 1vh;
     margin-top: 4vh;
     height: 6vh;
     width: 20vh;
 }
 
-button[aria-pressed='true'] {
+div.formSelector button[aria-pressed='true'] {
     background-color: rgb(35, 218, 35) !important;
 }
 
-button[aria-pressed='false'] {
+div.formSelector button[aria-pressed='false'] {
     background-color: rgb(150, 255, 150) !important;
 }
 
 
 /* Botones de Enviar en ambos formularios */
-button[name='enviar'] {
+div.formSelector button[name='enviar'] {
     border-radius: 1vh;
     border: none;
     background-color: rgb(35, 218, 35);

@@ -1,11 +1,4 @@
-import {
-    Button,
-    IconButton,
-    Fab,
-    Breadcrumbs,
-    Link,
-    Typography,
-} from '@mui/material';
+import { IconButton, Fab, Breadcrumbs, Link } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import { useState } from 'react';
@@ -21,8 +14,8 @@ function Disk() {
     } else {
         return (
             <div className="Disk">
+                <button className="btnFolderAdd">+</button>
                 <div className="folderScroll">
-                    <button className="btnFolderAdd">+</button>
                     {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
                     <a href="#home">Home</a>
                     <a href="#news">News</a>
