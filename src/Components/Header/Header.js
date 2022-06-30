@@ -1,5 +1,6 @@
 import { Avatar } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useToken } from '../../TokenContext';
 import './Header.css';
 
@@ -38,12 +39,16 @@ function Header() {
         <>
             {!token && (
                 <header>
-                    <h1>DISK DRIVE</h1>
+                    <NavLink to="/">
+                        <h1>DISK DRIVE</h1>
+                    </NavLink>
                 </header>
             )}
             {token && (
                 <header className="tokenHeader">
-                    <h1>DISK DRIVE</h1>
+                    <NavLink to="/">
+                        <h1>DISK DRIVE</h1>
+                    </NavLink>
                     <Avatar
                         alt="Profile photo"
                         src={`http://localhost:4000/${photo}`}

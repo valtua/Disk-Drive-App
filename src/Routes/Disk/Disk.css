@@ -6,24 +6,24 @@ div.Disk {
     padding-top: 15vh;
 }
 
-div.divFolderAdd{
+div.divFolderAdd {
     margin: auto;
 }
 
 div.folderScroll {
     display: flex;
     align-items: center;
-    background-color: rgb(102, 167, 18);
-    border-radius: 0.5vh; 
+    color: #000000;
+    border-radius: 0.5vh;
     border: 0.4vh solid #000000;
     margin: auto;
     overflow: auto;
     width: 90%;
 }
 
-div.folderScroll button.btnFolderAdd{
+div.folderScroll button.btnFolderAdd {
     background-color: rgb(0, 174, 255);
-    border-radius: 1vh; 
+    border-radius: 1vh;
     border: 0.4vh solid rgb(0, 0, 0);
     color: white;
     font-size: 4vh;
@@ -33,16 +33,16 @@ div.folderScroll button.btnFolderAdd{
 }
 
 div.folderScroll a {
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 3vh 3vh 3vh 3vh;
     text-decoration: none;
 }
-  
+
 div.folderScroll a:hover {
-    background-color: #777;
+    background-color: rgb(158, 255, 123);
 }
 
-div.directory{
+div.directory {
     margin-top: 3vh;
     display: flex;
     align-items: center;
@@ -50,16 +50,16 @@ div.directory{
 }
 
 /* Ruta de carpetas */
-.MuiBreadcrumbs-root{
-    background: #00EC5E;
-    border-radius: 0 1vh 1vh 0 ; 
+.MuiBreadcrumbs-root {
+    background: #00ec5e;
+    border-radius: 0 1vh 1vh 0;
     border: none;
-    box-shadow: inset 0vh 0.4vh 0vh 0vh rgba(0, 0, 0, 0.25);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 0.3vh 0.9vh;
     padding: 0 2vh 0 2vh;
 }
 
-div.Disk button.btnDownloadFolder{
-    border-radius: 1vh 1vh 1vh 1vh ; 
+div.Disk button.btnDownloadFolder {
+    border-radius: 1vh 1vh 1vh 1vh;
     border: none;
     color: white;
     font-size: 4vh;
@@ -74,17 +74,17 @@ div.Disk button.btnDownloadFolder{
     width: 6vh;
 }
 
-div.fileShow{
+div.fileShow {
     margin: 4vh 4vh 4vh 4vh;
 }
 
 /* Botón agregar archivo */
-div.Disk button.btnFileAdd{
+div.Disk button.btnFileAdd {
     background-color: rgb(0, 174, 255);
     border: none;
     position: fixed;
     height: 10vh;
     width: 10vh;
-    right: 9vh;
+    right: 4vh;
     bottom: 9vh;
 }
