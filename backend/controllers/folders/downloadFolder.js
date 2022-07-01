@@ -40,7 +40,7 @@ const downloadFolder = async (req, res, next) => {
         await zip(folderPath, zipPath);
 
         // Descargamos el archivo
-        res.download(zipPath);
+        res.download(zipPath, `${folder.name}.zip`);
     } catch (err) {
         next(err);
     }

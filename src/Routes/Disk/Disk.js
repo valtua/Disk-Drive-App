@@ -21,6 +21,7 @@ function Disk() {
     const [modalAddFolder, setModalAddFolder] = useState(false);
     const [modalAddFile, setModalAddFile] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [update, setUpdate] = useState(false);
 
     const getUserDiskInfo = async () => {
         try {
@@ -61,7 +62,7 @@ function Disk() {
                 const folder = disk.folders.filter((folder) => {
                     return folder.name === selectedFolder;
                 });
-                console.log(folder);
+
                 const uploadedFile = document.querySelector('#uploadedFile');
                 const data = new FormData();
                 data.append('uploadedFile', uploadedFile.files[0]);
@@ -81,6 +82,8 @@ function Disk() {
 
                 if (body.status === 'error') {
                     setError(body.message);
+                } else {
+                    setUpdate(!update);
                 }
             } catch (err) {
                 console.error(err);
@@ -141,6 +144,8 @@ function Disk() {
 
             if (body.status === 'error') {
                 setError(body.message);
+            } else {
+                setUpdate(!update);
             }
         } catch (err) {
             console.error(err);
@@ -148,6 +153,82 @@ function Disk() {
         } finally {
             setLoading(false);
             setModalAddFolder(false);
+            setUpdate(!update);
+        }
+    };
+
+    const downloadFolder = async () => {
+        setError(null);
+        setLoading(true);
+
+        try {
+            const folder = disk.folders.filter((folder) => {
+                return folder.name === selectedFolder;
+            });
+            const res = await fetch(
+                `http://localhost:4000/download/folder/${folder[0].id}`,
+                {
+                    headers: {
+                        Authorization: token,
+                    },
+                }
+            );
+            const body = await res.blob();
+            const url = window.URL.createObjectURL(body);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = selectedFolder;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+            console.log(body);
+
+            if (body.status === 'error') {
+                setError(body.message);
+            }
+        } catch (err) {
+            console.error(err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const deleteFolder = async () => {
+        setError(null);
+        setLoading(true);
+
+        if (window.confirm('¿Deseas eliminar la carpeta?')) {
+            try {
+                const folder = disk.folders.filter((folder) => {
+                    return folder.name === selectedFolder;
+                });
+
+                const res = await fetch(
+                    `http://localhost:4000/folder/${folder[0].id}`,
+                    {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: token,
+                        },
+                    }
+                );
+
+                const body = await res.json();
+
+                if (body.status === 'error') {
+                    setError(body.message);
+                } else {
+                    setUpdate(!update);
+                    setSelectedFolder('');
+                }
+            } catch (err) {
+                console.error(err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
         }
     };
 
@@ -168,7 +249,7 @@ function Disk() {
 
     useEffect(() => {
         getUserDiskInfo();
-    }, []);
+    }, [update]);
 
     if (!token) {
         return <Navigate to="/" />;
@@ -179,7 +260,7 @@ function Disk() {
                     <IconButton
                         aria-label="arrowBack"
                         size="large"
-                        lassName="btnBackScroll"
+                        className="btnBackScroll"
                     >
                         <ArrowBack fontSize="inherit" />
                     </IconButton>
@@ -266,20 +347,26 @@ function Disk() {
                             </Link>
                         )}
                     </Breadcrumbs>
-                    <IconButton
-                        aria-label="delete"
-                        size="large"
-                        className="btnDownloadFolder"
-                    >
-                        <Download fontSize="inherit" />
-                    </IconButton>
-                    <IconButton
-                        aria-label="delete"
-                        size="large"
-                        className="btnDeleteFolder"
-                    >
-                        <Delete fontSize="inherit" />
-                    </IconButton>
+                    {selectedFolder && (
+                        <>
+                            <IconButton
+                                aria-label="download"
+                                size="large"
+                                className="btnDownloadFolder"
+                                onClick={downloadFolder}
+                            >
+                                <Download fontSize="inherit" />
+                            </IconButton>
+                            <IconButton
+                                aria-label="delete"
+                                size="large"
+                                className="btnDeleteFolder"
+                                onClick={deleteFolder}
+                            >
+                                <Delete fontSize="inherit" />
+                            </IconButton>
+                        </>
+                    )}
                 </div>
                 <Fab color="primary" aria-label="add" className="btnFileAdd">
                     <Add />
