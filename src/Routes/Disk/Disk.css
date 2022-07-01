@@ -90,8 +90,14 @@ div.Disk button.btnDownloadFolder {
     width: 6vh;
 }
 
-div.fileShow {
+div.fileGallery {
     margin: 4vh 4vh 4vh 4vh;
+}
+
+ul.fileList{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
 }
 
 /* Botón agregar archivo */

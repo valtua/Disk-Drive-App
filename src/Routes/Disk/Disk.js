@@ -91,9 +91,9 @@ function Disk() {
                 <Fab color="primary" aria-label="add" className="btnFileAdd">
                     <Add />
                 </Fab>
-                <div className="fileShow">
+                <div className="fileGallery">
                     {/* Aquí se mostrarán todos los archivos de la carpeta seleccionada */}
-                    <ul>
+                    <ul className="fileList">
                         {selectedFolder
                             ? disk &&
                               disk.folders
