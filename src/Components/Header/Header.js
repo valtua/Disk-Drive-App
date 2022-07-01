@@ -50,6 +50,7 @@ function Header() {
                         <h1>DISK DRIVE</h1>
                     </NavLink>
                     <Avatar
+                     sx={{ width:"6vh", height:"6vh", fontSize:"4vh", bgcolor: "green"}}
                         alt="Profile photo"
                         src={`http://localhost:4000/${photo}`}
                     />

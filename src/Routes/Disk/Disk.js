@@ -1,10 +1,9 @@
 import { IconButton, Fab, Breadcrumbs, Link } from '@mui/material';
-import { Add, Delete, Download } from '@mui/icons-material';
+import { ArrowBack, ArrowForward, Add, Delete, Download } from '@mui/icons-material';
 import { useToken } from '../../TokenContext';
 import { Navigate } from 'react-router-dom';
 import './Disk.css';
 import { useEffect, useState } from 'react';
-
 function Disk() {
     const [token] = useToken();
     const [disk, setDisk] = useState(null);
@@ -47,21 +46,28 @@ function Disk() {
         return <Navigate to="/" />;
     } else {
         return (
-            <div className="Disk">
-                <div className="folderScroll">
-                    <div className="divFolderAdd">
-                        <button className="btnFolderAdd">+</button>
+            <div className="Disk">  
+                <div className="folderSearch">
+                    <IconButton aria-label="arrowBack" size="large"lassName="btnBackScroll">
+                            <ArrowBack fontSize="inherit" />
+                    </IconButton>
+                    <div className="folderScroll">
+                        <div className="divFolderAdd">
+                            <button className="btnFolderAdd">+</button>
+                        </div>
+                        {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
+                        {disk &&
+                            disk.folders.map((folder) => {
+                                return (
+                                        <a key={folder.id} onClick={selectFolder}>
+                                            {folder.name}
+                                        </a>
+                                );
+                            })}
                     </div>
-                    {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
-
-                    {disk &&
-                        disk.folders.map((folder) => {
-                            return (
-                                <a key={folder.id} onClick={selectFolder}>
-                                    {folder.name}
-                                </a>
-                            );
-                        })}
+                    <IconButton aria-label="arrowForward" size="large" className="btnForwardScroll">
+                        <ArrowForward fontSize="inherit" />
+                    </IconButton>
                 </div>
                 <div className="directory">
                     <Breadcrumbs aria-label="breadcrumb">
@@ -75,22 +81,13 @@ function Disk() {
                             </Link>
                         )}
                     </Breadcrumbs>
-                    <IconButton
-                        aria-label="delete"
-                        size="large"
-                        className="btnDownloadFolder"
-                    >
+                    <IconButton aria-label="delete" size="large" className="btnDownloadFolder">
                         <Download fontSize="inherit" />
                     </IconButton>
-                    <IconButton
-                        aria-label="delete"
-                        size="large"
-                        className="btnDeleteFolder"
-                    >
+                    <IconButton aria-label="delete" size="large" className="btnDeleteFolder">
                         <Delete fontSize="inherit" />
                     </IconButton>
                 </div>
-
                 <Fab color="primary" aria-label="add" className="btnFileAdd">
                     <Add />
                 </Fab>

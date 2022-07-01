@@ -6,6 +6,10 @@ div.Disk {
     padding-top: 15vh;
 }
 
+div.folderSearch {
+    display:flex;
+}
+
 div.folderScroll {
     display: flex;
     align-items: center;
@@ -36,6 +40,22 @@ div.folderScroll a {
 
 div.folderScroll a:hover {
     background-color: rgb(158, 255, 123);
+}
+
+div.Disk button.btnBackScroll{
+    border-radius: 1vh 1vh 1vh 1vh;
+    font-size: 4vh;
+    margin: 0 1vh 0 1vh;
+    height: 6vh;
+    width: 6vh;
+}
+
+div.Disk button.btnForwardScroll{
+    border-radius: 1vh 1vh 1vh 1vh;
+    font-size: 4vh;
+    margin: 0 1vh 0 1vh;
+    height: 6vh;
+    width: 6vh;
 }
 
 div.directory {
