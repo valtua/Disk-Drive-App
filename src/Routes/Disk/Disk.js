@@ -1,5 +1,12 @@
 import { IconButton, Fab, Breadcrumbs, Link, Modal } from '@mui/material';
-import { Add, Cancel, Delete, Download } from '@mui/icons-material';
+import {
+    ArrowBack,
+    ArrowForward,
+    Add,
+    Delete,
+    Download,
+    Cancel,
+} from '@mui/icons-material';
 import { useToken } from '../../TokenContext';
 import { Navigate } from 'react-router-dom';
 import './Disk.css';
@@ -168,25 +175,38 @@ function Disk() {
     } else {
         return (
             <div className="Disk">
-                <div className="folderScroll">
-                    <div className="divFolderAdd">
-                        <button
-                            className="btnFolderAdd"
+                <div className="folderSearch">
+                    <IconButton
+                        aria-label="arrowBack"
+                        size="large"
+                        lassName="btnBackScroll"
+                    >
+                        <ArrowBack fontSize="inherit" />
+                    </IconButton>
+                    <div className="folderScroll">
+                        <div
+                            className="divFolderAdd"
                             onClick={handleFolderModal}
                         >
-                            +
-                        </button>
+                            <button className="btnFolderAdd">+</button>
+                        </div>
+                        {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
+                        {disk &&
+                            disk.folders.map((folder) => {
+                                return (
+                                    <a key={folder.id} onClick={selectFolder}>
+                                        {folder.name}
+                                    </a>
+                                );
+                            })}
                     </div>
-                    {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
-
-                    {disk &&
-                        disk.folders.map((folder) => {
-                            return (
-                                <a key={folder.id} onClick={selectFolder}>
-                                    {folder.name}
-                                </a>
-                            );
-                        })}
+                    <IconButton
+                        aria-label="arrowForward"
+                        size="large"
+                        className="btnForwardScroll"
+                    >
+                        <ArrowForward fontSize="inherit" />
+                    </IconButton>
                 </div>
                 <Modal
                     open={modalAddFolder}
@@ -261,7 +281,6 @@ function Disk() {
                         <Delete fontSize="inherit" />
                     </IconButton>
                 </div>
-
                 <Fab color="primary" aria-label="add" className="btnFileAdd">
                     <Add />
                 </Fab>
