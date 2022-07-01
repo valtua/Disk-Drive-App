@@ -61,7 +61,6 @@ function Disk() {
                 const folder = disk.folders.filter((folder) => {
                     return folder.name === selectedFolder;
                 });
-                console.log(folder);
                 const uploadedFile = document.querySelector('#uploadedFile');
                 const data = new FormData();
                 data.append('uploadedFile', uploadedFile.files[0]);
@@ -137,7 +136,6 @@ function Disk() {
             });
 
             const body = await res.json();
-            console.log(body);
 
             if (body.status === 'error') {
                 setError(body.message);
@@ -294,7 +292,8 @@ function Disk() {
                                       return folder.name === selectedFolder;
                                   })[0]
                                   .files.map((file) => {
-                                      return <li key={file.id}>{file.name}</li>;
+                                      return <li key={file.id}><img src={file}/>{file.name}</li>;
+                                      
                                   })
                             : disk &&
                               disk.files.map((file) => {
