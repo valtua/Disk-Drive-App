@@ -63,10 +63,6 @@ function Disk() {
                 const folder = disk.folders.filter((folder) => {
                     return folder.name === selectedFolder;
                 });
-<<<<<<< HEAD
-
-=======
->>>>>>> f18d889f07501d64b744faf5af8bd77a726837d9
                 const uploadedFile = document.querySelector('#uploadedFile');
                 const data = new FormData();
                 data.append('uploadedFile', uploadedFile.files[0]);
@@ -393,14 +389,20 @@ function Disk() {
                                   })[0]
                                   .files.map((file) => {
                                       return <li key={file.id}>{file.name}</li>;
-                                      
                                   })
                             : disk &&
                               disk.files.map((file) => {
-                                  return <li key={file.id} onClick={handleViewFileModal}>{file.name}</li>;
+                                  return (
+                                      <li
+                                          key={file.id}
+                                          onClick={handleViewFileModal}
+                                      >
+                                          {file.name}
+                                      </li>
+                                  );
                               })}
                     </ul>
-                    
+
                     <Modal
                         open={modalViewFile}
                         aria-labelledby="modal-modal-title"
@@ -427,10 +429,10 @@ function Disk() {
                         >
                             <img
                                 style={{
-                                objectFit: "contain",
-                                width: "100%",
-                                height: "100%",
-                                borderRadius: "3px 3px 1px 1px",
+                                    objectFit: 'contain',
+                                    width: '100%',
+                                    height: '100%',
+                                    borderRadius: '3px 3px 1px 1px',
                                 }}
                                 src={``}
                                 alt={``}
@@ -440,10 +442,18 @@ function Disk() {
                             <p>Upload Date:</p>
                             <p>Size:</p>
                             <div className="divBtnFile">
-                                <IconButton aria-label="delete" size="large" className="btnDownloadFile">
-                                        <Download fontSize="inherit" />
+                                <IconButton
+                                    aria-label="delete"
+                                    size="large"
+                                    className="btnDownloadFile"
+                                >
+                                    <Download fontSize="inherit" />
                                 </IconButton>
-                                <IconButton aria-label="delete" size="large" className="btnDeleteFile">
+                                <IconButton
+                                    aria-label="delete"
+                                    size="large"
+                                    className="btnDeleteFile"
+                                >
                                     <Delete fontSize="inherit" />
                                 </IconButton>
                             </div>
