@@ -20,6 +20,7 @@ function Disk() {
     const [selectedFolder, setSelectedFolder] = useState('');
     const [modalAddFolder, setModalAddFolder] = useState(false);
     const [modalAddFile, setModalAddFile] = useState(false);
+    const [modalViewFile, setModalViewFile] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const getUserDiskInfo = async () => {
@@ -157,11 +158,19 @@ function Disk() {
         setModalAddFile(true);
     };
 
+    const handleViewFileModal = () => {
+        setModalViewFile(true);
+    };
+
     const handleFolderModalClose = () => {
         setModalAddFolder(false);
     };
     const handleFileModalClose = () => {
         setModalAddFile(false);
+    };
+
+    const handleViewFileModalClose = () => {
+        setModalViewFile(false);
     };
 
     useEffect(() => {
@@ -292,14 +301,70 @@ function Disk() {
                                       return folder.name === selectedFolder;
                                   })[0]
                                   .files.map((file) => {
-                                      return <li key={file.id}><img src={file}/>{file.name}</li>;
+                                      return <li key={file.id}>{file.name}</li>;
                                       
                                   })
                             : disk &&
                               disk.files.map((file) => {
-                                  return <li key={file.id}>{file.name}</li>;
+                                  return <li key={file.id} onClick={handleViewFileModal}>{file.name}</li>;
                               })}
                     </ul>
+                    
+                    <Modal
+                        open={modalViewFile}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                width: 400,
+                                height: 'fit-content',
+                                backgroundColor: 'white',
+                                borderRadius: '1vh',
+                                padding: '2rem',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                position: 'relative',
+                            }}
+                        >
+                            <img
+                                style={{
+                                objectFit: "contain",
+                                width: "100%",
+                                height: "100%",
+                                borderRadius: "3px 3px 1px 1px",
+                                }}
+                                src={``}
+                                alt={``}
+                                loading="lazy"
+                            />
+                            <p>File Name: </p>
+                            <p>Upload Date:</p>
+                            <p>Size:</p>
+                            <div className="divBtnFile">
+                                <IconButton aria-label="delete" size="large" className="btnDownloadFile">
+                                        <Download fontSize="inherit" />
+                                </IconButton>
+                                <IconButton aria-label="delete" size="large" className="btnDeleteFile">
+                                    <Delete fontSize="inherit" />
+                                </IconButton>
+                            </div>
+                            <Fab
+                                aria-label="close"
+                                className="btnClose"
+                                onClick={handleViewFileModalClose}
+                            >
+                                <Cancel sx={{ color: 'red' }} />
+                            </Fab>
+                        </Box>
+                    </Modal>
 
                     <Fab
                         color="primary"

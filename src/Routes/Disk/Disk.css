@@ -96,14 +96,15 @@ div.fileGallery {
 ul.fileList{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     list-style-type: none;
 }
 
 ul.fileList li{
     background-color: rgb(243, 243, 243);
     flex: 20%;
-    margin: 5px;
-    height: 100px;
+    margin: 2vh;
+    padding: 2vh;
 }
 
 /* Botón agregar archivo */
