@@ -1,25 +1,27 @@
 header {
-  background-color: rgba(91, 231, 180, 1);
-  height: 9vh;
-  width: 100%;
-  color: white;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  position: fixed;
+    background-color: rgba(91, 231, 180, 1);
+    height: 9vh;
+    width: 100%;
+    color: white;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    position: fixed;
 }
 
 header.tokenHeader {
-  justify-content: space-between;
-  padding: 4vh;
+    justify-content: space-between;
+    padding: 4vh;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
+    color: black;
 }
 
 h1 {
-  text-shadow: 0.5vh 0 0 #00a307;
-  font-size: 5vh;
-  color: white;
+    text-shadow: 0.5vh 0 0 #00a307;
+    font-size: 5vh;
+    color: white;
+    text-decoration: none;
 }
