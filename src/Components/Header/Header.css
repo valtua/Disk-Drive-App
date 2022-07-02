@@ -4,9 +4,9 @@ header {
     width: 100%;
     color: white;
     z-index: 100;
-    position: fixed;
     display: flex;
     align-items: center;
+    position: fixed;
 }
 
 header.tokenHeader {
@@ -23,4 +23,5 @@ h1 {
     text-shadow: 0.5vh 0 0 #00a307;
     font-size: 5vh;
     color: white;
+    text-decoration: none;
 }
