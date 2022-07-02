@@ -37,6 +37,7 @@ function Disk() {
             const body = await res.json();
 
             const disk = body.data.space;
+            console.log(disk);
 
             if (body.status === 'error') {
                 setError(body.message);
@@ -49,15 +50,6 @@ function Disk() {
         }
     };
 
-    const selectFolder = (e) => {
-        setSelectedFolder(e.target.innerHTML);
-    };
-
-    const selectFile = (e) => {
-        setSelectedFile(e.target.innerHTML);
-        handleViewFileModal();
-    };
-
     const addFile = async (e) => {
         e.preventDefault();
 
@@ -66,15 +58,12 @@ function Disk() {
 
         if (selectedFolder) {
             try {
-                const folder = disk.folders.filter((folder) => {
-                    return folder.name === selectedFolder;
-                });
                 const uploadedFile = document.querySelector('#uploadedFile');
                 const data = new FormData();
                 data.append('uploadedFile', uploadedFile.files[0]);
 
                 const res = await fetch(
-                    `http://localhost:4000/upload/${folder[0].id}`,
+                    `http://localhost:4000/upload/${selectedFolder}`,
                     {
                         method: 'POST',
                         headers: {
@@ -169,11 +158,8 @@ function Disk() {
         setLoading(true);
 
         try {
-            const folder = disk.folders.filter((folder) => {
-                return folder.name === selectedFolder;
-            });
             const res = await fetch(
-                `http://localhost:4000/download/folder/${folder[0].id}`,
+                `http://localhost:4000/download/folder/${selectedFolder}`,
                 {
                     headers: {
                         Authorization: token,
@@ -208,12 +194,8 @@ function Disk() {
 
         if (window.confirm('¿Deseas eliminar la carpeta?')) {
             try {
-                const folder = disk.folders.filter((folder) => {
-                    return folder.name === selectedFolder;
-                });
-
                 const res = await fetch(
-                    `http://localhost:4000/folder/${folder[0].id}`,
+                    `http://localhost:4000/folder/${selectedFolder}`,
                     {
                         method: 'DELETE',
                         headers: {
@@ -244,11 +226,8 @@ function Disk() {
         setLoading(true);
 
         try {
-            const file = disk.files.filter((file) => {
-                return file.name === selectedFile;
-            });
             const res = await fetch(
-                `http://localhost:4000/download/file/${file[0].id}`,
+                `http://localhost:4000/download/file/${selectedFile}`,
                 {
                     headers: {
                         Authorization: token,
@@ -282,12 +261,8 @@ function Disk() {
 
         if (window.confirm('¿Deseas eliminar el archivo?')) {
             try {
-                const file = disk.files.filter((file) => {
-                    console.log(file);
-                    return file.name === selectedFile;
-                });
                 const res = await fetch(
-                    `http://localhost:4000/file/${file[0].id}`,
+                    `http://localhost:4000/file/${selectedFile}`,
                     {
                         method: 'DELETE',
                         headers: {
@@ -309,6 +284,7 @@ function Disk() {
                 setError(err.message);
             } finally {
                 setLoading(false);
+                setModalViewFile(false);
             }
         }
     };
@@ -370,7 +346,12 @@ function Disk() {
                         {disk &&
                             disk.folders.map((folder) => {
                                 return (
-                                    <a key={folder.id} onClick={selectFolder}>
+                                    <a
+                                        key={folder.id}
+                                        onClick={() => {
+                                            setSelectedFolder(folder.id);
+                                        }}
+                                    >
                                         {folder.name}
                                     </a>
                                 );
@@ -433,7 +414,6 @@ function Disk() {
                 </Modal>
                 <div className="directory">
                     <Breadcrumbs aria-label="breadcrumb">
-                        {/* El contenido será según la carpeta que se seleccione*/}
                         <Typography
                             sx={{ color: 'black', cursor: 'pointer' }}
                             onClick={() => {
@@ -479,13 +459,16 @@ function Disk() {
                             ? disk &&
                               disk.folders
                                   .filter((folder) => {
-                                      return folder.name === selectedFolder;
+                                      return folder.id === selectedFolder;
                                   })[0]
                                   .files.map((file) => {
                                       return (
                                           <li
                                               key={file.id}
-                                              onClick={selectFile}
+                                              onClick={() => {
+                                                  setSelectedFile(file.id);
+                                                  handleViewFileModal();
+                                              }}
                                           >
                                               {file.name}
                                           </li>
@@ -494,7 +477,13 @@ function Disk() {
                             : disk &&
                               disk.files.map((file) => {
                                   return (
-                                      <li key={file.id} onClick={selectFile}>
+                                      <li
+                                          key={file.id}
+                                          onClick={() => {
+                                              setSelectedFile(file.id);
+                                              handleViewFileModal();
+                                          }}
+                                      >
                                           {file.name}
                                       </li>
                                   );
