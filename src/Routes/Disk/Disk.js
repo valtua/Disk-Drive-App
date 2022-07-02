@@ -273,6 +273,40 @@ function Disk() {
     }
   };
 
+  const deleteFile = async () => {
+    setError(null);
+    setLoading(true);
+
+    if (window.confirm("¿Deseas eliminar el archivo?")) {
+      try {
+        const file = disk.files.filter((file) => {
+          console.log(file);
+          return file.name === selectedFile;
+        });
+        const res = await fetch(`http://localhost:4000/file/${file[0].id}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: token,
+          },
+        });
+
+        const body = await res.json();
+
+        if (body.status === "error") {
+          setError(body.message);
+        } else {
+          setUpdate(!update);
+          setSelectedFile("");
+        }
+      } catch (err) {
+        console.error(err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
   const handleFolderModal = () => {
     setModalAddFolder(true);
   };
@@ -472,20 +506,9 @@ function Disk() {
                 position: "relative",
               }}
             >
-              <img
-                style={{
-                  objectFit: "contain",
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "3px 3px 1px 1px",
-                }}
-                src={``}
-                alt={``}
-                loading="lazy"
-              />
-              <p>File Name: </p>
-              <p>Upload Date: </p>
-              <p>Size: </p>
+              <p>File Name:</p>
+              <p>Upload Date:</p>
+              <p>Size:</p>
               <div className="divBtnFile">
                 <IconButton
                   aria-label="delete"
@@ -499,7 +522,7 @@ function Disk() {
                   aria-label="delete"
                   size="large"
                   className="btnDeleteFile"
-                  //onClick={deleteFile}
+                  onClick={deleteFile}
                 >
                   <Delete fontSize="inherit" />
                 </IconButton>
