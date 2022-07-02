@@ -19,6 +19,7 @@ function Disk() {
   const [, setError] = useState(null);
   const [selectedFolder, setSelectedFolder] = useState("");
   const [modalAddFolder, setModalAddFolder] = useState(false);
+  const [selectedFile, setSelectedFile] = useState("");
   const [modalAddFile, setModalAddFile] = useState(false);
   const [modalViewFile, setModalViewFile] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -50,6 +51,10 @@ function Disk() {
 
   const selectFolder = (e) => {
     setSelectedFolder(e.target.innerHTML);
+  };
+
+  const selectFile = (e) => {
+    setSelectedFile(e.target.innerHTML);
   };
 
   const addFile = async (e) => {
@@ -228,6 +233,44 @@ function Disk() {
       } finally {
         setLoading(false);
       }
+    }
+  };
+
+  const downloadFile = async () => {
+    setError(null);
+    setLoading(true);
+
+    try {
+      const file = disk.files.filter((file) => {
+        return file.name === selectedFile;
+      });
+      const res = await fetch(
+        `http://localhost:4000/download/file/${file[0].id}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      const body = await res.blob();
+      const url = window.URL.createObjectURL(body);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = selectedFile;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      console.log(body);
+
+      if (body.status === "error") {
+        setError(body.message);
+      }
+    } catch (err) {
+      console.error(err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -449,6 +492,7 @@ function Disk() {
                   aria-label="delete"
                   size="large"
                   className="btnDownloadFile"
+                  onClick={downloadFile}
                 >
                   <Download fontSize="inherit" />
                 </IconButton>
@@ -456,6 +500,7 @@ function Disk() {
                   aria-label="delete"
                   size="large"
                   className="btnDeleteFile"
+                  //onClick={deleteFile}
                 >
                   <Delete fontSize="inherit" />
                 </IconButton>
