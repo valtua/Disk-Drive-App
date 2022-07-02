@@ -1,25 +1,25 @@
-const getConnection = require('../getConnection');
+const getConnection = require("../getConnection");
 
 // Función con query para insertar un archivo
 const insertUserFilesQuery = async (idUser, name, idDir) => {
-    let connection;
+  let connection;
 
-    try {
-        // Conectamos a la base de datos
-        connection = await getConnection();
+  try {
+    // Conectamos a la base de datos
+    connection = await getConnection();
 
-        // Realizamos la query
-        await connection.query(
-            `
+    // Realizamos la query
+    await connection.query(
+      `
                 INSERT INTO files (idUser, name, idDir)
                 VALUES (?, ?, ?)
             `,
-            [idUser, name, idDir]
-        );
-    } finally {
-        // Liberamos la conexión
-        if (connection) connection.release();
-    }
+      [idUser, name, idDir]
+    );
+  } finally {
+    // Liberamos la conexión
+    if (connection) connection.release();
+  }
 };
 
 module.exports = insertUserFilesQuery;

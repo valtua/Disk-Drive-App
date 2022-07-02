@@ -55,6 +55,7 @@ function Disk() {
 
   const selectFile = (e) => {
     setSelectedFile(e.target.innerHTML);
+    handleViewFileModal();
   };
 
   const addFile = async (e) => {
@@ -186,7 +187,6 @@ function Disk() {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
-      console.log(body);
 
       if (body.status === "error") {
         setError(body.message);
@@ -261,7 +261,6 @@ function Disk() {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
-      console.log(body);
 
       if (body.status === "error") {
         setError(body.message);
@@ -434,7 +433,7 @@ function Disk() {
                   })[0]
                   .files.map((file) => {
                     return (
-                      <li key={file.id} onClick={handleViewFileModal}>
+                      <li key={file.id} onClick={selectFile}>
                         {file.name}
                       </li>
                     );
@@ -442,7 +441,7 @@ function Disk() {
               : disk &&
                 disk.files.map((file) => {
                   return (
-                    <li key={file.id} onClick={handleViewFileModal}>
+                    <li key={file.id} onClick={selectFile}>
                       {file.name}
                     </li>
                   );
