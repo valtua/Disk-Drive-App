@@ -159,3 +159,22 @@ button.btnClose {
     background-color: transparent;
     box-shadow: none;
 }
+
+
+
+/* Modal para descargar el archivo */
+div.divBtnFile{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+button.btnDownloadFile{
+    background-color: rgb(0, 174, 255);
+    border-radius: 1vh 1vh 1vh 1vh;
+    border: none;
+    color: white;
+    font-size: 4vh;
+    height: 4vh;
+    width: 6vh;
+}

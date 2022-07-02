@@ -439,8 +439,8 @@ function Disk() {
                                 loading="lazy"
                             />
                             <p>File Name: </p>
-                            <p>Upload Date:</p>
-                            <p>Size:</p>
+                            <p>Upload Date: </p>
+                            <p>Size: </p>
                             <div className="divBtnFile">
                                 <IconButton
                                     aria-label="delete"
