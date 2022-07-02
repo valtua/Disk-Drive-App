@@ -14,7 +14,6 @@ function App() {
                 <Route path="" element={<Home />} />
                 <Route path="/disk" element={<Disk />} />
                 <Route path="/profile" element={<Profile />} />
-                
             </Routes>
             <Footer />
         </div>
