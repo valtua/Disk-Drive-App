@@ -60,7 +60,6 @@ function Home() {
       });
 
       const body = await res.json();
-      console.log(body);
 
       if (body.status === "error") {
         setError(body.message);

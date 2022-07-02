@@ -18,6 +18,7 @@ function Disk() {
     const [disk, setDisk] = useState(null);
     const [, setError] = useState(null);
     const [selectedFolder, setSelectedFolder] = useState('');
+    const [selectedFile, setSelectedFile] = useState('');
     const [modalAddFolder, setModalAddFolder] = useState(false);
     const [modalAddFile, setModalAddFile] = useState(false);
     const [modalViewFile, setModalViewFile] = useState(false);
@@ -50,6 +51,11 @@ function Disk() {
 
     const selectFolder = (e) => {
         setSelectedFolder(e.target.innerHTML);
+    };
+
+    const selectFile = (e) => {
+        setSelectedFile(e.target.innerHTML);
+        handleViewFileModal();
     };
 
     const addFile = async (e) => {
@@ -233,6 +239,80 @@ function Disk() {
         }
     };
 
+    const downloadFile = async () => {
+        setError(null);
+        setLoading(true);
+
+        try {
+            const file = disk.files.filter((file) => {
+                return file.name === selectedFile;
+            });
+            const res = await fetch(
+                `http://localhost:4000/download/file/${file[0].id}`,
+                {
+                    headers: {
+                        Authorization: token,
+                    },
+                }
+            );
+            const body = await res.blob();
+            const url = window.URL.createObjectURL(body);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = selectedFile;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+
+            if (body.status === 'error') {
+                setError(body.message);
+            }
+        } catch (err) {
+            console.error(err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const deleteFile = async () => {
+        setError(null);
+        setLoading(true);
+
+        if (window.confirm('¿Deseas eliminar el archivo?')) {
+            try {
+                const file = disk.files.filter((file) => {
+                    console.log(file);
+                    return file.name === selectedFile;
+                });
+                const res = await fetch(
+                    `http://localhost:4000/file/${file[0].id}`,
+                    {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: token,
+                        },
+                    }
+                );
+
+                const body = await res.json();
+
+                if (body.status === 'error') {
+                    setError(body.message);
+                } else {
+                    setUpdate(!update);
+                    setSelectedFile('');
+                }
+            } catch (err) {
+                console.error(err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+    };
+
     const handleFolderModal = () => {
         setModalAddFolder(true);
     };
@@ -400,7 +480,7 @@ function Disk() {
                                       return (
                                           <li
                                               key={file.id}
-                                              onClick={handleViewFileModal}
+                                              onClick={selectFile}
                                           >
                                               {file.name}
                                           </li>
@@ -409,10 +489,7 @@ function Disk() {
                             : disk &&
                               disk.files.map((file) => {
                                   return (
-                                      <li
-                                          key={file.id}
-                                          onClick={handleViewFileModal}
-                                      >
+                                      <li key={file.id} onClick={selectFile}>
                                           {file.name}
                                       </li>
                                   );
@@ -443,25 +520,15 @@ function Disk() {
                                 position: 'relative',
                             }}
                         >
-                            <img
-                                style={{
-                                    objectFit: 'contain',
-                                    width: '100%',
-                                    height: '100%',
-                                    borderRadius: '3px 3px 1px 1px',
-                                }}
-                                src={``}
-                                alt={``}
-                                loading="lazy"
-                            />
-                            <p>File Name: </p>
-                            <p>Upload Date: </p>
-                            <p>Size: </p>
+                            <p>File Name:</p>
+                            <p>Upload Date:</p>
+                            <p>Size:</p>
                             <div className="divBtnFile">
                                 <IconButton
                                     aria-label="delete"
                                     size="large"
                                     className="btnDownloadFile"
+                                    onClick={downloadFile}
                                 >
                                     <Download fontSize="inherit" />
                                 </IconButton>
@@ -469,6 +536,7 @@ function Disk() {
                                     aria-label="delete"
                                     size="large"
                                     className="btnDeleteFile"
+                                    onClick={deleteFile}
                                 >
                                     <Delete fontSize="inherit" />
                                 </IconButton>
