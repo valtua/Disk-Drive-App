@@ -1,4 +1,4 @@
-import { IconButton, Fab, Breadcrumbs, Link, Modal } from '@mui/material';
+import { IconButton, Fab, Breadcrumbs, Modal, Typography } from '@mui/material';
 import {
     ArrowBack,
     ArrowForward,
@@ -434,13 +434,18 @@ function Disk() {
                 <div className="directory">
                     <Breadcrumbs aria-label="breadcrumb">
                         {/* El contenido será según la carpeta que se seleccione*/}
-                        <Link underline="hover" color="black" href="/Disk">
+                        <Typography
+                            sx={{ color: 'black', cursor: 'pointer' }}
+                            onClick={() => {
+                                setSelectedFolder('');
+                            }}
+                        >
                             Disk
-                        </Link>
+                        </Typography>
                         {selectedFolder && (
-                            <Link underline="hover" color="black" href="">
+                            <Typography sx={{ color: 'black' }}>
                                 {selectedFolder}
-                            </Link>
+                            </Typography>
                         )}
                     </Breadcrumbs>
                     {selectedFolder && (

@@ -14,22 +14,28 @@ div.ProfileCard {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem 2rem;
+    gap: 1rem;
+    padding: 1rem 4rem;
     border-radius: 1vh;
     box-shadow: rgba(35, 35, 35, 0.4) 0px 2px 8px 0px;
     width: fit-content;
     height: fit-content;
+    position: relative;
 }
 
 div.ProfileCard > button {
     border: none;
     border-radius: 1vh;
     font-weight: bold;
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.25rem;
+}
+
+p.biography {
+    color: rgb(111, 111, 111);
 }
 
 button.Logout {
@@ -53,6 +59,7 @@ form.modifyInfo {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
 
 form.modifyInfo > input {
@@ -120,4 +127,14 @@ form.modifyInfo > [type='file'] + label {
     padding: 0.5rem 2rem;
     margin: auto;
     margin-bottom: 0.5rem;
+}
+
+button[aria-label='close'] {
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    box-shadow: none;
+    padding-left: 86%;
 }

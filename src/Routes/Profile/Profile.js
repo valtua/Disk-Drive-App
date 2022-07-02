@@ -1,5 +1,5 @@
-import { AddPhotoAlternate, Create, Logout } from '@mui/icons-material';
-import { Avatar } from '@mui/material';
+import { AddPhotoAlternate, Cancel, Create, Logout } from '@mui/icons-material';
+import { Avatar, Fab } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useToken } from '../../TokenContext';
@@ -9,12 +9,13 @@ function Profile() {
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
     const [modify, setModify] = useState(false);
+    const [update, setUpdate] = useState(false);
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [biography, setBiography] = useState('');
     const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState(null);
 
     const [token, setToken] = useToken();
 
@@ -46,11 +47,48 @@ function Profile() {
         setModify(true);
     };
 
-    const handleSubmit = async (e) => {};
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        setError(null);
+        setLoading(true);
+
+        try {
+            const uploadedPhoto = document.querySelector('#photo');
+            const data = new FormData();
+            name !== '' && data.append('name', name);
+            email !== '' && data.append('email', email);
+            biography !== '' && data.append('biography', biography);
+            uploadedPhoto && data.append('photo', uploadedPhoto.files[0]);
+
+            const res = await fetch('http://localhost:4000/user', {
+                method: 'PUT',
+                headers: {
+                    Authorization: token,
+                },
+                body: data,
+            });
+
+            const body = await res.json();
+
+            if (body.status === 'error') {
+                setError(body.message);
+            } else {
+                setMessage(body.message);
+            }
+        } catch (err) {
+            console.error(err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
+            setModify(false);
+            setUpdate(!update);
+        }
+    };
 
     useEffect(() => {
         getUserInfo();
-    }, []);
+    }, [update]);
     console.log(user);
     if (!token) {
         return <Navigate to="/" />;
@@ -71,6 +109,15 @@ function Profile() {
                                     alt="Profile photo"
                                     src={`http://localhost:4000/${user.photo}`}
                                 />
+                                <Fab
+                                    aria-label="close"
+                                    className="btnClose"
+                                    onClick={() => {
+                                        setModify(false);
+                                    }}
+                                >
+                                    <Cancel sx={{ color: 'red' }} />
+                                </Fab>
                                 <form
                                     className="modifyInfo"
                                     onSubmit={handleSubmit}
@@ -92,7 +139,6 @@ function Profile() {
                                         type="text"
                                         id="name"
                                         name="name"
-                                        required
                                         placeholder={user.name}
                                         onChange={(e) =>
                                             setName(e.target.value)
@@ -119,7 +165,6 @@ function Profile() {
                                         id="email"
                                         name="email"
                                         placeholder={user.email}
-                                        required
                                         onChange={(e) =>
                                             setEmail(e.target.value)
                                         }
@@ -143,7 +188,7 @@ function Profile() {
                                     src={`http://localhost:4000/${user.photo}`}
                                 />
                                 <h2>{user.name}</h2>
-                                <p>
+                                <p className="biography">
                                     {user.biography === ''
                                         ? 'Write a biography'
                                         : user.biography}
@@ -154,7 +199,7 @@ function Profile() {
                                         user.createdAt
                                     ).toLocaleDateString()}
                                 </p>
-                                <p>Email: {user.email}</p>
+                                <p>{user.email}</p>
                                 <button
                                     className="Modify"
                                     onClick={handleModify}
