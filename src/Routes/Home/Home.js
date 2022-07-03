@@ -12,7 +12,7 @@ import './Home.css';
 
 function Home() {
     const [alignment, setAlignment] = useState('login');
-    const [open, setOpen] = useState('login');
+    const [open, setOpen] = useState(false);
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');

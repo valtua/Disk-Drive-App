@@ -5,7 +5,7 @@ import {
     Create,
     Logout,
 } from '@mui/icons-material';
-import { Avatar, Fab } from '@mui/material';
+import { Alert, Avatar, Fab, Snackbar } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Navigate, NavLink } from 'react-router-dom';
 import { useToken } from '../../TokenContext';
@@ -14,14 +14,15 @@ import './Profile.css';
 function Profile() {
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
+    const [message, setMessage] = useState(null);
     const [modify, setModify] = useState(false);
     const [update, setUpdate] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [biography, setBiography] = useState('');
     const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState(null);
 
     const [token, setToken] = useToken();
 
@@ -47,6 +48,14 @@ function Profile() {
             console.error(err);
             setError(err.message);
         }
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
     };
 
     const handleModify = () => {
@@ -87,6 +96,7 @@ function Profile() {
             setError(err.message);
         } finally {
             setLoading(false);
+            setOpen(true);
             setModify(false);
             setUpdate(!update);
         }
@@ -95,7 +105,6 @@ function Profile() {
     useEffect(() => {
         getUserInfo();
     }, [update]);
-    console.log(user);
     if (!token) {
         return <Navigate to="/" />;
     } else {
@@ -227,6 +236,28 @@ function Profile() {
                             </>
                         )}
                     </div>
+                )}
+                {error && (
+                    <Snackbar
+                        open={open}
+                        onClose={handleClose}
+                        autoHideDuration={4000}
+                    >
+                        <Alert severity="error" sx={{ width: '100%' }}>
+                            {error}
+                        </Alert>
+                    </Snackbar>
+                )}
+                {message && (
+                    <Snackbar
+                        open={open}
+                        autoHideDuration={4000}
+                        onClose={handleClose}
+                    >
+                        <Alert severity="info" sx={{ width: '100%' }}>
+                            {message}
+                        </Alert>
+                    </Snackbar>
                 )}
             </div>
         );

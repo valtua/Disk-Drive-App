@@ -13,15 +13,15 @@ const createPathIfNotExists = async (path) => {
         await fs.mkdir(path);
     } catch (err) {
         // Si no es posible acceder al directorio en el "try" se
-        // lanzaría un error. Si es así creamos el directorio.
-        throw generateError(err, 409);
+        // lanzaría un error.
+        throw generateError('Ese nombre ya está en uso', 409);
     }
 };
 
 // Función que crea la carpeta Uploads si no existe
 const createIfNotExists = async (path) => {
     try {
-        // Creamos una ruta absoluta al directorio de descargas.
+        // Creamos una ruta absoluta al directorio
         await fs.access(path);
     } catch {
         await fs.mkdir(path);
