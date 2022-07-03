@@ -1,44 +1,44 @@
-const fs = require("fs/promises");
-const path = require("path");
+const fs = require('fs/promises');
+const path = require('path');
 
 const generateError = (message, status) => {
-  const error = new Error(message);
-  error.statusCode = status;
-  return error;
+    const error = new Error(message);
+    error.statusCode = status;
+    return error;
 };
 
 // Función que crea una ruta en caso de no existir
 const createPathIfNotExists = async (path) => {
-  try {
-    // Intentamos acceder al directorio.
-    await fs.access(path);
-  } catch {
-    // Si no es posible acceder al directorio en el "try" se
-    // lanzaría un error. Si es así creamos el directorio.
-    await fs.mkdir(path);
-  }
+    try {
+        await fs.mkdir(path);
+    } catch (err) {
+        // Si no es posible acceder al directorio en el "try" se
+        // lanzaría un error. Si es así creamos el directorio.
+        throw generateError(err, 409);
+    }
 };
 
 // Función que crea la carpeta Uploads si no existe
-const createUploadsIfNotExists = async () => {
-  // Creamos una ruta absoluta al directorio de descargas.
-  const uploadsDir = path.join(__dirname, "uploads");
-
-  // Creamos el directorio si no existe.
-  await createPathIfNotExists(uploadsDir);
+const createIfNotExists = async (path) => {
+    try {
+        // Creamos una ruta absoluta al directorio de descargas.
+        await fs.access(path);
+    } catch {
+        await fs.mkdir(path);
+    }
 };
 
 function randomString(length) {
-  return Math.round(
-    Math.pow(36, length + 1) - Math.random() * Math.pow(36, length)
-  )
-    .toString(36)
-    .slice(1);
+    return Math.round(
+        Math.pow(36, length + 1) - Math.random() * Math.pow(36, length)
+    )
+        .toString(36)
+        .slice(1);
 }
 
 module.exports = {
-  generateError,
-  createPathIfNotExists,
-  createUploadsIfNotExists,
-  randomString,
+    generateError,
+    createPathIfNotExists,
+    createIfNotExists,
+    randomString,
 };
