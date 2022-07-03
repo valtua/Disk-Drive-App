@@ -23,7 +23,7 @@ div.folderScroll {
   scroll-behavior: smooth;
 }
 
-div.folderScroll button.btnFolderAdd {
+div.divFolderAdd button.btnFolderAdd {
   height: 9vh;
   width: 9vh;
   background-color: rgb(0, 174, 255);
@@ -35,7 +35,7 @@ div.folderScroll button.btnFolderAdd {
 }
 
 div.folderScroll a {
-  padding: 3vh 3vh 3vh 3vh;
+  padding: 3vh;
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
@@ -49,7 +49,7 @@ div.Disk button.btnBackScroll {
   margin: 0 1vh 0 3vh;
   height: 6vh;
   width: 6vh;
-  border-radius: 1vh 1vh 1vh 1vh;
+  border-radius: 1vh;
   font-size: 4vh;
 }
 
@@ -57,7 +57,7 @@ div.Disk button.btnForwardScroll {
   margin: 0 3vh 0 1vh;
   height: 6vh;
   width: 6vh;
-  border-radius: 1vh 1vh 1vh 1vh;
+  border-radius: 1vh;
   font-size: 4vh;
 }
 
@@ -82,9 +82,10 @@ div.Disk button.btnDownloadFolder {
   width: 6vh;
   background-color: rgb(0, 174, 255);
   border: none;
-  border-radius: 1vh 1vh 1vh 1vh;
+  border-radius: 1vh;
   color: white;
   font-size: 4vh;
+  position: static;
 }
 
 div.Disk button.btnDeleteFolder {
@@ -92,7 +93,7 @@ div.Disk button.btnDeleteFolder {
   width: 6vh;
   background-color: rgb(233, 53, 53);
   border: none;
-  border-radius: 1vh 1vh 1vh 1vh;
+  border-radius: 1vh;
   color: white;
   font-size: 4vh;
 }
@@ -175,6 +176,7 @@ label.fileData {
   padding: 2vh;
   margin-top: 2vh;
   background-color: rgb(243, 243, 243);
+  border-radius: 1vh;
 }
 
 div.divBtnFile {
@@ -188,7 +190,7 @@ button.btnDownloadFile {
   width: 6vh;
   background-color: rgb(0, 174, 255);
   border: none;
-  border-radius: 1vh 1vh 1vh 1vh;
+  border-radius: 1vh;
   color: white;
   font-size: 4vh;
 }
@@ -199,7 +201,7 @@ button.btnDeleteFile {
   width: 6vh;
   background-color: rgb(233, 53, 53);
   border: none;
-  border-radius: 1vh 1vh 1vh 1vh;
+  border-radius: 1vh;
   color: white;
   font-size: 4vh;
 }
