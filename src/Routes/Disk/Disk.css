@@ -1,208 +1,206 @@
-* {
-    font-size: 2.5vh;
-}
-
 div.Disk {
-    padding-top: 15vh;
+  padding-top: 15vh;
 }
 
 div.folderSearch {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 div.folderScroll {
-    display: flex;
-    align-items: center;
-    margin: auto;
-    width: 90%;
-    color: #000000;
-    border: 0.2vh solid #000000;
-    border-radius: 0.5vh;
-    overflow: auto;
-    scroll-behavior: smooth;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 90%;
+  color: #000000;
+  border: 0.2vh solid #000000;
+  border-radius: 0.5vh;
+  overflow: auto;
+  scroll-behavior: smooth;
 }
 
 div.divFolderAdd button.btnFolderAdd {
-    height: 9vh;
-    width: 9vh;
-    background-color: rgb(0, 174, 255);
-    border: none;
-    border-radius: 0.5vh;
-    color: rgb(255, 255, 255);
-    font-size: 4vh;
-    cursor: pointer;
+  height: 9vh;
+  width: 9vh;
+  background-color: rgb(0, 174, 255);
+  border: none;
+  border-radius: 0.5vh;
+  color: rgb(255, 255, 255);
+  font-size: 4vh;
+  cursor: pointer;
 }
 
 div.folderScroll a {
-    padding: 3vh;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
+  padding: 3vh;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
 }
 
 div.folderScroll a:hover {
-    background-color: rgb(158, 255, 123);
-    cursor: pointer;
+  background-color: rgb(158, 255, 123);
+  cursor: pointer;
 }
 
 div.Disk button.btnBackScroll {
-    margin: 0 1vh 0 3vh;
-    height: 6vh;
-    width: 6vh;
-    border-radius: 1vh;
-    font-size: 4vh;
+  margin: 0 1vh 0 3vh;
+  height: 6vh;
+  width: 6vh;
+  border-radius: 1vh;
+  font-size: 4vh;
 }
 
 div.Disk button.btnForwardScroll {
-    margin: 0 3vh 0 1vh;
-    height: 6vh;
-    width: 6vh;
-    border-radius: 1vh;
-    font-size: 4vh;
+  margin: 0 3vh 0 1vh;
+  height: 6vh;
+  width: 6vh;
+  border-radius: 1vh;
+  font-size: 4vh;
 }
 
 div.directory {
-    display: flex;
-    align-items: center;
-    gap: 2vh;
-    margin-top: 3vh;
+  display: flex;
+  align-items: center;
+  gap: 2vh;
+  margin-top: 3vh;
 }
 
 /* Ruta de carpetas */
 .MuiBreadcrumbs-root {
-    padding: 0 2vh 0 2vh;
-    background: #00ec5e;
-    border: none;
-    border-radius: 0 1vh 1vh 0;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 0.3vh 0.9vh;
+  padding: 0 2vh 0 2vh;
+  background: #00ec5e;
+  border: none;
+  border-radius: 0 1vh 1vh 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 0.3vh 0.9vh;
 }
 
 div.Disk button.btnDownloadFolder {
-    height: 4vh;
-    width: 6vh;
-    background-color: rgb(0, 174, 255);
-    border: none;
-    border-radius: 1vh;
-    color: white;
-    font-size: 4vh;
-    position: static;
+  height: 4vh;
+  width: 6vh;
+  background-color: rgb(0, 174, 255);
+  border: none;
+  border-radius: 1vh;
+  color: white;
+  font-size: 4vh;
+  position: static;
 }
 
 div.Disk button.btnDeleteFolder {
-    height: 4vh;
-    width: 6vh;
-    background-color: rgb(233, 53, 53);
-    border: none;
-    border-radius: 1vh;
-    color: white;
-    font-size: 4vh;
+  height: 4vh;
+  width: 6vh;
+  background-color: rgb(233, 53, 53);
+  border: none;
+  border-radius: 1vh;
+  color: white;
+  font-size: 4vh;
 }
 
 ul.fileList {
-    display: flex;
-    list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr));
+  margin: 3vh 3vh 6vh 3vh;
+  list-style-type: none;
 }
 
 ul.fileList li {
-    margin: 2vh;
-    padding: 3vh;
-    background-color: rgb(243, 243, 243);
-    border-radius: 1vh;
+  margin: 2vh;
+  padding: 2vh;
+  background-color: rgb(243, 243, 243);
+  border-radius: 1vh;
 }
 
 ul.fileList li:hover {
-    background: #7cffb0;
-    cursor: pointer;
+  background: #7cffb0;
+  cursor: pointer;
 }
 
 /* Botón agregar archivo */
 div.Disk button.btnFileAdd {
-    bottom: 9vh;
-    right: 6vh;
-    height: 10vh;
-    width: 10vh;
-    position: fixed;
-    background-color: rgb(0, 174, 255);
-    border: none;
+  bottom: 9vh;
+  right: 6vh;
+  height: 10vh;
+  width: 10vh;
+  position: fixed;
+  background-color: rgb(0, 174, 255);
+  border: none;
 }
 
 form.addForm {
-    display: flex;
-    justify-content: flex-start;
-    margin: 0;
-    width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  width: 90%;
 }
 
 form.addForm > label {
-    margin: 0 0 1vh 0;
-    text-align: left;
+  margin: 0 0 1vh 0;
+  text-align: left;
 }
 
 form.addForm > button {
-    padding: 0.5rem;
-    width: 100%;
-    background-color: rgb(0, 174, 255);
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 1vh;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: rgb(0, 174, 255);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 1vh;
 }
-form.addForm > input[type='text'] {
-    padding: 0.5rem;
-    width: 100%;
-    border: none;
-    border-radius: 1vh;
-    box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
+form.addForm > input[type="text"] {
+  padding: 0.5rem;
+  width: 100%;
+  border: none;
+  border-radius: 1vh;
+  box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
 }
 
-form.addForm > input[type='file'] {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 1vh;
+form.addForm > input[type="file"] {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 1vh;
 }
 
 /* Modal para descargar el archivo */
 label.fileData {
-    padding: 2vh;
-    margin-top: 2vh;
-    background-color: rgb(243, 243, 243);
-    border-radius: 1vh;
+  padding: 2vh;
+  margin-top: 2vh;
+  background-color: rgb(243, 243, 243);
+  border-radius: 1vh;
 }
 
 div.divBtnFile {
-    display: flex;
-    align-self: flex-end;
-    margin-top: 4vh;
+  display: flex;
+  align-self: flex-end;
+  margin-top: 4vh;
 }
 
 button.btnDownloadFile {
-    height: 4vh;
-    width: 6vh;
-    background-color: rgb(0, 174, 255);
-    border: none;
-    border-radius: 1vh;
-    color: white;
-    font-size: 4vh;
+  height: 4vh;
+  width: 6vh;
+  background-color: rgb(0, 174, 255);
+  border: none;
+  border-radius: 1vh;
+  color: white;
+  font-size: 4vh;
 }
 
 button.btnDeleteFile {
-    margin-left: 2vh;
-    height: 4vh;
-    width: 6vh;
-    background-color: rgb(233, 53, 53);
-    border: none;
-    border-radius: 1vh;
-    color: white;
-    font-size: 4vh;
+  margin-left: 2vh;
+  height: 4vh;
+  width: 6vh;
+  background-color: rgb(233, 53, 53);
+  border: none;
+  border-radius: 1vh;
+  color: white;
+  font-size: 4vh;
 }
 /* Botón cerrar de los modales */
 button.btnClose {
-    right: 22px;
-    top: 4px;
-    height: 0;
-    width: 0;
-    position: absolute;
-    transition: none;
-    background-color: transparent;
-    box-shadow: none;
+  right: 3vh;
+  top: 1vh;
+  height: 0;
+  width: 0;
+  position: absolute;
+  transition: none;
+  background-color: transparent;
+  box-shadow: none;
 }
