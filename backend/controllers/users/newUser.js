@@ -50,7 +50,7 @@ const newUser = async (req, res, next) => {
             photoName = `${randomString(24)}.jpg`;
 
             // Generamos la ruta absoluta a la imagen.
-            const photoPath = path.join(uploadsDir, photoName);
+            const photoPath = path.join(photosDir, photoName);
 
             // Guardamos la imagen en el directorio de descargas.
             await sharpPhoto.toFile(photoPath);
