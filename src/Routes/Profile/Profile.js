@@ -56,6 +56,8 @@ function Profile() {
         }
 
         setOpen(false);
+        setMessage(null);
+        setError(null);
     };
 
     const handleModify = () => {
@@ -98,6 +100,7 @@ function Profile() {
             setLoading(false);
             setOpen(true);
             setModify(false);
+            setOpen(true);
             setUpdate(!update);
         }
     };
@@ -112,7 +115,7 @@ function Profile() {
             <div className="Profile">
                 <NavLink to="/disk" className="linkToDisk">
                     <ArrowBack fontSize="inherit" />
-                    <h3>Disk</h3>
+                    <h3>Disco</h3>
                 </NavLink>
                 {user && (
                     <div className="ProfileCard">
@@ -151,9 +154,9 @@ function Profile() {
                                         className="photoLabel"
                                     >
                                         <AddPhotoAlternate />
-                                        Profile Image
+                                        Imagen de perfil
                                     </label>
-                                    <label htmlFor="name">Name:</label>
+                                    <label htmlFor="name">Nombre:</label>
                                     <input
                                         type="text"
                                         id="name"
@@ -164,14 +167,14 @@ function Profile() {
                                         }
                                     />
                                     <label htmlFor="biography">
-                                        Biography:
+                                        Biografía:
                                     </label>
                                     <textarea
                                         name="biography"
                                         id="biography"
                                         placeholder={
                                             user.biography ||
-                                            'Write a biography'
+                                            'Escribe una biografía'
                                         }
                                         onChange={(e) => {
                                             setBiography(e.target.value);
@@ -210,11 +213,11 @@ function Profile() {
                                 <p>{user.email}</p>
                                 <p className="biography">
                                     {user.biography === ''
-                                        ? 'Write a biography'
+                                        ? 'Escribe una biografía'
                                         : user.biography}
                                 </p>
                                 <p>
-                                    Joined{' '}
+                                    Fecha de creación{' '}
                                     {new Date(
                                         user.createdAt
                                     ).toLocaleDateString()}
@@ -224,7 +227,7 @@ function Profile() {
                                     onClick={handleModify}
                                 >
                                     <Create fontSize="small" />
-                                    Modify
+                                    Modificar
                                 </button>
                                 <button
                                     className="Logout"
