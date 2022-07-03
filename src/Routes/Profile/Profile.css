@@ -20,10 +20,11 @@ div.ProfileCard {
     box-shadow: rgba(35, 35, 35, 0.4) 0px 2px 8px 0px;
     width: fit-content;
     height: fit-content;
-    position: relative;
+    position: relative !important;
 }
 
-div.ProfileCard > button {
+div.ProfileCard > button.Logout,
+button.Modify {
     border: none;
     border-radius: 1vh;
     font-weight: bold;
@@ -42,12 +43,14 @@ button.Logout {
     padding: 0.5rem 1rem;
     background-color: rgb(255, 120, 120);
     margin: 0.5rem 1rem;
+    cursor: pointer;
 }
 
 button.Modify {
     padding: 0.5rem 1rem;
     background-color: rgb(120, 203, 255);
     margin: 2.5rem 1rem 0.5rem 1rem;
+    cursor: pointer;
 }
 
 .css-cveggr-MuiListItemIcon-root {
@@ -129,12 +132,13 @@ form.modifyInfo > [type='file'] + label {
     margin-bottom: 0.5rem;
 }
 
-button[aria-label='close'] {
-    flex-grow: 1;
-    position: absolute;
-    top: 0;
-    right: 0;
+button.btnCloseProfile {
     background-color: transparent;
     box-shadow: none;
-    padding-left: 86%;
+    position: absolute;
+    top: 4px;
+    right: 22px;
+    width: 0;
+    height: 0;
+    transition: none;
 }

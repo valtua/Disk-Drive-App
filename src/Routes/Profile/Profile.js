@@ -99,6 +99,15 @@ function Profile() {
                     <div className="ProfileCard">
                         {modify ? (
                             <>
+                                <Fab
+                                    aria-label="close"
+                                    className="btnCloseProfile"
+                                    onClick={() => {
+                                        setModify(false);
+                                    }}
+                                >
+                                    <Cancel sx={{ color: 'red' }} />
+                                </Fab>
                                 <Avatar
                                     sx={{
                                         width: '20vh',
@@ -109,15 +118,6 @@ function Profile() {
                                     alt="Profile photo"
                                     src={`http://localhost:4000/${user.photo}`}
                                 />
-                                <Fab
-                                    aria-label="close"
-                                    className="btnClose"
-                                    onClick={() => {
-                                        setModify(false);
-                                    }}
-                                >
-                                    <Cancel sx={{ color: 'red' }} />
-                                </Fab>
                                 <form
                                     className="modifyInfo"
                                     onSubmit={handleSubmit}
