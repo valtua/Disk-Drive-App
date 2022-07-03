@@ -37,7 +37,6 @@ function Disk() {
       const body = await res.json();
 
       const disk = body.data.space;
-      console.log(disk);
 
       if (body.status === "error") {
         setError(body.message);
@@ -175,7 +174,6 @@ function Disk() {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
-      console.log(body);
 
       if (body.status === "error") {
         setError(body.message);
@@ -286,29 +284,6 @@ function Disk() {
     }
   };
 
-  const handleFolderModal = () => {
-    setModalAddFolder(true);
-  };
-
-  const handleFileModal = () => {
-    setModalAddFile(true);
-  };
-
-  const handleViewFileModal = () => {
-    setModalViewFile(true);
-  };
-
-  const handleFolderModalClose = () => {
-    setModalAddFolder(false);
-  };
-  const handleFileModalClose = () => {
-    setModalAddFile(false);
-  };
-
-  const handleViewFileModalClose = () => {
-    setModalViewFile(false);
-  };
-
   const ref = useRef(null);
   const scroll = (scrollOffset) => {
     ref.current.scrollLeft += scrollOffset;
@@ -333,7 +308,12 @@ function Disk() {
             <ArrowBack fontSize="inherit" />
           </IconButton>
           <div className="folderScroll" ref={ref}>
-            <div className="divFolderAdd" onClick={handleFolderModal}>
+            <div
+              className="divFolderAdd"
+              onClick={() => {
+                setModalAddFolder(true);
+              }}
+            >
               <button className="btnFolderAdd">+</button>
             </div>
             {/* Aquí habrá que hacer bucle en base a los datos que recibamos de la query que selecciona carpetas del usuario */}
@@ -386,7 +366,9 @@ function Disk() {
             <Fab
               aria-label="close"
               className="btnClose"
-              onClick={handleFolderModalClose}
+              onClick={() => {
+                setModalAddFolder(false);
+              }}
             >
               <Cancel sx={{ color: "red" }} />
             </Fab>
@@ -456,7 +438,7 @@ function Disk() {
                         key={file.id}
                         onClick={() => {
                           setSelectedFile(file.id);
-                          handleViewFileModal();
+                          setModalViewFile(true);
                         }}
                       >
                         {file.name}
@@ -470,7 +452,7 @@ function Disk() {
                       key={file.id}
                       onClick={() => {
                         setSelectedFile(file.id);
-                        handleViewFileModal();
+                        setModalViewFile(true);
                       }}
                     >
                       {file.name}
@@ -505,7 +487,9 @@ function Disk() {
               <Fab
                 aria-label="close"
                 className="btnClose"
-                onClick={handleViewFileModalClose}
+                onClick={() => {
+                  setModalViewFile(false);
+                }}
               >
                 <Cancel sx={{ color: "red" }} />
               </Fab>
@@ -537,7 +521,9 @@ function Disk() {
             color="primary"
             aria-label="add"
             className="btnFileAdd"
-            onClick={handleFileModal}
+            onClick={() => {
+              setModalAddFile(true);
+            }}
           >
             <Add />
           </Fab>
@@ -568,7 +554,9 @@ function Disk() {
               <Fab
                 aria-label="close"
                 className="btnClose"
-                onClick={handleFileModalClose}
+                onClick={() => {
+                  setModalAddFile(false);
+                }}
               >
                 <Cancel sx={{ color: "red" }} />
               </Fab>
