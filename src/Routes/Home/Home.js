@@ -40,6 +40,8 @@ function Home() {
         }
 
         setOpen(false);
+        setMessage(null);
+        setError(null);
     };
 
     const handleLogin = async (e) => {
@@ -70,6 +72,7 @@ function Home() {
         } catch (err) {
             console.error(err);
             setError(err.message);
+            setOpen(true);
         } finally {
             setEmail('');
             setPassword('');
@@ -108,10 +111,7 @@ function Home() {
             console.error(err);
             setError(err.message);
         } finally {
-            setName('');
-            setEmail('');
-            setPassword('');
-            setBiography('');
+            setOpen(true);
             setLoading(false);
         }
     };
@@ -135,7 +135,7 @@ function Home() {
                             required
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor="password">Contraseña:</label>
                         <input
                             type="password"
                             name="password"
@@ -149,7 +149,7 @@ function Home() {
                 )}
                 {alignment === 'signup' && (
                     <form className="signup" onSubmit={handleSignup}>
-                        <label htmlFor="name">Name:</label>
+                        <label htmlFor="name">Nombre:</label>
                         <input
                             type="text"
                             id="name"
@@ -167,7 +167,7 @@ function Home() {
                             onChange={(e) => setEmail(e.target.value)}
                         />
 
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor="password">Contraseña:</label>
                         <input
                             type="password"
                             id="password"
@@ -176,7 +176,7 @@ function Home() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
 
-                        <label htmlFor="biography">Biography:</label>
+                        <label htmlFor="biography">Biografía:</label>
                         <textarea
                             name="biography"
                             id="biography"
@@ -188,7 +188,7 @@ function Home() {
                         <input type="file" id="photo" name="photo" />
                         <label htmlFor="photo">
                             <AddPhotoAlternate />
-                            Profile Image
+                            Imagen de perfil
                         </label>
                         <button disabled={loading} name="enviar">
                             {loading ? 'Enviando...' : 'Enviar'}
@@ -200,7 +200,7 @@ function Home() {
                 <Snackbar
                     open={open}
                     onClose={handleClose}
-                    autoHideDuration={6000}
+                    autoHideDuration={4000}
                 >
                     <Alert severity="error" sx={{ width: '100%' }}>
                         {error}
@@ -210,7 +210,7 @@ function Home() {
             {message && (
                 <Snackbar
                     open={open}
-                    autoHideDuration={6000}
+                    autoHideDuration={4000}
                     onClose={handleClose}
                 >
                     <Alert severity="info" sx={{ width: '100%' }}>
