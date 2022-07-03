@@ -1,12 +1,15 @@
+/* Div global de Disk */
 div.Disk {
   padding-top: 15vh;
 }
 
+/* Div que contiene las flechas, el botón y el scroll de las carpetas */
 div.folderSearch {
   display: flex;
   align-items: center;
 }
 
+/* Div que contiene el botón y el scroll de las carpetas */
 div.folderScroll {
   display: flex;
   align-items: center;
@@ -19,6 +22,25 @@ div.folderScroll {
   scroll-behavior: smooth;
 }
 
+/* Flecha atrás del buscador de carpetas */
+div.Disk button.btnBackScroll {
+  margin: 0 1vh 0 3vh;
+  height: 6vh;
+  width: 6vh;
+  border-radius: 1vh;
+  font-size: 4vh;
+}
+
+/* Flecha adelante del buscador de carpetas */
+div.Disk button.btnForwardScroll {
+  margin: 0 3vh 0 1vh;
+  height: 6vh;
+  width: 6vh;
+  border-radius: 1vh;
+  font-size: 4vh;
+}
+
+/* Botón añadir carpetas */
 div.divFolderAdd button.btnFolderAdd {
   height: 9vh;
   width: 9vh;
@@ -30,33 +52,20 @@ div.divFolderAdd button.btnFolderAdd {
   cursor: pointer;
 }
 
+/* Cada carpeta dentro del scroll */
 div.folderScroll a {
   padding: 3vh;
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
 
+/* Hover para cada carpeta */
 div.folderScroll a:hover {
   background-color: rgb(158, 255, 123);
   cursor: pointer;
 }
 
-div.Disk button.btnBackScroll {
-  margin: 0 1vh 0 3vh;
-  height: 6vh;
-  width: 6vh;
-  border-radius: 1vh;
-  font-size: 4vh;
-}
-
-div.Disk button.btnForwardScroll {
-  margin: 0 3vh 0 1vh;
-  height: 6vh;
-  width: 6vh;
-  border-radius: 1vh;
-  font-size: 4vh;
-}
-
+/* Div que contiene la ruta del usuario y los botones descargar/eliminar carpeta */
 div.directory {
   display: flex;
   align-items: center;
@@ -73,6 +82,7 @@ div.directory {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 0.3vh 0.9vh;
 }
 
+/* Botón descargar carpeta */
 div.Disk button.btnDownloadFolder {
   height: 4vh;
   width: 6vh;
@@ -84,6 +94,7 @@ div.Disk button.btnDownloadFolder {
   position: static;
 }
 
+/* Botón descargar carpeta */
 div.Disk button.btnDeleteFolder {
   height: 4vh;
   width: 6vh;
@@ -94,6 +105,7 @@ div.Disk button.btnDeleteFolder {
   font-size: 4vh;
 }
 
+/* Listado que contiene cada archivo */
 ul.fileList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr));
@@ -101,6 +113,7 @@ ul.fileList {
   list-style-type: none;
 }
 
+/* Cada elemento (archivo) de la lista  */
 ul.fileList li {
   margin: 2vh;
   padding: 2vh;
@@ -108,6 +121,7 @@ ul.fileList li {
   border-radius: 1vh;
 }
 
+/* Hover para cada archivo */
 ul.fileList li:hover {
   background: #7cffb0;
   cursor: pointer;
@@ -124,6 +138,7 @@ div.Disk button.btnFileAdd {
   border: none;
 }
 
+/* Modal de añadir archivo */
 form.addForm {
   display: flex;
   justify-content: flex-start;
@@ -131,11 +146,13 @@ form.addForm {
   width: 90%;
 }
 
+/* Label de añadir archivo */
 form.addForm > label {
   margin: 0 0 1vh 0;
   text-align: left;
 }
 
+/* Botón de añadir archivo */
 form.addForm > button {
   padding: 0.5rem;
   width: 100%;
@@ -145,6 +162,8 @@ form.addForm > button {
   border: none;
   border-radius: 1vh;
 }
+
+/* Input text de añadir archivo */
 form.addForm > input[type="text"] {
   padding: 0.5rem;
   width: 100%;
@@ -153,6 +172,7 @@ form.addForm > input[type="text"] {
   box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
 }
 
+/* Input file de añadir archivo */
 form.addForm > input[type="file"] {
   padding: 0.5rem;
   border: none;
@@ -167,12 +187,14 @@ label.fileData {
   border-radius: 1vh;
 }
 
+/* Div que contiene botones de descargar/eliminar archivo */
 div.divBtnFile {
   display: flex;
   align-self: flex-end;
   margin-top: 4vh;
 }
 
+/* Botón descargar archivo */
 button.btnDownloadFile {
   height: 4vh;
   width: 6vh;
@@ -183,6 +205,7 @@ button.btnDownloadFile {
   font-size: 4vh;
 }
 
+/* Botón eliminar archivo */
 button.btnDeleteFile {
   margin-left: 2vh;
   height: 4vh;

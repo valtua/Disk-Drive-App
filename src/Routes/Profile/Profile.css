@@ -1,164 +1,180 @@
+/* Div global de Profile */
 div.Profile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    padding-top: 15vh;
-    height: 88vh;
-    width: 100%;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding-top: 15vh;
+  height: 88vh;
+  width: 100%;
+  position: relative;
 }
 
+/* Contenedor que devuelve al Disco */
 .linkToDisk {
-    position: absolute;
-    top: 10vh;
-    left: 1vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #00ec5e;
-    color: black;
-    padding: 0.5rem 1rem;
-    border-radius: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 1vh;
+  top: 10vh;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  background-color: #00ec5e;
+  border-radius: 1vh;
+  color: black;
 }
 
+/* h3 dentro del contenedor que devuelve al Disco */
 .linkToDisk > h3 {
-    margin-bottom: 0.4vh;
+  margin-bottom: 0.4vh;
 }
 
+/* Div que contiene los datos del perfil */
 div.ProfileCard {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 4rem;
-    height: fit-content;
-    width: fit-content;
-    position: relative !important;
-    border-radius: 1vh;
-    box-shadow: rgba(35, 35, 35, 0.4) 0px 2px 8px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 4rem;
+  height: fit-content;
+  width: fit-content;
+  position: relative !important;
+  border-radius: 1vh;
+  box-shadow: rgba(35, 35, 35, 0.4) 0px 2px 8px 0px;
 }
 
+/* Botones Modificar/Logout en el perfil */
 div.ProfileCard > button.Logout,
 button.Modify {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.25rem;
-    width: 100%;
-    border: none;
-    border-radius: 1vh;
-    font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+  border: none;
+  border-radius: 1vh;
+  font-weight: bold;
 }
 
-p.biography {
-    color: rgb(111, 111, 111);
-}
-
-button.Logout {
-    margin: 0.5rem 1rem;
-    padding: 0.5rem 1rem;
-    color: white;
-    background-color: red;
-    cursor: pointer;
-}
-
+/* Botón Modify*/
 button.Modify {
-    margin: 2.5rem 1rem 0.5rem 1rem;
-    padding: 0.5rem 1rem;
-    background-color: rgb(0, 174, 255);
-    color: white;
-    cursor: pointer;
+  margin: 2.5rem 1rem 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgb(0, 174, 255);
+  color: white;
+  cursor: pointer;
+}
+
+/* Botón Logout */
+button.Logout {
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+/* Biografía en perfil */
+p.biography {
+  color: rgb(111, 111, 111);
 }
 
 .css-cveggr-MuiListItemIcon-root {
-    min-width: none;
+  min-width: none;
 }
 
+/* Form modify del perfil */
 form.modifyInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
+/* Inputs en modify */
 form.modifyInfo > input {
-    margin-bottom: 2vh;
-    padding: 0 2vh 0 2vh;
-    width: 35vh;
+  margin-bottom: 2vh;
+  padding: 0 2vh 0 2vh;
+  width: 35vh;
 }
 
-form.modifyInfo > input:not([name='photo']) {
-    height: 5vh;
-    background-color: #deffda;
-    border: none;
-    border-radius: 1vh;
-    box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
+/* Exclusión del input photo en modify */
+form.modifyInfo > input:not([name="photo"]) {
+  height: 5vh;
+  background-color: #deffda;
+  border: none;
+  border-radius: 1vh;
+  box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
 }
 
+/* Texarea en modify */
 form.modifyInfo > textarea {
-    margin-bottom: 2vh;
-    padding: 2vh 2vh 0 2vh;
-    height: 10vh;
-    width: 35vh;
-    resize: none;
-    background-color: #deffda;
-    border: none;
-    border-radius: 1vh;
-    box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
+  margin-bottom: 2vh;
+  padding: 2vh 2vh 0 2vh;
+  height: 10vh;
+  width: 35vh;
+  resize: none;
+  background-color: #deffda;
+  border: none;
+  border-radius: 1vh;
+  box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
 }
 
+/* Labels en modify */
 form.modifyInfo > label {
-    margin: 0;
+  margin: 0;
+}
+/* Botón enviar en modify */
+form.modifyInfo > button[name="enviar"] {
+  margin: auto;
+  margin-top: 4vh;
+  bottom: 15px;
+  right: 2px;
+  height: 6vh;
+  width: 32vh;
+  position: relative;
+  border: none;
+  border-radius: 1vh;
+  background-color: rgb(0, 174, 255);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-form.modifyInfo > button[name='enviar'] {
-    margin: auto;
-    margin-top: 4vh;
-    bottom: 15px;
-    right: 2px;
-    height: 6vh;
-    width: 32vh;
-    position: relative;
-    border: none;
-    border-radius: 1vh;
-    background-color: rgb(0, 174, 255);
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
+/* Input tipo file en modify */
+form.modifyInfo > [type="file"] {
+  height: 0;
+  width: 0;
+  overflow: hidden;
 }
 
-form.modifyInfo > [type='file'] {
-    height: 0;
-    width: 0;
-    overflow: hidden;
+/* Input tipo file y labels dentro de modify */
+form.modifyInfo > [type="file"] + label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 1rem;
+  padding: 0.5rem 2rem;
+  margin-bottom: 0.5rem;
+  background: rgb(35, 218, 35);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
 }
 
-form.modifyInfo > [type='file'] + label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    margin-bottom: 1rem;
-    padding: 0.5rem 2rem;
-    margin-bottom: 0.5rem;
-    background: rgb(35, 218, 35);
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-}
-
+/* Botón de cerrar en modify */
 button.btnCloseProfile {
-    right: 22px;
-    top: 4px;
-    height: 0;
-    width: 0;
-    position: absolute;
-    transition: none;
-    background-color: transparent;
-    box-shadow: none;
+  right: 22px;
+  top: 4px;
+  height: 0;
+  width: 0;
+  position: absolute;
+  transition: none;
+  background-color: transparent;
+  box-shadow: none;
 }

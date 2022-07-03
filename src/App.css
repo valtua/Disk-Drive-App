@@ -5,6 +5,13 @@
   font-size: 2.5vh;
 }
 
+/* Inputs de forma global */
+input {
+  margin-bottom: 2vh;
+  padding: 0 2vh 0 2vh;
+  width: 35vh;
+}
+
 /* body {
     background: linear-gradient(
       180deg,
