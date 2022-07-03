@@ -22,7 +22,6 @@ import { useEffect, useState, useRef } from 'react';
 import { Box } from '@mui/system';
 
 function Disk() {
-<<<<<<< HEAD
     const [token] = useToken();
     const [disk, setDisk] = useState(null);
     const [error, setError] = useState(null);
@@ -85,71 +84,6 @@ function Disk() {
                         body: data,
                     }
                 );
-=======
-  const [token] = useToken();
-  const [disk, setDisk] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(null);
-  const [open, setOpen] = useState(false);
-  const [update, setUpdate] = useState(false);
-  const [selectedFolderId, setSelectedFolderId] = useState("");
-  const [selectedFolderName, setSelectedFolderName] = useState("");
-  const [selectedFileId, setSelectedFileId] = useState("");
-  const [selectedFileName, setSelectedFileName] = useState("");
-  const [modalAddFolder, setModalAddFolder] = useState(false);
-  const [modalAddFile, setModalAddFile] = useState(false);
-  const [modalViewFile, setModalViewFile] = useState(false);
-
-  const getUserDiskInfo = async () => {
-    try {
-      const res = await fetch("http://localhost:4000/disk", {
-        method: "GET",
-        headers: {
-          Authorization: token,
-        },
-      });
-
-      const body = await res.json();
-
-      const disk = body.data.space;
-
-      if (body.status === "error") {
-        setError(body.message);
-      }
-
-      setDisk(disk);
-    } catch (err) {
-      console.error(err);
-      setError(err.message);
-    }
-  };
-
-  const addFile = async (e) => {
-    e.preventDefault();
-
-    setError(null);
-    setLoading(true);
-
-    if (selectedFolderId) {
-      try {
-        const uploadedFile = document.querySelector("#uploadedFile");
-        const data = new FormData();
-        data.append("uploadedFile", uploadedFile.files[0]);
-
-        const res = await fetch(
-          `http://localhost:4000/upload/${selectedFolderId}`,
-          {
-            method: "POST",
-            headers: {
-              Authorization: token,
-            },
-            body: data,
-          }
-        );
-
-        const body = await res.json();
->>>>>>> 491b3a644328df8e401714383620921658eec756
 
                 const body = await res.json();
 
