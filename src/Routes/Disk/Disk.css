@@ -87,6 +87,16 @@ div.Disk button.btnDownloadFolder {
   font-size: 4vh;
 }
 
+div.Disk button.btnDeleteFolder {
+  height: 4vh;
+  width: 6vh;
+  background-color: rgb(233, 53, 53);
+  border: none;
+  border-radius: 1vh 1vh 1vh 1vh;
+  color: white;
+  font-size: 4vh;
+}
+
 /* Botón eliminar carpeta */
 .MuiIconButton-root {
   height: 4vh;
@@ -156,16 +166,21 @@ form.addForm > input[type="text"] {
 
 form.addForm > input[type="file"] {
   padding: 0.5rem;
-  width: 100%;
   border: none;
   border-radius: 1vh;
 }
 
 /* Modal para descargar el archivo */
+label.fileData {
+  padding: 2vh;
+  margin-top: 2vh;
+  background-color: rgb(243, 243, 243);
+}
+
 div.divBtnFile {
   display: flex;
-  justify-content: flex-end;
-  width: 100%;
+  align-self: flex-end;
+  margin-top: 4vh;
 }
 
 button.btnDownloadFile {
@@ -178,13 +193,24 @@ button.btnDownloadFile {
   font-size: 4vh;
 }
 
+button.btnDeleteFile {
+  margin-left: 2vh;
+  height: 4vh;
+  width: 6vh;
+  background-color: rgb(233, 53, 53);
+  border: none;
+  border-radius: 1vh 1vh 1vh 1vh;
+  color: white;
+  font-size: 4vh;
+}
+/* Botón cerrar de los modales */
 button.btnClose {
+  right: 22px;
+  top: 4px;
+  height: 0;
+  width: 0;
+  position: absolute;
+  transition: none;
   background-color: transparent;
   box-shadow: none;
-  position: absolute;
-  top: 4px;
-  right: 22px;
-  width: 0;
-  height: 0;
-  transition: none;
 }
