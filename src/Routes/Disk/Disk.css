@@ -46,7 +46,7 @@ div.folderScroll a:hover {
 }
 
 div.Disk button.btnBackScroll {
-  margin: 0 1vh 0 1vh;
+  margin: 0 1vh 0 3vh;
   height: 6vh;
   width: 6vh;
   border-radius: 1vh 1vh 1vh 1vh;
@@ -54,7 +54,7 @@ div.Disk button.btnBackScroll {
 }
 
 div.Disk button.btnForwardScroll {
-  margin: 0 1vh 0 1vh;
+  margin: 0 3vh 0 1vh;
   height: 6vh;
   width: 6vh;
   border-radius: 1vh 1vh 1vh 1vh;
@@ -159,14 +159,6 @@ form.addForm > input[type="file"] {
   width: 100%;
   border: none;
   border-radius: 1vh;
-}
-
-button.btnClose {
-  right: 0;
-  top: 0;
-  position: absolute;
-  background-color: transparent;
-  box-shadow: none;
 }
 
 /* Modal para descargar el archivo */
