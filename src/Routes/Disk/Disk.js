@@ -174,6 +174,7 @@ function Disk() {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
+      console.log(body);
 
       if (body.status === "error") {
         setError(body.message);

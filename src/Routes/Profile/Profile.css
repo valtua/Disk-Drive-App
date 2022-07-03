@@ -1,140 +1,144 @@
 div.Profile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: 100%;
-    height: 88vh;
-    padding-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding-top: 15vh;
+  height: 88vh;
+  width: 100%;
 }
 
 div.ProfileCard {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 4rem;
-    border-radius: 1vh;
-    box-shadow: rgba(35, 35, 35, 0.4) 0px 2px 8px 0px;
-    width: fit-content;
-    height: fit-content;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 4rem;
+  height: fit-content;
+  width: fit-content;
+  position: relative !important;
+  border-radius: 1vh;
+  box-shadow: rgba(35, 35, 35, 0.4) 0px 2px 8px 0px;
 }
 
-div.ProfileCard > button {
-    border: none;
-    border-radius: 1vh;
-    font-weight: bold;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.25rem;
+div.ProfileCard > button.Logout,
+button.Modify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+  border: none;
+  border-radius: 1vh;
+  font-weight: bold;
 }
 
 p.biography {
-    color: rgb(111, 111, 111);
+  color: rgb(111, 111, 111);
 }
 
 button.Logout {
-    padding: 0.5rem 1rem;
-    background-color: rgb(255, 120, 120);
-    margin: 0.5rem 1rem;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgb(255, 120, 120);
+  cursor: pointer;
 }
 
 button.Modify {
-    padding: 0.5rem 1rem;
-    background-color: rgb(120, 203, 255);
-    margin: 2.5rem 1rem 0.5rem 1rem;
+  margin: 2.5rem 1rem 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgb(120, 203, 255);
+  cursor: pointer;
 }
 
 .css-cveggr-MuiListItemIcon-root {
-    min-width: none;
+  min-width: none;
 }
 
 form.modifyInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
 form.modifyInfo > input {
-    margin-bottom: 2vh;
-    padding: 0 2vh 0 2vh;
-    width: 35vh;
+  margin-bottom: 2vh;
+  padding: 0 2vh 0 2vh;
+  width: 35vh;
 }
 
-form.modifyInfo > input:not([name='photo']) {
-    background-color: #deffda;
-    border-radius: 1vh;
-    border: none;
-    box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
-    height: 5vh;
+form.modifyInfo > input:not([name="photo"]) {
+  height: 5vh;
+  background-color: #deffda;
+  border: none;
+  border-radius: 1vh;
+  box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
 }
 
 form.modifyInfo > textarea {
-    border-radius: 1vh;
-    border: none;
-    box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
-    margin-bottom: 2vh;
-    resize: none;
-    background-color: #deffda;
-    padding: 2vh 2vh 0 2vh;
-    height: 10vh;
-    width: 35vh;
+  margin-bottom: 2vh;
+  padding: 2vh 2vh 0 2vh;
+  height: 10vh;
+  width: 35vh;
+  resize: none;
+  background-color: #deffda;
+  border: none;
+  border-radius: 1vh;
+  box-shadow: inset 0 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
 }
 
 form.modifyInfo > label {
-    margin: 0;
+  margin: 0;
 }
 
-form.modifyInfo > button[name='enviar'] {
-    border-radius: 1vh;
-    border: none;
-    background-color: rgb(0, 174, 255);
-    color: white;
-    font-weight: bold;
-    margin: auto;
-    margin-top: 4vh;
-    height: 6vh;
-    width: 32vh;
-    position: relative;
-    right: 2px;
-    bottom: 15px;
-    cursor: pointer;
+form.modifyInfo > button[name="enviar"] {
+  margin: auto;
+  margin-top: 4vh;
+  bottom: 15px;
+  right: 2px;
+  height: 6vh;
+  width: 32vh;
+  position: relative;
+  border: none;
+  border-radius: 1vh;
+  background-color: rgb(0, 174, 255);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-form.modifyInfo > [type='file'] {
-    height: 0;
-    overflow: hidden;
-    width: 0;
+form.modifyInfo > [type="file"] {
+  height: 0;
+  width: 0;
+  overflow: hidden;
 }
 
-form.modifyInfo > [type='file'] + label {
-    background: rgb(35, 218, 35);
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding: 0.5rem 2rem;
-    margin: auto;
-    margin-bottom: 0.5rem;
+form.modifyInfo > [type="file"] + label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 1rem;
+  padding: 0.5rem 2rem;
+  margin-bottom: 0.5rem;
+  background: rgb(35, 218, 35);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
 }
 
-button[aria-label='close'] {
-    flex-grow: 1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: transparent;
-    box-shadow: none;
-    padding-left: 86%;
+button.btnCloseProfile {
+  right: 22px;
+  top: 4px;
+  height: 0;
+  width: 0;
+  position: absolute;
+  transition: none;
+  background-color: transparent;
+  box-shadow: none;
 }
