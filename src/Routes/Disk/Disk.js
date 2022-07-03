@@ -17,8 +17,10 @@ function Disk() {
   const [token] = useToken();
   const [disk, setDisk] = useState(null);
   const [, setError] = useState(null);
-  const [selectedFolder, setSelectedFolder] = useState("");
-  const [selectedFile, setSelectedFile] = useState("");
+  const [selectedFolderId, setSelectedFolderId] = useState("");
+  const [selectedFolderName, setSelectedFolderName] = useState("");
+  const [selectedFileId, setSelectedFileId] = useState("");
+  const [selectedFileName, setSelectedFileName] = useState("");
   const [modalAddFolder, setModalAddFolder] = useState(false);
   const [modalAddFile, setModalAddFile] = useState(false);
   const [modalViewFile, setModalViewFile] = useState(false);
@@ -55,14 +57,14 @@ function Disk() {
     setError(null);
     setLoading(true);
 
-    if (selectedFolder) {
+    if (selectedFolderId) {
       try {
         const uploadedFile = document.querySelector("#uploadedFile");
         const data = new FormData();
         data.append("uploadedFile", uploadedFile.files[0]);
 
         const res = await fetch(
-          `http://localhost:4000/upload/${selectedFolder}`,
+          `http://localhost:4000/upload/${selectedFolderId}`,
           {
             method: "POST",
             headers: {
@@ -158,7 +160,7 @@ function Disk() {
 
     try {
       const res = await fetch(
-        `http://localhost:4000/download/folder/${selectedFolder}`,
+        `http://localhost:4000/download/folder/${selectedFolderId}`,
         {
           headers: {
             Authorization: token,
@@ -169,7 +171,7 @@ function Disk() {
       const url = window.URL.createObjectURL(body);
       const link = document.createElement("a");
       link.href = url;
-      link.download = selectedFolder;
+      link.download = selectedFolderName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -194,7 +196,7 @@ function Disk() {
     if (window.confirm("¿Deseas eliminar la carpeta?")) {
       try {
         const res = await fetch(
-          `http://localhost:4000/folder/${selectedFolder}`,
+          `http://localhost:4000/folder/${selectedFolderId}`,
           {
             method: "DELETE",
             headers: {
@@ -209,7 +211,7 @@ function Disk() {
           setError(body.message);
         } else {
           setUpdate(!update);
-          setSelectedFolder("");
+          setSelectedFolderId("");
         }
       } catch (err) {
         console.error(err);
@@ -226,7 +228,7 @@ function Disk() {
 
     try {
       const res = await fetch(
-        `http://localhost:4000/download/file/${selectedFile}`,
+        `http://localhost:4000/download/file/${selectedFileId}`,
         {
           headers: {
             Authorization: token,
@@ -237,7 +239,7 @@ function Disk() {
       const url = window.URL.createObjectURL(body);
       const link = document.createElement("a");
       link.href = url;
-      link.download = selectedFile;
+      link.download = selectedFileName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -260,12 +262,15 @@ function Disk() {
 
     if (window.confirm("¿Deseas eliminar el archivo?")) {
       try {
-        const res = await fetch(`http://localhost:4000/file/${selectedFile}`, {
-          method: "DELETE",
-          headers: {
-            Authorization: token,
-          },
-        });
+        const res = await fetch(
+          `http://localhost:4000/file/${selectedFileId}`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
 
         const body = await res.json();
 
@@ -273,7 +278,7 @@ function Disk() {
           setError(body.message);
         } else {
           setUpdate(!update);
-          setSelectedFile("");
+          setSelectedFileId("");
         }
       } catch (err) {
         console.error(err);
@@ -324,7 +329,8 @@ function Disk() {
                   <a
                     key={folder.id}
                     onClick={() => {
-                      setSelectedFolder(folder.id);
+                      setSelectedFolderId(folder.id);
+                      setSelectedFolderName(folder.name);
                     }}
                   >
                     {folder.name}
@@ -391,16 +397,18 @@ function Disk() {
             <Typography
               sx={{ color: "black", cursor: "pointer" }}
               onClick={() => {
-                setSelectedFolder("");
+                setSelectedFolderId("");
               }}
             >
               Disk
             </Typography>
-            {selectedFolder && (
-              <Typography sx={{ color: "black" }}>{selectedFolder}</Typography>
+            {selectedFolderId && (
+              <Typography sx={{ color: "black" }}>
+                {selectedFolderName}
+              </Typography>
             )}
           </Breadcrumbs>
-          {selectedFolder && (
+          {selectedFolderId && (
             <>
               <IconButton
                 aria-label="download"
@@ -427,18 +435,19 @@ function Disk() {
         <div className="fileGallery">
           {/* Aquí se mostrarán todos los archivos de la carpeta seleccionada */}
           <ul className="fileList">
-            {selectedFolder
+            {selectedFolderId
               ? disk &&
                 disk.folders
                   .filter((folder) => {
-                    return folder.id === selectedFolder;
+                    return folder.id === selectedFolderId;
                   })[0]
                   .files.map((file) => {
                     return (
                       <li
                         key={file.id}
                         onClick={() => {
-                          setSelectedFile(file.id);
+                          setSelectedFileId(file.id);
+                          setSelectedFileName(file.name);
                           setModalViewFile(true);
                         }}
                       >
@@ -452,7 +461,8 @@ function Disk() {
                     <li
                       key={file.id}
                       onClick={() => {
-                        setSelectedFile(file.id);
+                        setSelectedFileId(file.id);
+                        setSelectedFileName(file.name);
                         setModalViewFile(true);
                       }}
                     >
@@ -477,7 +487,6 @@ function Disk() {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
                 margin: "2vh",
                 padding: "5vh",
                 position: "relative",
@@ -494,9 +503,7 @@ function Disk() {
               >
                 <Cancel sx={{ color: "red" }} />
               </Fab>
-              <p>File Name:</p>
-              <p>Upload Date:</p>
-              <p>Size:</p>
+              <label className="fileData">File Name: {selectedFileName} </label>
               <div className="divBtnFile">
                 <IconButton
                   aria-label="delete"
@@ -561,7 +568,7 @@ function Disk() {
               >
                 <Cancel sx={{ color: "red" }} />
               </Fab>
-              <h6>./Disk{selectedFolder && `/${selectedFolder}`}</h6>
+              <h6>./Disk{selectedFolderId && `/${selectedFolderName}`}</h6>
               <form className="addForm" onSubmit={addFile}>
                 <input
                   id="uploadedFile"
