@@ -53,12 +53,12 @@ div.formSelector textarea {
 }
 
 /* Botones de selección Login y SignUp */
-div.formSelector button:not([name='enviar']) {
-    border-radius: 1vh;
-    margin-top: 4vh;
-    height: 6vh;
-    width: 20vh;
-    color: black;
+div.formSelector button:not([name="enviar"]) {
+  border-radius: 1vh;
+  margin-top: 4vh;
+  height: 6vh;
+  width: 20vh;
+  color: black;
 }
 
 div.formSelector button[aria-pressed="true"] {
@@ -70,31 +70,18 @@ div.formSelector button[aria-pressed="false"] {
 }
 
 /* Botones de Enviar en ambos formularios */
-<<<<<<< HEAD
 div.formSelector button[name="enviar"] {
   border-radius: 1vh;
   border: none;
-  background-color: rgb(35, 218, 35);
+  background-color: rgb(0, 174, 255);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
   margin: 4vh;
   height: 6vh;
   width: 35vh;
   position: relative;
   right: 2px;
   bottom: 15px;
-=======
-div.formSelector button[name='enviar'] {
-    border-radius: 1vh;
-    border: none;
-    background-color: rgb(0, 174, 255);
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    margin: 4vh;
-    height: 6vh;
-    width: 35vh;
-    position: relative;
-    right: 2px;
-    bottom: 15px;
->>>>>>> 52f273a290627a7bfd0360ed694a3a6740ca10e7
 }
 
 form.signup > [type="file"] {
