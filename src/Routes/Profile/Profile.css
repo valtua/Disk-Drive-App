@@ -60,14 +60,16 @@ p.biography {
 button.Logout {
     margin: 0.5rem 1rem;
     padding: 0.5rem 1rem;
-    background-color: rgb(255, 120, 120);
+    color: white;
+    background-color: red;
     cursor: pointer;
 }
 
 button.Modify {
     margin: 2.5rem 1rem 0.5rem 1rem;
     padding: 0.5rem 1rem;
-    background-color: rgb(120, 203, 255);
+    background-color: rgb(0, 174, 255);
+    color: white;
     cursor: pointer;
 }
 
