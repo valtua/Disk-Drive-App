@@ -14,6 +14,7 @@ import {
   Delete,
   Download,
   Cancel,
+  UploadFile,
 } from "@mui/icons-material";
 import { useToken } from "../../TokenContext";
 import { Navigate } from "react-router-dom";
@@ -597,7 +598,7 @@ function Disk() {
               </label>
               <div className="divBtnFile">
                 <IconButton
-                  aria-label="delete"
+                  aria-label="download"
                   size="large"
                   className="btnDownloadFile"
                   onClick={downloadFile}
@@ -670,7 +671,10 @@ function Disk() {
                   type="file"
                   required
                 />
-                <label htmlFor="uploadedFile">Seleccionar archivo</label>
+                <label htmlFor="uploadedFile">
+                  <UploadFile />
+                  Seleccionar archivo
+                </label>
                 <button>{loading ? "Añadiendo..." : "Añadir"}</button>
               </form>
             </Box>

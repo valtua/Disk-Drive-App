@@ -96,6 +96,7 @@ div.Disk button.btnDownloadFolder {
 
 /* Botón descargar carpeta */
 div.Disk button.btnDeleteFolder {
+  margin-right: 2vh;
   height: 4vh;
   width: 6vh;
   background-color: rgb(233, 53, 53);
@@ -191,12 +192,11 @@ div.divBtnFile {
 button.btnDownloadFile {
   height: 4vh;
   width: 6vh;
-  background-color: rgb(0, 174, 255);
+  background-color: rgb(0, 174, 255) !important;
   border: none;
   border-radius: 1vh;
   color: white;
   font-size: 4vh;
-  transition: none;
 }
 
 /* Botón eliminar archivo */
@@ -204,7 +204,7 @@ button.btnDeleteFile {
   margin-left: 2vh;
   height: 4vh;
   width: 6vh;
-  background-color: rgb(233, 53, 53);
+  background-color: rgb(233, 53, 53) !important;
   border: none;
   border-radius: 1vh;
   color: white;
@@ -234,13 +234,12 @@ form.addForm > [type="file"] + label {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   padding: 0.5rem 2rem;
-  width: 100%;
+  margin-bottom: 0.5rem;
   background: rgb(35, 218, 35);
   border: none;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
-  font-weight: bold;
 }
