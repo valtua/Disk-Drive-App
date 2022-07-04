@@ -14,11 +14,13 @@ import { useToken } from "../../TokenContext";
 import "./Header.css";
 
 function Header() {
+  // Declaración de useToken y UseState para el manejo del token, el avatar y el menú del avatar
   const [token, setToken] = useToken();
   const [photo, setPhoto] = useState(null);
   const [dropdown, setDropdown] = useState(null);
   const open = Boolean(dropdown);
 
+  // Función que recoge el usuario que está logueado
   const getUserInfo = async () => {
     try {
       const res = await fetch("http://localhost:4000/user", {
@@ -28,20 +30,23 @@ function Header() {
         },
       });
 
+      // Almacenamos los datos json
       const body = await res.json();
-
+      // Almacenamos, los datos recibidos
       const user = body.data.user;
-
+      // Colocamos la imagen del perfil
       setPhoto(user.photo);
     } catch (err) {
       console.error(err);
     }
   };
 
+  // Función que gestiona el menú desplegable del avatar, en este caso lo abre
   const handleClick = (event) => {
     setDropdown(event.currentTarget);
   };
 
+  // Y aquí lo cerramos
   const handleClose = () => {
     setDropdown(null);
   };
