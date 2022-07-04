@@ -103,6 +103,10 @@ Open another terminal to start the react frontend:
 npm start
 ```
 
+## Notes
+
+Uploaded files will be saved in the "_uploads_" folder, which can be found in the backend folder. User profile photos are also inside "_uploads_", in the "_photos_" folder.
+
 ## Credits
 
 Disk Drive App was made by:

@@ -670,6 +670,7 @@ function Disk() {
                   type="file"
                   required
                 />
+                <label htmlFor="uploadedFile">Seleccionar archivo</label>
                 <button>{loading ? "Añadiendo..." : "Añadir"}</button>
               </form>
             </Box>
