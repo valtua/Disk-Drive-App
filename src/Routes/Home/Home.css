@@ -3,8 +3,7 @@ div.Home {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 15vh;
-  height: 88vh;
+  padding-top: 11vh;
 }
 
 /* Div que contiene el Login y el Signup */

@@ -11,9 +11,11 @@ import { useToken } from "../../TokenContext";
 import "./Home.css";
 
 function Home() {
+  // Declaraciones de useState para el cambio de formulario (Login/SignUp) y los mensajes emergentes (open/setOpen)
   const [alignment, setAlignment] = useState("login");
   const [open, setOpen] = useState(false);
 
+  // UseState de datos del formulario de SignUp
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,26 +26,31 @@ function Home() {
   const [error, setError] = useState(null);
   const [token, setToken] = useToken();
 
+  // Si estamos logueados, nos redirecciona a la página del disco
   if (token) return <Navigate to="/disk" />;
 
+  // Función que maneja el cambio de un formulario a otro
   const handleChange = (event, newAlignment) => {
+    // Si el valor que recibimos es login, cambiamos a ese formulario
     if (alignment === "login") {
       setAlignment(newAlignment || "login");
+      // Si el valor que recibimos es signup, cambiamos a ese formulario
     } else if (alignment === "signup") {
       setAlignment(newAlignment || "signup");
     }
   };
 
+  // Función que gestiona el cierre de los mensajes emergentes
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
     setMessage(null);
     setError(null);
   };
 
+  // Función que maneja los datos del login
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -51,6 +58,7 @@ function Home() {
     setLoading(true);
 
     try {
+      // Fetch a funcionalidad de login, pasamos los datos necesarios en el body (email y password)
       const res = await fetch("http://localhost:4000/login", {
         method: "POST",
         headers: {
@@ -62,11 +70,13 @@ function Home() {
         }),
       });
 
+      // Almacenamos los datos json
       const body = await res.json();
-
+      // Lanzamos un error en caso de que no recibamos los datos
       if (body.status === "error") {
         setError(body.message);
       } else {
+        // En caso contrario, cogemos el token recibido del login
         setToken(body.data.token);
       }
     } catch (err) {
@@ -74,11 +84,13 @@ function Home() {
       setError(err.message);
       setOpen(true);
     } finally {
+      // Email y password pasan a estar vacíos
       setEmail("");
       setPassword("");
       setLoading(false);
     }
   };
+  // Función que maneja los datos del SignUp
   const handleSignup = async (e) => {
     e.preventDefault();
 
@@ -86,6 +98,7 @@ function Home() {
     setLoading(true);
 
     try {
+      // Almacenamos los datos en variables que utilizaremos para su envío
       const photo = document.querySelector("#photo");
       const data = new FormData();
       data.append("name", name);
@@ -94,16 +107,20 @@ function Home() {
       data.append("biography", biography);
       data.append("photo", photo.files[0]);
 
+      // Fetch a funcionalidad de registro, pasamos los datos necesarios en el body (almacenado en data anteriormente)
       const res = await fetch("http://localhost:4000/register", {
         method: "POST",
         body: data,
       });
 
+      // Almacenamos los datos json
       const body = await res.json();
 
+      // Lanzamos un error en caso de que no recibamos los datos
       if (body.status === "error") {
         setError(body.message);
       } else {
+        // Mandamos un mensaje al usuario tras el registro y cambiamos al apartado de login
         setMessage(body.message);
         setAlignment("login");
       }
@@ -111,6 +128,7 @@ function Home() {
       console.error(err);
       setError(err.message);
     } finally {
+      // El estado de los mensajes (setOpen) pasa a ser true y la carga está finalizada
       setOpen(true);
       setLoading(false);
     }
