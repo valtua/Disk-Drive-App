@@ -203,6 +203,7 @@ button.btnDownloadFile {
   border-radius: 1vh;
   color: white;
   font-size: 4vh;
+  transition: none;
 }
 
 /* Botón eliminar archivo */

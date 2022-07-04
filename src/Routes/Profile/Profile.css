@@ -19,6 +19,7 @@ div.Profile {
   left: 1vh;
   top: 10vh;
   padding: 0.5rem 1rem;
+  z-index: 100;
   position: absolute;
   background-color: #00ec5e;
   border-radius: 1vh;
@@ -43,6 +44,13 @@ div.ProfileCard {
   position: relative !important;
   border-radius: 1vh;
   box-shadow: rgba(35, 35, 35, 0.4) 0px 2px 8px 0px;
+}
+
+/* Datos del perfil con resolución menor/igual a 315px */
+@media (max-width: 315px) {
+  div.ProfileCard {
+    padding: 1vh;
+  }
 }
 
 /* Botones Modificar/Logout en el perfil */
