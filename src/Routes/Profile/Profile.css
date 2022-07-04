@@ -47,9 +47,9 @@ div.ProfileCard {
 }
 
 /* Datos del perfil con resolución menor/igual a 315px */
-@media (max-width: 315px) {
+@media (max-width: 420px) {
   div.ProfileCard {
-    padding: 1vh;
+    padding: 2vh;
   }
 }
 
