@@ -16,8 +16,8 @@ div.folderScroll {
     margin: auto;
     width: 90%;
     color: #000000;
-    border: 0.2vh solid #000000;
     border-radius: 0.5vh;
+    box-shadow: inset 0px 4px 13px 0px rgba(0, 0, 0, 0.25);
     overflow: auto;
     scroll-behavior: smooth;
 }
@@ -25,6 +25,7 @@ div.folderScroll {
 /* Flecha atrás del buscador de carpetas */
 div.Disk button.btnBackScroll {
     margin: 0 1vh 0 3vh;
+    color: black;
     height: 6vh;
     width: 6vh;
     border-radius: 1vh;
@@ -34,6 +35,7 @@ div.Disk button.btnBackScroll {
 /* Flecha adelante del buscador de carpetas */
 div.Disk button.btnForwardScroll {
     margin: 0 3vh 0 1vh;
+    color: black;
     height: 6vh;
     width: 6vh;
     border-radius: 1vh;
