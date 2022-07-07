@@ -69,6 +69,7 @@ function AlertDialog(props) {
         );
 
         const body = await res.json();
+
         // Lanzamos un error en caso de que no recibamos los datos
         if (body.status === "error") {
           props.setError(body.message);
@@ -85,7 +86,7 @@ function AlertDialog(props) {
         // Tras finalizar todo, la carga termina, el mensaje aparece (setOpen) y el Modal que visualiza el archivo seleccionado se cierra
         props.setLoading(false);
         props.setOpen(true);
-        props.modalFile(false);
+        props.modalFile.setModalViewFile(false);
       }
     }
   };
@@ -109,9 +110,7 @@ function AlertDialog(props) {
           <Button
             onClick={() => {
               props.setOpenAlert(false);
-              props.selectedFolder.selectedFolderId
-                ? deleteFolder()
-                : deleteFile();
+              props.selectedFile.selectedFileId ? deleteFile() : deleteFolder();
             }}
             autoFocus
           >

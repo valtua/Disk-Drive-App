@@ -32,7 +32,7 @@ function Disk() {
   const [open, setOpen] = useState(false);
   const [update, setUpdate] = useState(false);
 
-  // Declaración de useState que usaremos para manejar nombre/id de carpetas y archivos, además de la visualización de los Modales
+  // Declaración de useState que usaremos para manejar nombre/id de carpetas y archivos, además de la visualización de los Modales y el mensaje al eliminar carpetas/archivos
   const [selectedFolderId, setSelectedFolderId] = useState("");
   const [selectedFolderName, setSelectedFolderName] = useState("");
   const [selectedFileId, setSelectedFileId] = useState("");
@@ -276,7 +276,7 @@ function Disk() {
             update={{ update, setUpdate }}
             selectedFolder={{ selectedFolderId, setSelectedFolderId }}
             selectedFile={{ selectedFileId, setSelectedFileId }}
-            modalFile={setModalViewFile}
+            modalFile={{ setModalViewFile }}
           />
 
           <ModalAddFolder
