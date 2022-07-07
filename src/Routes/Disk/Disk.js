@@ -168,7 +168,7 @@ function Disk() {
             {disk &&
               disk.folders.map((folder) => {
                 return (
-                  <a
+                  <p
                     key={folder.id}
                     onClick={() => {
                       setSelectedFolderId(folder.id);
@@ -176,7 +176,7 @@ function Disk() {
                     }}
                   >
                     {folder.name}
-                  </a>
+                  </p>
                 );
               })}
           </div>
