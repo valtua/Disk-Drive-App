@@ -146,6 +146,60 @@ function Disk() {
   } else {
     return (
       <div className="Disk">
+        {/* Mensajes de confirmación al usuario para eliminar carpetas/archivos */}
+        <AlertDialog
+          openAlert={alertMessage}
+          setOpenAlert={setAlertMessage}
+          setError={setError}
+          setMessage={setMessage}
+          setLoading={setLoading}
+          setOpen={setOpen}
+          update={{ update, setUpdate }}
+          selectedFolder={{ selectedFolderId, setSelectedFolderId }}
+          selectedFile={{ selectedFileId, setSelectedFileId }}
+          modalFile={{ setModalViewFile }}
+        />
+
+        {/* Modal para agregar carpeta (se abre con btnFolderAdd) */}
+        <ModalAddFolder
+          openAlert={alertMessage}
+          setOpenAlert={setAlertMessage}
+          setError={setError}
+          setMessage={setMessage}
+          loading={{ loading, setLoading }}
+          setOpen={setOpen}
+          update={{ update, setUpdate }}
+          addFolder={{ modalAddFolder, setModalAddFolder }}
+        />
+
+        {/* Modal para agregar archivo (se abre con btnFileAdd) */}
+        <ModalAddFile
+          openAlert={alertMessage}
+          setOpenAlert={setAlertMessage}
+          setError={setError}
+          setMessage={setMessage}
+          loading={{ loading, setLoading }}
+          setOpen={setOpen}
+          update={{ update, setUpdate }}
+          addFile={{ modalAddFile, setModalAddFile }}
+          selectedFolder={{ selectedFolderId, setSelectedFolderId }}
+          folderName={{ selectedFolderName, setSelectedFolderName }}
+        />
+
+        {/* Modal para visualizar el archivo (se abre pinchando el archivo (li) situado en fileGallery) */}
+        <ModalViewFile
+          openAlert={alertMessage}
+          setOpenAlert={setAlertMessage}
+          setError={setError}
+          setMessage={setMessage}
+          loading={{ loading, setLoading }}
+          setOpen={setOpen}
+          update={{ update, setUpdate }}
+          viewFile={{ modalViewFile, setModalViewFile }}
+          selectedFile={{ selectedFileId, setSelectedFileId }}
+          fileName={{ selectedFileName, setSelectedFileName }}
+        />
+
         <div className="folderSearch">
           <IconButton
             aria-label="arrowBack"
@@ -265,56 +319,6 @@ function Disk() {
                   );
                 })}
           </ul>
-
-          <AlertDialog
-            openAlert={alertMessage}
-            setOpenAlert={setAlertMessage}
-            setError={setError}
-            setMessage={setMessage}
-            setLoading={setLoading}
-            setOpen={setOpen}
-            update={{ update, setUpdate }}
-            selectedFolder={{ selectedFolderId, setSelectedFolderId }}
-            selectedFile={{ selectedFileId, setSelectedFileId }}
-            modalFile={{ setModalViewFile }}
-          />
-
-          <ModalAddFolder
-            openAlert={alertMessage}
-            setOpenAlert={setAlertMessage}
-            setError={setError}
-            setMessage={setMessage}
-            loading={{ loading, setLoading }}
-            setOpen={setOpen}
-            update={{ update, setUpdate }}
-            addFolder={{ modalAddFolder, setModalAddFolder }}
-          />
-
-          <ModalAddFile
-            openAlert={alertMessage}
-            setOpenAlert={setAlertMessage}
-            setError={setError}
-            setMessage={setMessage}
-            loading={{ loading, setLoading }}
-            setOpen={setOpen}
-            update={{ update, setUpdate }}
-            addFile={{ modalAddFile, setModalAddFile }}
-            selectedFolder={{ selectedFolderId, setSelectedFolderId }}
-            folderName={{ selectedFolderName, setSelectedFolderName }}
-          />
-
-          <ModalViewFile
-            openAlert={alertMessage}
-            setOpenAlert={setAlertMessage}
-            setError={setError}
-            setMessage={setMessage}
-            loading={{ loading, setLoading }}
-            setOpen={setOpen}
-            update={{ update, setUpdate }}
-            viewFile={{ modalViewFile, setModalViewFile }}
-            selectedFile={{ selectedFileId, setSelectedFileId }}
-            fileName={{ selectedFileName, setSelectedFileName }}
-          />
 
           <Fab
             color="primary"
