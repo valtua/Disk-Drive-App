@@ -2,7 +2,6 @@ import {
   IconButton,
   Fab,
   Breadcrumbs,
-  Modal,
   Typography,
   Snackbar,
   Alert,
@@ -11,8 +10,6 @@ import {
   Add,
   Delete,
   Download,
-  Cancel,
-  UploadFile,
   ArrowBackIos,
   ArrowForwardIos,
 } from "@mui/icons-material";
@@ -20,8 +17,10 @@ import { useToken } from "../../TokenContext";
 import { Navigate } from "react-router-dom";
 import "./Disk.css";
 import { useEffect, useState, useRef } from "react";
-import { Box } from "@mui/system";
 import AlertDialog from "../../Components/alertDialog/alertDialog";
+import ModalAddFolder from "../../Components/Modals/ModalAddFolder";
+import ModalAddFile from "../../Components/Modals/ModalAddFile";
+import ModalViewFile from "../../Components/Modals/ModalViewFile";
 
 function Disk() {
   // Declaraciones de useToken y useState
@@ -71,126 +70,6 @@ function Disk() {
     }
   };
 
-  // Función para agregar un archivo, dentro de una carpeta, o en la raíz
-  const addFile = async (e) => {
-    e.preventDefault();
-
-    setError(null);
-    setLoading(true);
-
-    // Si tenemos seleccionada una carpeta, el archivo se subirá ahí
-    if (selectedFolderId) {
-      try {
-        const uploadedFile = document.querySelector("#uploadedFile");
-        const data = new FormData();
-        data.append("uploadedFile", uploadedFile.files[0]);
-
-        // Realizamos el post de los datos, con el token de seguridad y los datos en el body
-        const res = await fetch(
-          `http://localhost:4000/upload/${selectedFolderId}`,
-          {
-            method: "POST",
-            headers: {
-              Authorization: token,
-            },
-            body: data,
-          }
-        );
-
-        const body = await res.json();
-        // Lanzamos un error en caso de que no recibamos los datos
-        if (body.status === "error") {
-          setError(body.message);
-        } else {
-          // Mandamos un mensaje al usuario confirmando que se ha subido correctamente y updateamos para que se vean los cambios reflejados
-          setMessage(body.message);
-          setUpdate(!update);
-        }
-      } catch (err) {
-        console.error(err);
-        setError(err.message);
-      } finally {
-        // Tras finalizar todo, la carga termina, el mensaje (setOpen) aparece, y el Modal de subir archivo se cierra
-        setLoading(false);
-        setOpen(true);
-        setModalAddFile(false);
-      }
-    } else {
-      // Si no hay una carpeta seleccionada, subimos el archivo en la raíz, el proceso es el mismo que en el anterior, pero la ruta del fetch es la raíz
-      try {
-        const uploadedFile = document.querySelector("#uploadedFile");
-        const data = new FormData();
-        data.append("uploadedFile", uploadedFile.files[0]);
-
-        const res = await fetch("http://localhost:4000/upload", {
-          method: "POST",
-          headers: {
-            Authorization: token,
-          },
-          body: data,
-        });
-
-        const body = await res.json();
-        // Lanzamos un error en caso de que no recibamos los datos
-        if (body.status === "error") {
-          setError(body.message);
-        } else {
-          // Mandamos un mensaje al usuario confirmando que se ha subido correctamente y updateamos para que se vean los cambios reflejados
-          setMessage(body.message);
-          setUpdate(!update);
-        }
-      } catch (err) {
-        console.error(err);
-        setError(err.message);
-      } finally {
-        // Tras finalizar todo, la carga termina, el mensaje (setOpen) aparece, y el Modal de subir archivo se cierra
-        setLoading(false);
-        setOpen(true);
-        setModalAddFile(false);
-      }
-    }
-  };
-
-  // Función para añadir una carpeta
-  const addFolder = async (e) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
-
-    try {
-      // Realizamos el post de los datos, con el token de seguridad y los datos en el body (en este caso es el nombre (value) que se le da a la carpeta
-      const res = await fetch("http://localhost:4000/folder", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-        body: JSON.stringify({
-          folder: document.getElementById("folder").value,
-        }),
-      });
-
-      const body = await res.json();
-      // Lanzamos un error en caso de que no recibamos los datos
-      if (body.status === "error") {
-        setError(body.message);
-      } else {
-        // Mandamos un mensaje al usuario confirmando que se ha subido correctamente y updateamos para que se vean los cambios reflejados
-        setMessage(body.message);
-        setUpdate(!update);
-      }
-    } catch (err) {
-      console.error(err);
-      setError(err.message);
-    } finally {
-      // Tras finalizar todo, la carga termina, el mensaje (setOpen) aparece, y el Modal de subir carpeta se cierra
-      setLoading(false);
-      setOpen(true);
-      setModalAddFolder(false);
-      setUpdate(!update);
-    }
-  };
-
   // Función para descargar una carpeta y su contenido
   const downloadFolder = async () => {
     setError(null);
@@ -216,54 +95,6 @@ function Disk() {
       link.href = url;
       // Le damos nombre a la propiedad de descarga del link
       link.download = selectedFolderName;
-      // Insertamos el link en el body
-      document.body.appendChild(link);
-      // Accionamos el link
-      link.click();
-      // Retiramos el link del body
-      document.body.removeChild(link);
-      // Eliminamos la url
-      window.URL.revokeObjectURL(url);
-
-      // Lanzamos un error en caso de que no recibamos los datos
-      if (body.status === "error") {
-        setError(body.message);
-      }
-    } catch (err) {
-      console.error(err);
-      setError(err.message);
-    } finally {
-      // Tras finalizar todo, la carga termina, el icono de descarga aparece (setOpen)
-      setLoading(false);
-      setOpen(true);
-    }
-  };
-
-  // Función para descargar un archivo
-  const downloadFile = async () => {
-    setError(null);
-    setLoading(true);
-
-    try {
-      // Realizamos la petición, con el token de seguridad. Utilizamos la id del archivo a descargar
-      const res = await fetch(
-        `http://localhost:4000/download/file/${selectedFileId}`,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      // Tranformamos la respuesta en un objeto de tipo
-      const body = await res.blob();
-      // Creamos la url de descarga de archivo
-      const url = window.URL.createObjectURL(body);
-      // Creamos el elemento para contener la url
-      const link = document.createElement("a");
-      // Le asignamos a link la referencia de la url
-      link.href = url;
-      // Le damos nombre a la propiedad de descarga del link
-      link.download = selectedFileName;
       // Insertamos el link en el body
       document.body.appendChild(link);
       // Accionamos el link
@@ -358,51 +189,6 @@ function Disk() {
             <ArrowForwardIos fontSize="inherit" />
           </IconButton>
         </div>
-        <Modal
-          open={modalAddFolder}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "rgba(255, 255, 255, 0.5)",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              margin: "2vh",
-              padding: "5vh",
-              position: "relative",
-              backgroundColor: "white",
-              borderRadius: "1vh",
-            }}
-          >
-            <Fab
-              aria-label="close"
-              className="btnClose"
-              onClick={() => {
-                setModalAddFolder(false);
-              }}
-            >
-              <Cancel sx={{ color: "red" }} />
-            </Fab>
-            <form className="addForm" onSubmit={addFolder}>
-              <label htmlFor="folder">Nombre de carpeta</label>
-              <input
-                id="folder"
-                name="folder"
-                type="text"
-                placeholder="Mi-Carpeta"
-                required
-              />
-              <button>{loading ? "Añadiendo..." : "Añadir"}</button>
-            </form>
-          </Box>
-        </Modal>
         <div className="directory">
           <Breadcrumbs aria-label="breadcrumb">
             <Typography
@@ -493,60 +279,42 @@ function Disk() {
             modalFile={setModalViewFile}
           />
 
-          <Modal
-            open={modalViewFile}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "rgba(255, 255, 255, 0.5)",
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                margin: "2vh",
-                padding: "5vh",
-                position: "relative",
-                backgroundColor: "white",
-                borderRadius: "1vh",
-              }}
-            >
-              <Fab
-                aria-label="close"
-                className="btnClose"
-                onClick={() => {
-                  setModalViewFile(false);
-                }}
-              >
-                <Cancel sx={{ color: "red" }} />
-              </Fab>
-              <label className="fileData">
-                Nombre de archivo: {selectedFileName}{" "}
-              </label>
-              <div className="divBtnFile">
-                <IconButton
-                  aria-label="download"
-                  size="large"
-                  className="btnDownloadFile"
-                  onClick={downloadFile}
-                >
-                  <Download fontSize="inherit" />
-                </IconButton>
-                <IconButton
-                  aria-label="delete"
-                  size="large"
-                  className="btnDeleteFile"
-                  onClick={() => setAlertMessage(true)}
-                >
-                  <Delete fontSize="inherit" />
-                </IconButton>
-              </div>
-            </Box>
-          </Modal>
+          <ModalAddFolder
+            openAlert={alertMessage}
+            setOpenAlert={setAlertMessage}
+            setError={setError}
+            setMessage={setMessage}
+            loading={{ loading, setLoading }}
+            setOpen={setOpen}
+            update={{ update, setUpdate }}
+            addFolder={{ modalAddFolder, setModalAddFolder }}
+          />
+
+          <ModalAddFile
+            openAlert={alertMessage}
+            setOpenAlert={setAlertMessage}
+            setError={setError}
+            setMessage={setMessage}
+            loading={{ loading, setLoading }}
+            setOpen={setOpen}
+            update={{ update, setUpdate }}
+            addFile={{ modalAddFile, setModalAddFile }}
+            selectedFolder={{ selectedFolderId, setSelectedFolderId }}
+            folderName={{ selectedFolderName, setSelectedFolderName }}
+          />
+
+          <ModalViewFile
+            openAlert={alertMessage}
+            setOpenAlert={setAlertMessage}
+            setError={setError}
+            setMessage={setMessage}
+            loading={{ loading, setLoading }}
+            setOpen={setOpen}
+            update={{ update, setUpdate }}
+            viewFile={{ modalViewFile, setModalViewFile }}
+            selectedFile={{ selectedFileId, setSelectedFileId }}
+            fileName={{ selectedFileName, setSelectedFileName }}
+          />
 
           <Fab
             color="primary"
@@ -558,58 +326,6 @@ function Disk() {
           >
             <Add />
           </Fab>
-
-          <Modal
-            open={modalAddFile}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "rgba(255, 255, 255, 0.5)",
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                margin: "2vh",
-                padding: "5vh",
-                position: "relative",
-                backgroundColor: "white",
-                borderRadius: "1vh",
-              }}
-            >
-              <Fab
-                aria-label="close"
-                className="btnClose"
-                onClick={() => {
-                  setModalAddFile(false);
-                }}
-              >
-                <Cancel sx={{ color: "red" }} />
-              </Fab>
-              <h6>
-                ./Disk
-                {selectedFolderId && `/${selectedFolderName}`}
-              </h6>
-              <form className="addForm" onSubmit={addFile}>
-                <input
-                  id="uploadedFile"
-                  name="uploadedFile"
-                  type="file"
-                  required
-                />
-                <label htmlFor="uploadedFile">
-                  <UploadFile />
-                  Seleccionar archivo
-                </label>
-                <button>{loading ? "Añadiendo..." : "Añadir"}</button>
-              </form>
-            </Box>
-          </Modal>
         </div>
         {error && (
           <Snackbar open={open} onClose={handleClose} autoHideDuration={4000}>
