@@ -21,6 +21,7 @@ import { Navigate } from "react-router-dom";
 import "./Disk.css";
 import { useEffect, useState, useRef } from "react";
 import { Box } from "@mui/system";
+import AlertDialog from "../../Components/alertDialog/alertDialog";
 
 function Disk() {
   // Declaraciones de useToken y useState
@@ -40,6 +41,7 @@ function Disk() {
   const [modalAddFolder, setModalAddFolder] = useState(false);
   const [modalAddFile, setModalAddFile] = useState(false);
   const [modalViewFile, setModalViewFile] = useState(false);
+  const [alertMessage, setAlertMessage] = useState(false);
 
   // Función que recoge la información de usuario, sus archivos y carpetas
   const getUserDiskInfo = async () => {
@@ -237,46 +239,6 @@ function Disk() {
     }
   };
 
-  // Función para eliminar una carpeta
-  const deleteFolder = async () => {
-    setError(null);
-    setLoading(true);
-
-    // Abrimos una ventana para que el usuario confirme la eliminación
-    if (window.confirm("¿Deseas eliminar la carpeta?")) {
-      try {
-        // Realizamos la petición, con el token de seguridad. Utilizamos la id de la carpeta a eliminar
-        const res = await fetch(
-          `http://localhost:4000/folder/${selectedFolderId}`,
-          {
-            method: "DELETE",
-            headers: {
-              Authorization: token,
-            },
-          }
-        );
-
-        const body = await res.json();
-        // Lanzamos un error en caso de que no recibamos los datos
-        if (body.status === "error") {
-          setError(body.message);
-        } else {
-          // Se muestra el mensaje, se lanza update para ver los cambios reflejados y como no existe ya esa carpeta, el valor pasa a ser vacío
-          setMessage(body.message);
-          setUpdate(!update);
-          setSelectedFolderId("");
-        }
-      } catch (err) {
-        console.error(err);
-        setError(err.message);
-      } finally {
-        // Tras finalizar todo, la carga termina, el mensaje aparece (setOpen)
-        setLoading(false);
-        setOpen(true);
-      }
-    }
-  };
-
   // Función para descargar un archivo
   const downloadFile = async () => {
     setError(null);
@@ -322,47 +284,6 @@ function Disk() {
       // Tras finalizar todo, la carga termina, el icono de descarga aparece (setOpen)
       setLoading(false);
       setOpen(true);
-    }
-  };
-
-  // Función que elimina un archivo
-  const deleteFile = async () => {
-    setError(null);
-    setLoading(true);
-
-    // Abrimos una ventana para que el usuario confirme la eliminación
-    if (window.confirm("¿Deseas eliminar el archivo?")) {
-      try {
-        // Realizamos la petición, con el token de seguridad. Utilizamos la id del archivo a eliminar
-        const res = await fetch(
-          `http://localhost:4000/file/${selectedFileId}`,
-          {
-            method: "DELETE",
-            headers: {
-              Authorization: token,
-            },
-          }
-        );
-
-        const body = await res.json();
-        // Lanzamos un error en caso de que no recibamos los datos
-        if (body.status === "error") {
-          setError(body.message);
-        } else {
-          // Se muestra el mensaje, se lanza update para ver los cambios reflejados y como no existe ya ese archivo, el valor pasa a ser vacío
-          setMessage(body.message);
-          setUpdate(!update);
-          setSelectedFileId("");
-        }
-      } catch (err) {
-        console.error(err);
-        setError(err.message);
-      } finally {
-        // Tras finalizar todo, la carga termina, el mensaje aparece (setOpen) y el Modal que visualiza el archivo seleccionado se cierra
-        setLoading(false);
-        setOpen(true);
-        setModalViewFile(false);
-      }
     }
   };
 
@@ -512,7 +433,7 @@ function Disk() {
                 aria-label="delete"
                 size="large"
                 className="btnDeleteFolder"
-                onClick={deleteFolder}
+                onClick={() => setAlertMessage(true)}
               >
                 <Delete fontSize="inherit" />
               </IconButton>
@@ -558,6 +479,19 @@ function Disk() {
                   );
                 })}
           </ul>
+
+          <AlertDialog
+            openAlert={alertMessage}
+            setOpenAlert={setAlertMessage}
+            setError={setError}
+            setMessage={setMessage}
+            setLoading={setLoading}
+            setOpen={setOpen}
+            update={{ update, setUpdate }}
+            selectedFolder={{ selectedFolderId, setSelectedFolderId }}
+            selectedFile={{ selectedFileId, setSelectedFileId }}
+            modalFile={setModalViewFile}
+          />
 
           <Modal
             open={modalViewFile}
@@ -606,7 +540,7 @@ function Disk() {
                   aria-label="delete"
                   size="large"
                   className="btnDeleteFile"
-                  onClick={deleteFile}
+                  onClick={() => setAlertMessage(true)}
                 >
                   <Delete fontSize="inherit" />
                 </IconButton>
