@@ -2,6 +2,8 @@ import { useToken } from "../../TokenContext";
 import { Box, Fab, IconButton, Modal } from "@mui/material";
 import { Cancel, Delete, Download } from "@mui/icons-material";
 
+import "./ModalViewFile.css";
+
 // Función que contiene el modal de visualización de archivos y sus función de descarga
 function ModalViewFile(props) {
   const [token] = useToken();

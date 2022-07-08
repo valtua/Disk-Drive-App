@@ -2,23 +2,16 @@
 div.Profile {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin: auto;
-  padding-top: 15vh;
-  height: 88vh;
-  width: 100%;
-  position: relative;
+  margin: 3vh;
 }
 
 /* Contenedor que devuelve al Disco */
 .linkToDisk {
   display: flex;
-  justify-content: center;
   align-items: center;
-  left: 1vh;
-  top: 10vh;
-  padding: 0.5rem 1rem;
+  align-self: flex-start;
+  padding: 1vh 2vh 1vh 2vh;
   z-index: 100;
   position: absolute;
   background-color: #00ec5e;
@@ -26,30 +19,26 @@ div.Profile {
   color: black;
 }
 
-/* h3 dentro del contenedor que devuelve al Disco */
-.linkToDisk > h3 {
-  margin-bottom: 0.4vh;
-}
-
 /* Div que contiene los datos del perfil */
 div.ProfileCard {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 4rem;
-  height: fit-content;
-  width: fit-content;
-  position: relative !important;
+  padding: 2vh 10vh;
   border-radius: 1vh;
   box-shadow: rgba(35, 35, 35, 0.4) 0px 2px 8px 0px;
 }
 
-/* Datos del perfil con resolución menor/igual a 315px */
-@media (max-width: 420px) {
+/* Datos del perfil con resolución menor/igual a 420px */
+@media (max-width: 330px) {
   div.ProfileCard {
-    padding: 2vh;
+    padding: 2vh 8vh;
+  }
+}
+
+@media (max-width: 285px) {
+  div.ProfileCard {
+    padding: 2vh 3vh;
   }
 }
 
@@ -176,8 +165,8 @@ form.modifyInfo > [type="file"] + label {
 
 /* Botón de cerrar en modify */
 button.btnCloseProfile {
-  right: 22px;
-  top: 4px;
+  right: 3vh;
+  top: 1vh;
   height: 0;
   width: 0;
   position: absolute;

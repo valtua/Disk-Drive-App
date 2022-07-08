@@ -1,0 +1,39 @@
+/* MODAL DE VISUALIZACION DE ARCHIVO */
+
+/* Label con el nombre del archivo */
+label.fileData {
+  padding: 2vh;
+  margin-top: 2vh;
+  background-color: rgb(243, 243, 243);
+  border-radius: 1vh;
+}
+
+/* Div que contiene botones de descargar/eliminar archivo */
+div.divBtnFile {
+  display: flex;
+  align-self: flex-end;
+  margin-top: 4vh;
+}
+
+/* Botón descargar archivo */
+div.divBtnFile button.btnDownloadFile {
+  height: 4vh;
+  width: 6vh;
+  background-color: rgb(0, 174, 255) !important;
+  border: none;
+  border-radius: 1vh;
+  color: white;
+  font-size: 4vh;
+}
+
+/* Botón eliminar archivo */
+div.divBtnFile button.btnDeleteFile {
+  margin-left: 2vh;
+  height: 4vh;
+  width: 6vh;
+  background-color: rgb(233, 53, 53) !important;
+  border: none;
+  border-radius: 1vh;
+  color: white;
+  font-size: 4vh;
+}

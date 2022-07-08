@@ -1,0 +1,10 @@
+/* Botón agregar archivo */
+div.Disk button.btnFileAdd {
+  bottom: 9vh;
+  right: 6vh;
+  height: 10vh;
+  width: 10vh;
+  position: fixed;
+  background-color: rgb(0, 174, 255);
+  border: none;
+}

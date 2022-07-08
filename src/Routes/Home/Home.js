@@ -136,10 +136,16 @@ function Home() {
   return (
     <div className="Home">
       <div className="formSelector">
-        <ToggleButtonGroup value={alignment} exclusive onChange={handleChange}>
-          <ToggleButton value="login">LOGIN</ToggleButton>
-          <ToggleButton value="signup">SIGN UP</ToggleButton>
-        </ToggleButtonGroup>
+        <div className="selectorButtons">
+          <ToggleButtonGroup
+            value={alignment}
+            exclusive
+            onChange={handleChange}
+          >
+            <ToggleButton value="login">LOGIN</ToggleButton>
+            <ToggleButton value="signup">SIGN UP</ToggleButton>
+          </ToggleButtonGroup>
+        </div>
         {alignment === "login" && (
           <form className="login" onSubmit={handleLogin}>
             <label htmlFor="email">Email:</label>

@@ -1,0 +1,36 @@
+/* Div que contiene la ruta del usuario y los botones descargar/eliminar carpeta */
+div.directory {
+  display: flex;
+  align-items: center;
+  gap: 2vh;
+  margin: 3vh 2vh 0vh 0vh;
+}
+
+/* Ruta de carpetas */
+.MuiBreadcrumbs-root {
+  padding: 0 2vh 0 2vh;
+  background: #00ec5e;
+  border: none;
+  border-radius: 0 1vh 1vh 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 0.3vh 0.9vh;
+}
+
+/* Botón descargar carpeta */
+div.Disk button.btnDownloadFolder {
+  height: 4vh;
+  width: 6vh;
+  background-color: rgb(0, 174, 255);
+  border-radius: 1vh;
+  color: white;
+  font-size: 4vh;
+}
+
+/* Botón eliminar carpeta */
+div.Disk button.btnDeleteFolder {
+  height: 4vh;
+  width: 6vh;
+  background-color: rgb(233, 53, 53);
+  border-radius: 1vh;
+  color: white;
+  font-size: 4vh;
+}

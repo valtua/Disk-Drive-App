@@ -1,0 +1,32 @@
+/* MODAL AÑADIR ARCHIVO */
+
+/* Input file de añadir archivo */
+form.addFileForm > [type="file"] {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+/* Input tipo file y su label de añadir archivo */
+form.addFileForm > [type="file"] + label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5vh;
+  margin-bottom: 2vh;
+  background: rgb(35, 218, 35);
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Botón de añadir archivo */
+form.addFileForm > button {
+  padding: 0.5rem;
+  width: 100%;
+  background-color: rgb(0, 174, 255);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 1vh;
+}
