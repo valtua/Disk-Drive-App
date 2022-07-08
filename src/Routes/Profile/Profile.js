@@ -5,7 +5,7 @@ import {
   Create,
   Logout,
 } from "@mui/icons-material";
-import { Alert, Avatar, Fab, Snackbar } from "@mui/material";
+import { Alert, Avatar, Box, Fab, Snackbar } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Navigate, NavLink } from "react-router-dom";
 import { useToken } from "../../TokenContext";
@@ -136,7 +136,16 @@ function Profile() {
         {user && (
           <div className="ProfileCard">
             {modify ? (
-              <>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  margin: "2vh",
+                  position: "relative",
+                  borderRadius: "1vh",
+                }}
+              >
                 <Fab
                   aria-label="close"
                   className="btnCloseProfile"
@@ -193,9 +202,18 @@ function Profile() {
                     {loading ? "Enviando..." : "Enviar"}
                   </button>
                 </form>
-              </>
+              </Box>
             ) : (
-              <>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  margin: "2vh",
+                  position: "relative",
+                  borderRadius: "1vh",
+                }}
+              >
                 <Avatar
                   sx={{
                     width: "20vh",
@@ -206,6 +224,7 @@ function Profile() {
                   alt="Profile photo"
                   src={`http://localhost:4000/${user.photo}`}
                 />
+
                 <h2>{user.name}</h2>
                 <p>{user.email}</p>
                 <p className="biography">
@@ -225,7 +244,7 @@ function Profile() {
                   <Logout fontSize="small" />
                   Logout
                 </button>
-              </>
+              </Box>
             )}
           </div>
         )}
