@@ -1,5 +1,32 @@
 /* MODAL AÑADIR ARCHIVO */
 
+/* Botón cerrar Modal */
+button.btnCloseModalAddFile {
+  right: 4vh;
+  top: 2vh;
+  height: 0;
+  width: 0;
+  position: absolute;
+  transition: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* Form de añadir carpeta */
+form.addFileForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1;
+  width: 90%;
+  margin: 2vh;
+}
+
+/* h6 dentro del form */
+form.addFileForm > h6 {
+  margin: 1.5vh 0 1.5vh 0;
+}
+
 /* Input file de añadir archivo */
 form.addFileForm > [type="file"] {
   height: 0;
@@ -12,21 +39,36 @@ form.addFileForm > [type="file"] + label {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1.5vh;
   padding: 1.5vh;
-  margin-bottom: 2vh;
+  width: 100%;
   background: rgb(35, 218, 35);
-  border-radius: 5px;
+  border-radius: 1vh;
   color: #fff;
   cursor: pointer;
 }
 
 /* Botón de añadir archivo */
 form.addFileForm > button {
-  padding: 0.5rem;
+  padding: 2vh;
   width: 100%;
   background-color: rgb(0, 174, 255);
   color: white;
   font-weight: bold;
   border: none;
   border-radius: 1vh;
+}
+
+/* MODAL AÑADIR CARPETA */
+
+/* Botón cerrar Modal */
+button.btnCloseModalAddFolder {
+  right: 4vh;
+  top: 2vh;
+  height: 0;
+  width: 0;
+  position: absolute;
+  transition: none;
+  background-color: transparent;
+  box-shadow: none;
 }

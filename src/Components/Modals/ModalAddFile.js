@@ -115,19 +115,19 @@ function ModalAddFile(props) {
       >
         <Fab
           aria-label="close"
-          className="btnClose"
+          className="btnCloseModalAddFile"
           onClick={() => {
             props.addFile.setModalAddFile(false);
           }}
         >
           <Cancel sx={{ color: "red" }} />
         </Fab>
-        <h6>
-          ./Disk
-          {props.selectedFolder.selectedFolderId &&
-            `/${props.folderName.selectedFolderName}`}
-        </h6>
         <form className="addFileForm" onSubmit={addFile}>
+          <h6>
+            ./Disk
+            {props.selectedFolder.selectedFolderId &&
+              `/${props.folderName.selectedFolderName}`}
+          </h6>
           <input id="uploadedFile" name="uploadedFile" type="file" required />
           <label htmlFor="uploadedFile">
             <UploadFile />

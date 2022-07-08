@@ -72,15 +72,3 @@ ul.fileList li:hover {
   background: #7cffb0;
   cursor: pointer;
 }
-
-/* Botón cerrar de los modales */
-button.btnClose {
-  right: 3vh;
-  top: 1vh;
-  height: 0;
-  width: 0;
-  position: absolute;
-  transition: none;
-  background-color: transparent;
-  box-shadow: none;
-}

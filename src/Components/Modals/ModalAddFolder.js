@@ -74,7 +74,7 @@ function ModalAddFolder(props) {
       >
         <Fab
           aria-label="close"
-          className="btnClose"
+          className="btnCloseModalAddFolder"
           onClick={() => {
             props.addFolder.setModalAddFolder(false);
           }}
