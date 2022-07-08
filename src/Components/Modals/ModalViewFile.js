@@ -75,6 +75,7 @@ function ModalViewFile(props) {
           flexDirection: "column",
           margin: "2vh",
           padding: "5vh",
+          width: "90%",
           position: "relative",
           backgroundColor: "white",
           borderRadius: "1vh",
@@ -82,7 +83,7 @@ function ModalViewFile(props) {
       >
         <Fab
           aria-label="close"
-          className="btnClose"
+          className="btnCloseModalViewFile"
           onClick={() => {
             props.viewFile.setModalViewFile(false);
           }}

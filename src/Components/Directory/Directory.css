@@ -8,11 +8,12 @@ div.directory {
 
 /* Ruta de carpetas */
 .MuiBreadcrumbs-root {
-  padding: 0 2vh 0 2vh;
+  padding: 1vh 2vh 1vh 2vh;
   background: #00ec5e;
   border: none;
   border-radius: 0 1vh 1vh 0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 0.3vh 0.9vh;
+  overflow-wrap: break-word;
 }
 
 /* Botón descargar carpeta */

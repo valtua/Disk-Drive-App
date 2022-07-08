@@ -55,7 +55,7 @@ function Directory(props) {
   };
   return (
     <div className="directory">
-      <Breadcrumbs aria-label="breadcrumb">
+      <Breadcrumbs noWrap aria-label="breadcrumb">
         <Typography
           sx={{ color: "black", cursor: "pointer" }}
           onClick={() => {

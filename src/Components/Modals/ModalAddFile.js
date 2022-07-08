@@ -108,6 +108,7 @@ function ModalAddFile(props) {
           alignItems: "center",
           margin: "2vh",
           padding: "5vh",
+          width: "90%",
           position: "relative",
           backgroundColor: "white",
           borderRadius: "1vh",

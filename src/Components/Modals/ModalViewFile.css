@@ -1,11 +1,25 @@
 /* MODAL DE VISUALIZACION DE ARCHIVO */
 
+/* Botón cerrar Modal */
+button.btnCloseModalViewFile {
+  right: 4vh;
+  top: 2vh;
+  height: 0;
+  width: 0;
+  position: absolute;
+  transition: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
 /* Label con el nombre del archivo */
 label.fileData {
   padding: 2vh;
   margin-top: 2vh;
   background-color: rgb(243, 243, 243);
   border-radius: 1vh;
+  overflow-wrap: break-word;
+  text-align: center;
 }
 
 /* Div que contiene botones de descargar/eliminar archivo */
