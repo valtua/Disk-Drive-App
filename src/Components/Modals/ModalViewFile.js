@@ -73,9 +73,10 @@ function ModalViewFile(props) {
         sx={{
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           margin: "2vh",
           padding: "5vh",
-          width: "90%",
+          width: "50vh",
           position: "relative",
           backgroundColor: "white",
           borderRadius: "1vh",

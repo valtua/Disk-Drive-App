@@ -23,7 +23,7 @@ form.addFolderForm {
 
 /* Label de añadir carpeta */
 form.addFolderForm > label {
-  margin: 1vh 0 1vh 0;
+  margin-bottom: 1vh;
 }
 
 /* Input text de añadir carpeta */

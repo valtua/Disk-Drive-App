@@ -67,7 +67,7 @@ function ModalAddFolder(props) {
           alignItems: "center",
           margin: "2vh",
           padding: "5vh",
-          width: "90%",
+          width: "50vh",
           position: "relative",
           backgroundColor: "white",
           borderRadius: "1vh",
@@ -89,6 +89,7 @@ function ModalAddFolder(props) {
             name="folder"
             type="text"
             placeholder="Mi-Carpeta"
+            maxlength="16"
             required
           />
           <button>{props.loading.loading ? "Añadiendo..." : "Añadir"}</button>

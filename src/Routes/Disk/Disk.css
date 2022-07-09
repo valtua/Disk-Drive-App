@@ -55,7 +55,7 @@ div.folderScroll p:hover {
 ul.fileList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr));
-  margin: 3vh 3vh 6vh 3vh;
+  margin: 1vh 2vh 5vh 2vh;
   list-style-type: none;
 }
 

@@ -159,7 +159,7 @@ function Profile() {
                   sx={{
                     width: "20vh",
                     height: "20vh",
-                    fontSize: "4vh",
+                    fontSize: "10vh",
                     bgcolor: "green",
                   }}
                   alt="Profile photo"
@@ -218,7 +218,7 @@ function Profile() {
                   sx={{
                     width: "20vh",
                     height: "20vh",
-                    fontSize: "4vh",
+                    fontSize: "10vh",
                     bgcolor: "green",
                   }}
                   alt="Profile photo"

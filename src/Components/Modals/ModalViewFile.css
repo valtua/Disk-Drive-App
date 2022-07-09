@@ -26,7 +26,7 @@ label.fileData {
 div.divBtnFile {
   display: flex;
   align-self: flex-end;
-  margin-top: 4vh;
+  margin-top: 3vh;
 }
 
 /* Botón descargar archivo */

@@ -17,7 +17,6 @@ form.addFileForm {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 1;
   width: 90%;
   margin: 2vh;
 }
@@ -43,7 +42,6 @@ form.addFileForm > [type="file"] + label {
   align-items: center;
   margin-bottom: 1.5vh;
   padding: 1.5vh;
-  width: 100%;
   background: rgb(35, 218, 35);
   border-radius: 1vh;
   color: #fff;
@@ -53,24 +51,9 @@ form.addFileForm > [type="file"] + label {
 /* Botón de añadir archivo */
 form.addFileForm > button {
   padding: 2vh;
-  width: 100%;
   background-color: rgb(0, 174, 255);
   color: white;
   font-weight: bold;
   border: none;
   border-radius: 1vh;
-}
-
-/* MODAL AÑADIR CARPETA */
-
-/* Botón cerrar Modal */
-button.btnCloseModalAddFolder {
-  right: 4vh;
-  top: 2vh;
-  height: 0;
-  width: 0;
-  position: absolute;
-  transition: none;
-  background-color: transparent;
-  box-shadow: none;
 }
