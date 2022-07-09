@@ -65,7 +65,8 @@ ul.fileList li {
   padding: 2vh;
   background-color: rgb(243, 243, 243);
   border-radius: 1vh;
-  overflow-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Hover para cada archivo */
