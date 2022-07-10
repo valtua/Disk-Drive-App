@@ -1,27 +1,33 @@
 header {
-  display: flex;
-  align-items: center;
-  padding: 4vh;
-  height: 9vh;
-  width: 100%;
-  z-index: 100;
-  background-color: rgba(91, 231, 180, 1);
-  color: white;
+    display: flex;
+    align-items: center;
+    padding: 4vh;
+    height: 9vh;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(91, 231, 180, 1);
+    color: white;
 }
 
 /* h1 dentro de un anchor */
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 h1 {
-  color: white;
-  font-size: 5vh;
-  text-decoration: none;
-  text-shadow: 0.5vh 0 0 #00a307;
+    color: white;
+    font-size: 5vh;
+    text-decoration: none;
+    text-shadow: 0.5vh 0 0 #00a307;
+}
+
+@media (max-width: 290px) {
+    h1 {
+        font-size: 4vh;
+    }
 }
 
 /* h1 y el avatar */
 header.tokenHeader {
-  justify-content: space-between;
+    justify-content: space-between;
 }

@@ -1,20 +1,22 @@
-import { Add } from "@mui/icons-material";
-import { Fab } from "@mui/material";
+import { Add } from '@mui/icons-material';
+import { Fab, Tooltip } from '@mui/material';
 
-import "./AddFileButton.css";
+import './AddFileButton.css';
 
 function AddFileButton(props) {
-  return (
-    <Fab
-      color="primary"
-      aria-label="add"
-      className="btnFileAdd"
-      onClick={() => {
-        props.setModalAddFile(true);
-      }}
-    >
-      <Add />
-    </Fab>
-  );
+    return (
+        <Tooltip title="Añadir archivo">
+            <Fab
+                color="primary"
+                aria-label="add"
+                className="btnFileAdd"
+                onClick={() => {
+                    props.setModalAddFile(true);
+                }}
+            >
+                <Add />
+            </Fab>
+        </Tooltip>
+    );
 }
 export default AddFileButton;
