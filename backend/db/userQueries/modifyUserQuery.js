@@ -16,7 +16,7 @@ const modifyUserQuery = async (name, email, biography, photo, id) => {
         );
 
         // Lanzamos un error cuando la longitud de 'users' es mayor que 0
-        if (users.length > 0) {
+        if (users.length > 0 && users[0].id != id) {
             throw generateError(
                 'Ya existe un usuario asociado a ese email',
                 409
