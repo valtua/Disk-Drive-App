@@ -154,6 +154,7 @@ function Profile() {
                                     className="btnCloseProfile"
                                     onClick={() => {
                                         setModify(false);
+                                        setUpdate(!update);
                                     }}
                                 >
                                     <Cancel sx={{ color: 'red' }} />
