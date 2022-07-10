@@ -89,7 +89,7 @@ function ModalViewFile(props) {
         </Fab>
         <div className="divViewFile">
           <label className="fileData">
-            Nombre de archivo: {props.fileName.selectedFileName}{" "}
+            Nombre de archivo: {props.fileName.selectedFileName}
           </label>
           <div className="divBtnFile">
             <IconButton
