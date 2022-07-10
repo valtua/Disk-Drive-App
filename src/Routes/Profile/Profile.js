@@ -181,7 +181,7 @@ function Profile() {
                     type="text"
                     id="name"
                     name="name"
-                    maxLength={20}
+                    maxLength={25}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
