@@ -82,11 +82,8 @@ function Home() {
         } catch (err) {
             console.error(err);
             setError(err.message);
-            setOpen(true);
         } finally {
-            // Email y password pasan a estar vacíos
-            setEmail('');
-            setPassword('');
+            setOpen(true);
             setLoading(false);
         }
     };
