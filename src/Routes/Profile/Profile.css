@@ -31,7 +31,7 @@ div.ProfileCard p {
 }
 
 p.biography {
-    max-width: 17vw;
+    max-width: 80%;
     word-wrap: break-word;
     color: grey;
     font-style: italic;
