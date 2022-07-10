@@ -71,11 +71,7 @@ function ModalViewFile(props) {
     >
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
           margin: "2vh",
-          padding: "5vh",
           width: "50vh",
           position: "relative",
           backgroundColor: "white",
@@ -91,26 +87,28 @@ function ModalViewFile(props) {
         >
           <Cancel sx={{ color: "red" }} />
         </Fab>
-        <label className="fileData">
-          Nombre de archivo: {props.fileName.selectedFileName}{" "}
-        </label>
-        <div className="divBtnFile">
-          <IconButton
-            aria-label="download"
-            size="large"
-            className="btnDownloadFile"
-            onClick={downloadFile}
-          >
-            <Download fontSize="inherit" />
-          </IconButton>
-          <IconButton
-            aria-label="delete"
-            size="large"
-            className="btnDeleteFile"
-            onClick={() => props.setOpenAlert(true)}
-          >
-            <Delete fontSize="inherit" />
-          </IconButton>
+        <div className="divViewFile">
+          <label className="fileData">
+            Nombre de archivo: {props.fileName.selectedFileName}{" "}
+          </label>
+          <div className="divBtnFile">
+            <IconButton
+              aria-label="download"
+              size="large"
+              className="btnDownloadFile"
+              onClick={downloadFile}
+            >
+              <Download fontSize="inherit" />
+            </IconButton>
+            <IconButton
+              aria-label="delete"
+              size="large"
+              className="btnDeleteFile"
+              onClick={() => props.setOpenAlert(true)}
+            >
+              <Delete fontSize="inherit" />
+            </IconButton>
+          </div>
         </div>
       </Box>
     </Modal>

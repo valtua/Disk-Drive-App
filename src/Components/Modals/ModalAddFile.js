@@ -103,11 +103,7 @@ function ModalAddFile(props) {
     >
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
           margin: "2vh",
-          padding: "5vh",
           width: "50vh",
           position: "relative",
           backgroundColor: "white",

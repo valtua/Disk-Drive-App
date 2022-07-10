@@ -19,11 +19,12 @@ form.addFolderForm {
   justify-content: flex-start;
   width: 90%;
   margin: 2vh;
+  padding: 3vh;
 }
 
 /* Label de añadir carpeta */
 form.addFolderForm > label {
-  margin-bottom: 1vh;
+  margin: 2vh 0 1vh 0;
 }
 
 /* Input text de añadir carpeta */

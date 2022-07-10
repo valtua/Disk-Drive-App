@@ -12,10 +12,20 @@ button.btnCloseModalViewFile {
   box-shadow: none;
 }
 
+/* Div que contiene el label, nombre del archivo y botones de descargar/eliminar */
+div.divViewFile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 90%;
+  margin: 2vh;
+  padding: 3vh;
+}
+
 /* Label con el nombre del archivo */
 label.fileData {
+  margin: 2vh 0 1vh 0;
   padding: 2vh;
-  margin-top: 2vh;
   background-color: rgb(243, 243, 243);
   border-radius: 1vh;
   overflow-wrap: break-word;
@@ -26,7 +36,7 @@ label.fileData {
 div.divBtnFile {
   display: flex;
   align-self: flex-end;
-  margin-top: 3vh;
+  margin-top: 2vh;
 }
 
 /* Botón descargar archivo */

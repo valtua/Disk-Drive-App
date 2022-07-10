@@ -19,11 +19,12 @@ form.addFileForm {
   justify-content: flex-start;
   width: 90%;
   margin: 2vh;
+  padding: 3vh;
 }
 
 /* h6 dentro del form */
 form.addFileForm > h6 {
-  margin-bottom: 1vh;
+  margin: 2vh 0 1vh 0;
   overflow-wrap: break-word;
   text-align: center;
 }
