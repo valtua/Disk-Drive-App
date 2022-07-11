@@ -24,6 +24,8 @@ function Disk() {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(null);
     const [open, setOpen] = useState(false);
+
+    // Declaración de un estado update para utilizar localmente useEffect
     const [update, setUpdate] = useState(false);
 
     // Declaración de useState que usaremos para manejar nombre/id de carpetas y archivos, además de la visualización de los Modales y el mensaje al eliminar carpetas/archivos

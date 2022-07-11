@@ -11,14 +11,20 @@ import {
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useToken } from '../../TokenContext';
+import { useUpdate } from '../../UpdateContext';
 import './Header.css';
 
 function Header() {
-    // Declaración de useToken y UseState para el manejo del token, el avatar y el menú del avatar
+    // Declaración de useToken y useState para el manejo del token, el avatar y el menú del avatar
     const [token, setToken] = useToken();
     const [photo, setPhoto] = useState(null);
+
+    //Declaración de constantes para el manejo del menú desplegable
     const [dropdown, setDropdown] = useState(null);
     const open = Boolean(dropdown);
+
+    // Declaración de useUpdate para activar useEffect
+    const [update] = useUpdate();
 
     // Función que recoge el usuario que está logueado
     const getUserInfo = async () => {
@@ -53,7 +59,7 @@ function Header() {
 
     useEffect(() => {
         getUserInfo();
-    }, [token]);
+    }, [update]);
     return (
         <>
             {!token && (
