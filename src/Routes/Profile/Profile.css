@@ -32,6 +32,7 @@ p.biography {
     font-style: italic;
 }
 
+/*Párrafo que contiene la informacion del email del usuario*/
 p.email {
     font-size: 0.85rem;
 }
